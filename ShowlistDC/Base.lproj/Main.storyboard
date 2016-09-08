@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Startup View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="StartupViewController" customModule="ShowlistDC" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" image="ShowlistDC-Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Ncw-DJ-547">
+                                <rect key="frame" x="218.5" y="63" width="163" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="163" id="6tA-kT-3il"/>
+                                    <constraint firstAttribute="height" constant="128" id="q3g-iJ-seT"/>
+                                </constraints>
+                            </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Zfb-DS-Znz">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Show Data..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mga-vF-etY">
+                                <rect key="frame" x="219" y="430" width="162" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ncw-DJ-547" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1Ws-Ms-1Iu"/>
+                            <constraint firstItem="Mga-vF-etY" firstAttribute="top" secondItem="Ncw-DJ-547" secondAttribute="bottom" constant="239" id="MAx-aE-967"/>
+                            <constraint firstItem="Ncw-DJ-547" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="43" id="MKL-el-a1w"/>
+                            <constraint firstItem="Mga-vF-etY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eW8-5U-MS9"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Mga-vF-etY" secondAttribute="bottom" constant="149" id="gp4-lr-W6J"/>
+                            <constraint firstItem="Zfb-DS-Znz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wXA-80-sql"/>
+                            <constraint firstItem="Zfb-DS-Znz" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="xgv-gk-2o5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Zfb-DS-Znz" id="aKc-Si-2oR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="38" y="192"/>
+        </scene>
+        <!--Recommended-->
+        <scene sceneID="ecC-QP-7dN">
+            <objects>
+                <viewController title="Recommended" id="d9H-7n-EDH" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fFU-40-LBm"/>
+                        <viewControllerLayoutGuide type="bottom" id="xJh-UC-ON8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Bas-MO-AFI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Search" image="Icon-Search" id="mLR-rV-SL4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mQ1-6r-PcX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-256" y="1849"/>
+        </scene>
+        <!--Show List-->
+        <scene sceneID="QBv-Ki-20m">
+            <objects>
+                <viewController title="Show List" id="SdL-xb-JBN" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rr2-zz-9g5"/>
+                        <viewControllerLayoutGuide type="bottom" id="zMD-2H-e4l"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="A0G-2I-i0J">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Shows" image="Icon-Shows" id="XTs-X1-TZc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fQR-c2-ut0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-895" y="1849"/>
+        </scene>
+        <!--Venues-->
+        <scene sceneID="MtG-v2-lDE">
+            <objects>
+                <viewController title="Venues" id="KOS-ci-FmA" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DbL-wj-YpO"/>
+                        <viewControllerLayoutGuide type="bottom" id="LPX-us-si9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JQc-Ox-9Pa">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Venues" image="Icon-Venues" id="QCD-t5-qb9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hk4-20-8oW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="430" y="1849"/>
+        </scene>
+        <!--More-->
+        <scene sceneID="U7c-EE-Jwr">
+            <objects>
+                <tableViewController id="WVk-0Q-xov" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="WkE-EX-Eay">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MoreCell" id="JPt-yL-gVa">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JPt-yL-gVa" id="s2I-65-TJP">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="WVk-0Q-xov" id="nOd-3S-y9o"/>
+                            <outlet property="delegate" destination="WVk-0Q-xov" id="Puv-QF-sqO"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="More" image="Icon-More" id="Zv3-vw-dX2"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qSF-rd-UCI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1125" y="1853"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Qlh-3R-T5s">
+            <objects>
+                <tabBarController storyboardIdentifier="MainTabBarController" id="Npj-An-KmH" customClass="TabBarController" customModule="ShowlistDC" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="RwY-5n-ORJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="KOS-ci-FmA" kind="relationship" relationship="viewControllers" id="4YX-Id-Pzn"/>
+                        <segue destination="d9H-7n-EDH" kind="relationship" relationship="viewControllers" id="rmz-FW-utT"/>
+                        <segue destination="SdL-xb-JBN" kind="relationship" relationship="viewControllers" id="gPe-l6-VUF"/>
+                        <segue destination="WVk-0Q-xov" kind="relationship" relationship="viewControllers" id="BUi-JN-teT"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aqf-eD-b6R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="38" y="1075"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Icon-More" width="25" height="25"/>
+        <image name="Icon-Search" width="25" height="25"/>
+        <image name="Icon-Shows" width="25" height="25"/>
+        <image name="Icon-Venues" width="25" height="25"/>
+        <image name="ShowlistDC-Logo" width="163" height="92"/>
+    </resources>
+</document>

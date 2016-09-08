@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0BC7F156987E1C03898F23F38A1BB0A07F2B5D03",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "66858D06FBE52BF4B6B0AF3D04307F5F44319DB5" : 0,
+    "0BC7F156987E1C03898F23F38A1BB0A07F2B5D03" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0A758887-079F-481C-9AA9-9F5E78EE3303",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "66858D06FBE52BF4B6B0AF3D04307F5F44319DB5" : "XlsxReaderWriter\/",
+    "0BC7F156987E1C03898F23F38A1BB0A07F2B5D03" : "ShowlistDC\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ShowlistDC",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ShowlistDC.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ChennyChenChen2\/ShowlistDC.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0BC7F156987E1C03898F23F38A1BB0A07F2B5D03"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/renebigot\/XlsxReaderWriter.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "66858D06FBE52BF4B6B0AF3D04307F5F44319DB5"
+    }
+  ]
+}
