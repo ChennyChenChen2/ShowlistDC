@@ -17,6 +17,7 @@ class SpreadsheetReader {
     
     init() {
         let documentPath = NSBundle.mainBundle().pathForResource("SLDC_For_Jon", ofType: "xlsx")!
+        
         let package = BRAOfficeDocumentPackage.open(documentPath)
         
         //First worksheet in the workbook

@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" image="ShowlistDC-Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Ncw-DJ-547">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" image="ShowlistDC-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Ncw-DJ-547">
                                 <rect key="frame" x="218.5" y="63" width="163" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="163" id="6tA-kT-3il"/>
@@ -165,6 +165,6 @@
         <image name="Icon-Search" width="25" height="25"/>
         <image name="Icon-Shows" width="25" height="25"/>
         <image name="Icon-Venues" width="25" height="25"/>
-        <image name="ShowlistDC-Logo" width="163" height="92"/>
+        <image name="ShowlistDC-logo" width="163" height="92"/>
     </resources>
 </document>
