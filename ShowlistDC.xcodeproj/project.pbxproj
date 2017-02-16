@@ -11,7 +11,11 @@
 		8711D99D1D863535005E832F /* SLDCCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8711D99C1D863535005E832F /* SLDCCalendarCell.swift */; };
 		8711D9A01D863752005E832F /* SLDCCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8711D99F1D863752005E832F /* SLDCCalendarView.swift */; };
 		8711D9A61D863825005E832F /* SLDCShowlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8711D9A51D863825005E832F /* SLDCShowlistViewController.swift */; };
+		877C221C1DEFDAEC00F49A10 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877C221B1DEFDAEC00F49A10 /* Venue.swift */; };
+		8791E22D1D9219C100EB4BBA /* SLDCDayListingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791E22C1D9219C100EB4BBA /* SLDCDayListingsTableView.swift */; };
+		8796443A1E0F474E00A3A29B /* NSManagedObject+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879644391E0F474E00A3A29B /* NSManagedObject+Util.swift */; };
 		87C47DC61D8109B500E88C6D /* SLDC_For_Jon.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = 87C47DC51D8109B500E88C6D /* SLDC_For_Jon.xlsx */; };
+		87C5FA5B1DEBD50C00E97733 /* Showlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FA5A1DEBD50C00E97733 /* Showlist.swift */; };
 		87D6AD7E1D80F463008CE838 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6AD7D1D80F463008CE838 /* AppDelegate.swift */; };
 		87D6AD801D80F463008CE838 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6AD7F1D80F463008CE838 /* ViewController.swift */; };
 		87D6AD831D80F463008CE838 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87D6AD811D80F463008CE838 /* Main.storyboard */; };
@@ -26,6 +30,8 @@
 		87D6ADB51D80F550008CE838 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6ADB11D80F550008CE838 /* TabBarController.swift */; };
 		87D6ADC91D80FDB1008CE838 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 87D6ADC81D80FDB1008CE838 /* libz.tbd */; };
 		87D6ADDA1D8102E1008CE838 /* libXlsxReaderWriter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87D6ADD31D81027D008CE838 /* libXlsxReaderWriter.a */; };
+		87E583571DAC9346005A5D75 /* SLDCCalendarHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E583561DAC9346005A5D75 /* SLDCCalendarHeader.xib */; };
+		87E5835B1DAC9698005A5D75 /* SLDCCalendarHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E5835A1DAC9698005A5D75 /* SLDCCalendarHeader.swift */; };
 		C99A4B736E3FB77500AEC59F /* Pods_ShowlistDC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7429D3D40265BA53E97DDA0F /* Pods_ShowlistDC.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,7 +87,11 @@
 		8711D99C1D863535005E832F /* SLDCCalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLDCCalendarCell.swift; sourceTree = "<group>"; };
 		8711D99F1D863752005E832F /* SLDCCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLDCCalendarView.swift; sourceTree = "<group>"; };
 		8711D9A51D863825005E832F /* SLDCShowlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLDCShowlistViewController.swift; sourceTree = "<group>"; };
+		877C221B1DEFDAEC00F49A10 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
+		8791E22C1D9219C100EB4BBA /* SLDCDayListingsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLDCDayListingsTableView.swift; sourceTree = "<group>"; };
+		879644391E0F474E00A3A29B /* NSManagedObject+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObject+Util.swift"; path = "ShowlistDC/NSManagedObject+Util.swift"; sourceTree = "<group>"; };
 		87C47DC51D8109B500E88C6D /* SLDC_For_Jon.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = SLDC_For_Jon.xlsx; sourceTree = "<group>"; };
+		87C5FA5A1DEBD50C00E97733 /* Showlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Showlist.swift; path = ShowlistDC/Showlist.swift; sourceTree = "<group>"; };
 		87D6AD7A1D80F463008CE838 /* ShowlistDC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowlistDC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87D6AD7D1D80F463008CE838 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87D6AD7F1D80F463008CE838 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -97,12 +107,14 @@
 		87D6ADA01D80F463008CE838 /* ShowlistDCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowlistDCUITests.swift; sourceTree = "<group>"; };
 		87D6ADA21D80F463008CE838 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87D6ADAE1D80F550008CE838 /* Show.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
-		87D6ADAF1D80F550008CE838 /* SpreadsheetReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpreadsheetReader.swift; sourceTree = "<group>"; };
+		87D6ADAF1D80F550008CE838 /* SpreadsheetReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpreadsheetReader.swift; path = ShowlistDC/SpreadsheetReader.swift; sourceTree = "<group>"; };
 		87D6ADB01D80F550008CE838 /* StartupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartupViewController.swift; sourceTree = "<group>"; };
 		87D6ADB11D80F550008CE838 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		87D6ADC81D80FDB1008CE838 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		87D6ADCA1D80FDDC008CE838 /* ShowlistDC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShowlistDC-Bridging-Header.h"; sourceTree = "<group>"; };
 		87D6ADCB1D81027D008CE838 /* XlsxReaderWriter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = XlsxReaderWriter.xcodeproj; path = XlsxReaderWriter/XlsxReaderWriter.xcodeproj; sourceTree = "<group>"; };
+		87E583561DAC9346005A5D75 /* SLDCCalendarHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SLDCCalendarHeader.xib; sourceTree = "<group>"; };
+		87E5835A1DAC9698005A5D75 /* SLDCCalendarHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLDCCalendarHeader.swift; sourceTree = "<group>"; };
 		AE39523F05D7DAEA3C1E5B7C /* Pods-ShowlistDC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShowlistDC.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShowlistDC/Pods-ShowlistDC.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,12 +167,42 @@
 			isa = PBXGroup;
 			children = (
 				8711D99A1D862E1D005E832F /* SLDCCalendarCell.xib */,
+				87E583561DAC9346005A5D75 /* SLDCCalendarHeader.xib */,
 				8711D99C1D863535005E832F /* SLDCCalendarCell.swift */,
 				8711D99F1D863752005E832F /* SLDCCalendarView.swift */,
 				8711D9A51D863825005E832F /* SLDCShowlistViewController.swift */,
+				8791E22C1D9219C100EB4BBA /* SLDCDayListingsTableView.swift */,
+				87E5835A1DAC9698005A5D75 /* SLDCCalendarHeader.swift */,
 			);
 			name = Calendar;
 			path = ShowlistDC;
+			sourceTree = "<group>";
+		};
+		877C22181DEFCC4400F49A10 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				87D6ADAE1D80F550008CE838 /* Show.swift */,
+				877C221B1DEFDAEC00F49A10 /* Venue.swift */,
+			);
+			name = Model;
+			path = ShowlistDC;
+			sourceTree = "<group>";
+		};
+		8796443D1E0F484B00A3A29B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				879644391E0F474E00A3A29B /* NSManagedObject+Util.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		87C5FA571DEBCE2100E97733 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				87D6ADAF1D80F550008CE838 /* SpreadsheetReader.swift */,
+				87C5FA5A1DEBD50C00E97733 /* Showlist.swift */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 		87D6AD711D80F463008CE838 = {
@@ -170,6 +212,9 @@
 				87D6ADCB1D81027D008CE838 /* XlsxReaderWriter.xcodeproj */,
 				87D6ADC81D80FDB1008CE838 /* libz.tbd */,
 				87D6AD7C1D80F463008CE838 /* ShowlistDC */,
+				87C5FA571DEBCE2100E97733 /* Data */,
+				877C22181DEFCC4400F49A10 /* Model */,
+				8796443D1E0F484B00A3A29B /* Extensions */,
 				8711D99E1D8635B5005E832F /* Calendar */,
 				87D6AD941D80F463008CE838 /* ShowlistDCTests */,
 				87D6AD9F1D80F463008CE838 /* ShowlistDCUITests */,
@@ -195,8 +240,6 @@
 				87D6ADCA1D80FDDC008CE838 /* ShowlistDC-Bridging-Header.h */,
 				87D6AD7D1D80F463008CE838 /* AppDelegate.swift */,
 				87D6AD7F1D80F463008CE838 /* ViewController.swift */,
-				87D6ADAE1D80F550008CE838 /* Show.swift */,
-				87D6ADAF1D80F550008CE838 /* SpreadsheetReader.swift */,
 				87D6ADB01D80F550008CE838 /* StartupViewController.swift */,
 				87D6ADB11D80F550008CE838 /* TabBarController.swift */,
 				87D6AD811D80F463008CE838 /* Main.storyboard */,
@@ -374,6 +417,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87E583571DAC9346005A5D75 /* SLDCCalendarHeader.xib in Resources */,
 				87C47DC61D8109B500E88C6D /* SLDC_For_Jon.xlsx in Resources */,
 				87D6AD8B1D80F463008CE838 /* LaunchScreen.storyboard in Resources */,
 				8711D99B1D862E1D005E832F /* SLDCCalendarCell.xib in Resources */,
@@ -451,8 +495,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87E5835B1DAC9698005A5D75 /* SLDCCalendarHeader.swift in Sources */,
 				87D6AD861D80F463008CE838 /* ShowlistDC.xcdatamodeld in Sources */,
+				8791E22D1D9219C100EB4BBA /* SLDCDayListingsTableView.swift in Sources */,
+				877C221C1DEFDAEC00F49A10 /* Venue.swift in Sources */,
+				8796443A1E0F474E00A3A29B /* NSManagedObject+Util.swift in Sources */,
 				8711D9A01D863752005E832F /* SLDCCalendarView.swift in Sources */,
+				87C5FA5B1DEBD50C00E97733 /* Showlist.swift in Sources */,
 				8711D99D1D863535005E832F /* SLDCCalendarCell.swift in Sources */,
 				87D6AD801D80F463008CE838 /* ViewController.swift in Sources */,
 				87D6ADB21D80F550008CE838 /* Show.swift in Sources */,

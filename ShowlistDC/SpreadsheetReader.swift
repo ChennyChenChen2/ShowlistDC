@@ -11,9 +11,8 @@ import Foundation
 
 class SpreadsheetReader {
     
-    static let sharedInstance = SpreadsheetReader()
     var spreadsheet: BRAWorksheet?
-    var shows : [Show]
+    var shows : Showlist
     
     init() {
         let documentPath = NSBundle.mainBundle().pathForResource("SLDC_For_Jon", ofType: "xlsx")!
@@ -22,7 +21,7 @@ class SpreadsheetReader {
         
         //First worksheet in the workbook
         self.spreadsheet = package!.workbook.worksheets[0] as? BRAWorksheet
-        self.shows = [Show]()
+        self.shows = Showlist.sharedInstance
         generateShows()
         print("HERE!");
     }
@@ -43,25 +42,21 @@ class SpreadsheetReader {
                 }
             }
         }
-        print("HERE!")
     }
     
     func generateShow(with row: BRARow) {
-        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_BACKGROUND.rawValue), 0)) {
-            let show = Show.init()
-            let cells = NSArray.init(array: row.cells)
-            for c in cells {
-                let cell = c as! BRACell
-                self.populate(show:show, with:cell);
-            }
-            self.shows.append(show)
+        let show = Show.init()
+        let cells = NSArray.init(array: row.cells)
+        for c in cells {
+            let cell = c as! BRACell
+            self.populate(show:show, with:cell);
         }
+        self.shows.add(show)
     }
     
     func populate(show show: Show, with cell: BRACell) {
         let formatter = NSDateFormatter()
         formatter.locale = NSLocale(localeIdentifier: "US_en")
-        formatter.dateFormat = "m/dd/yy"
         switch cell.columnIndex() {
         case 1:
             show.recommended = cell.boolValue()
@@ -76,9 +71,12 @@ class SpreadsheetReader {
         case 5:
             show.comment = cell.stringValue()
         case 7:
-            if let dateString = cell.stringValue() {
-                show.date = formatter.dateFromString(dateString)
-            }
+//            if let dateString = cell.stringValue() {
+//                show.date = formatter.dateFromString(dateString)
+//            }
+            
+            // Make today for testing
+            show.date = NSDate.init()
         case 10:
             show.venue = cell.stringValue()
         case 11:

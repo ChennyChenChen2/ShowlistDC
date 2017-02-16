@@ -5,38 +5,38 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SLDCCalendarCell" customModule="ShowlistDC" customModuleProvider="target">
-            <connections>
-                <outlet property="dayLabel" destination="8Ys-f3-Qu3" id="1eK-ZV-1pK"/>
-                <outlet property="eventScheduledDotView" destination="b1U-Rv-6Ws" id="cjO-Bu-R0a"/>
-                <outlet property="selectHighlightView" destination="Tye-uP-DFa" id="ixW-3R-3dU"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SLDCCalendarCell" customModule="ShowlistDC" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="125" id="jQM-U8-N9a">
-            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
-            <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jQM-U8-N9a" id="Izq-8n-dVG">
-                <rect key="frame" x="0.0" y="0.0" width="90" height="89.5"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ys-f3-Qu3">
-                        <rect key="frame" x="0.0" y="10" width="40" height="20"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tye-uP-DFa">
-                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b1U-Rv-6Ws">
-                        <rect key="frame" x="30" y="50" width="35" height="35"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </subviews>
-            </tableViewCellContentView>
-            <point key="canvasLocation" x="303" y="259.5"/>
-        </tableViewCell>
+        <view contentMode="scaleToFill" id="kEu-TQ-cMU" customClass="SLDCCalendarCell" customModule="ShowlistDC" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dateTextGoesHere" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFn-hT-b7A">
+                    <rect key="frame" x="8" y="8" width="142" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyG-Rk-3tP">
+                    <rect key="frame" x="20" y="20" width="10" height="10"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="10" id="byS-ki-R85"/>
+                        <constraint firstAttribute="width" constant="10" id="fEU-6i-iuS"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="gyG-Rk-3tP" firstAttribute="top" secondItem="kEu-TQ-cMU" secondAttribute="top" constant="20" symbolic="YES" id="Kbb-gd-aS1"/>
+                <constraint firstItem="yFn-hT-b7A" firstAttribute="leading" secondItem="kEu-TQ-cMU" secondAttribute="leading" constant="8" id="UoD-Y4-IOG"/>
+                <constraint firstItem="gyG-Rk-3tP" firstAttribute="leading" secondItem="kEu-TQ-cMU" secondAttribute="leading" constant="20" symbolic="YES" id="gyZ-1g-7w2"/>
+                <constraint firstItem="yFn-hT-b7A" firstAttribute="top" secondItem="kEu-TQ-cMU" secondAttribute="top" constant="8" id="lPO-bx-tYY"/>
+            </constraints>
+            <connections>
+                <outlet property="dayHasEventsView" destination="gyG-Rk-3tP" id="Irb-fr-YQg"/>
+                <outlet property="dayLabel" destination="yFn-hT-b7A" id="NpV-uR-PhY"/>
+            </connections>
+            <point key="canvasLocation" x="88" y="514"/>
+        </view>
     </objects>
 </document>
