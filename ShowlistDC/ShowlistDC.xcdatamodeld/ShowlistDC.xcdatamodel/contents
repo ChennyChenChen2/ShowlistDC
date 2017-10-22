@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15D21" minimumToolsVersion="Automatic">
-    <entity name="Show" representedClassName="." syncable="YES">
-        <attribute name="added_changed" optional="YES" attributeType="Date" syncable="YES"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Xcode 7.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="Show" representedClassName="ShowlistDC.Show" syncable="YES">
+        <attribute name="addedChanged" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="artist1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="artist2" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="artist3" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="artist4" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="cancelled_postponed" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cancelledPostponed" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="end" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fb" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="recommended" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="sold_out" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="recommended" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="soldOut" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="start" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ticketfly" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="twitter" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="venue_id" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="venue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="venuePlus" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="id" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Venue" syncable="YES"/>
     </entity>
-    <entity name="Venue" representedClassName=".Venue" syncable="YES">
+    <entity name="Venue" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Show" positionX="-63" positionY="-18" width="128" height="315"/>
+        <element name="Show" positionX="-63" positionY="-18" width="128" height="300"/>
         <element name="Venue" positionX="-54" positionY="36" width="128" height="75"/>
     </elements>
 </model>

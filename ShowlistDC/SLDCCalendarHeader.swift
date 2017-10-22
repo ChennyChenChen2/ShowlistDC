@@ -14,5 +14,22 @@ class SLDCCalendarHeader : JTAppleHeaderView {
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var leftArrow: UIButton!
     @IBOutlet weak var rightArrow: UIButton!
+    weak var delegate: SLDCCalendarHeaderDelegate?
+ 
+    @IBAction func rightArrowPressed(_ sender: Any) {
+        if let theDelegate = self.delegate {
+            theDelegate.didPressRightArrow()
+        }
+    }
     
+    @IBAction func leftArrowPressed(_ sender: Any) {
+        if let theDelegate = self.delegate {
+            theDelegate.didPressLeftArrow()
+        }
+    }
+}
+
+protocol SLDCCalendarHeaderDelegate: class {
+    func didPressRightArrow()
+    func didPressLeftArrow()
 }

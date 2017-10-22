@@ -20,22 +20,22 @@ class SLDCCalendarCell: JTAppleDayCellView {
     var normalDayColor = UIColor(colorWithHexValue: 0x574865)
     var weekendDayColor = UIColor(colorWithHexValue: 0xECEAED)
     
-    func setupCellBeforeDisplay(cellState: CellState, date: NSDate) {
+    func setupCellBeforeDisplay(_ cellState: CellState, date: Date) {
         // Setup Cell text
         dayLabel.text =  cellState.text
         
         dayHasEventsView.layer.cornerRadius = dayHasEventsView.frame.size.width/2
         dayHasEventsView.clipsToBounds = true
         
-        dayHasEventsView.layer.borderColor = UIColor.whiteColor().CGColor
-        dayHasEventsView.layer.borderWidth = 5.0
+        dayHasEventsView.layer.borderColor = UIColor.white.cgColor
+        dayHasEventsView.layer.borderWidth = 1.0
         
         // Setup text color
         configureTextColor(cellState)
     }
     
-    func configureTextColor(cellState: CellState) {
-        if cellState.dateBelongsTo == .ThisMonth {
+    func configureTextColor(_ cellState: CellState) {
+        if cellState.dateBelongsTo == DateOwner.thisMonth {
             dayLabel.textColor = normalDayColor
         } else {
             dayLabel.textColor = weekendDayColor

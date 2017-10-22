@@ -7,19 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8711D3521EFED0C900C38DA5 /* ShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8711D3511EFED0C900C38DA5 /* ShowDetailViewController.swift */; };
 		8711D99B1D862E1D005E832F /* SLDCCalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8711D99A1D862E1D005E832F /* SLDCCalendarCell.xib */; };
 		8711D99D1D863535005E832F /* SLDCCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8711D99C1D863535005E832F /* SLDCCalendarCell.swift */; };
 		8711D9A01D863752005E832F /* SLDCCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8711D99F1D863752005E832F /* SLDCCalendarView.swift */; };
 		8711D9A61D863825005E832F /* SLDCShowlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8711D9A51D863825005E832F /* SLDCShowlistViewController.swift */; };
+		8722DF401F2EBA0B00F45D9E /* SLDCSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8722DF3F1F2EBA0B00F45D9E /* SLDCSearchViewController.swift */; };
+		8724498D1F2AA3E300817BE8 /* SLDCMoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8724498C1F2AA3E300817BE8 /* SLDCMoreTableViewController.swift */; };
+		873F56B31F2C27C300FF7B70 /* SLDCContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F56B21F2C27C300FF7B70 /* SLDCContactUsViewController.swift */; };
+		877154C61F37DBB300B4119F /* HalfResizingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877154C51F37DBB300B4119F /* HalfResizingTableViewCell.swift */; };
 		877C221C1DEFDAEC00F49A10 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877C221B1DEFDAEC00F49A10 /* Venue.swift */; };
 		8791E22D1D9219C100EB4BBA /* SLDCDayListingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791E22C1D9219C100EB4BBA /* SLDCDayListingsTableView.swift */; };
-		8796443A1E0F474E00A3A29B /* NSManagedObject+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879644391E0F474E00A3A29B /* NSManagedObject+Util.swift */; };
 		87C47DC61D8109B500E88C6D /* SLDC_For_Jon.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = 87C47DC51D8109B500E88C6D /* SLDC_For_Jon.xlsx */; };
 		87C5FA5B1DEBD50C00E97733 /* Showlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FA5A1DEBD50C00E97733 /* Showlist.swift */; };
 		87D6AD7E1D80F463008CE838 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6AD7D1D80F463008CE838 /* AppDelegate.swift */; };
-		87D6AD801D80F463008CE838 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6AD7F1D80F463008CE838 /* ViewController.swift */; };
 		87D6AD831D80F463008CE838 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87D6AD811D80F463008CE838 /* Main.storyboard */; };
-		87D6AD861D80F463008CE838 /* ShowlistDC.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 87D6AD841D80F463008CE838 /* ShowlistDC.xcdatamodeld */; };
 		87D6AD881D80F463008CE838 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87D6AD871D80F463008CE838 /* Assets.xcassets */; };
 		87D6AD8B1D80F463008CE838 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87D6AD891D80F463008CE838 /* LaunchScreen.storyboard */; };
 		87D6AD961D80F463008CE838 /* ShowlistDCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6AD951D80F463008CE838 /* ShowlistDCTests.swift */; };
@@ -83,20 +85,22 @@
 /* Begin PBXFileReference section */
 		5D403994CA669F50F2A39844 /* Pods-ShowlistDC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShowlistDC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShowlistDC/Pods-ShowlistDC.debug.xcconfig"; sourceTree = "<group>"; };
 		7429D3D40265BA53E97DDA0F /* Pods_ShowlistDC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShowlistDC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8711D3511EFED0C900C38DA5 /* ShowDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDetailViewController.swift; sourceTree = "<group>"; };
 		8711D99A1D862E1D005E832F /* SLDCCalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SLDCCalendarCell.xib; sourceTree = "<group>"; };
 		8711D99C1D863535005E832F /* SLDCCalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLDCCalendarCell.swift; sourceTree = "<group>"; };
 		8711D99F1D863752005E832F /* SLDCCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLDCCalendarView.swift; sourceTree = "<group>"; };
 		8711D9A51D863825005E832F /* SLDCShowlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLDCShowlistViewController.swift; sourceTree = "<group>"; };
+		8722DF3F1F2EBA0B00F45D9E /* SLDCSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SLDCSearchViewController.swift; path = ShowlistDC/SLDCSearchViewController.swift; sourceTree = "<group>"; };
+		8724498C1F2AA3E300817BE8 /* SLDCMoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SLDCMoreTableViewController.swift; path = ShowlistDC/SLDCMoreTableViewController.swift; sourceTree = "<group>"; };
+		873F56B21F2C27C300FF7B70 /* SLDCContactUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SLDCContactUsViewController.swift; path = ShowlistDC/SLDCContactUsViewController.swift; sourceTree = "<group>"; };
+		877154C51F37DBB300B4119F /* HalfResizingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfResizingTableViewCell.swift; sourceTree = "<group>"; };
 		877C221B1DEFDAEC00F49A10 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		8791E22C1D9219C100EB4BBA /* SLDCDayListingsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLDCDayListingsTableView.swift; sourceTree = "<group>"; };
-		879644391E0F474E00A3A29B /* NSManagedObject+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObject+Util.swift"; path = "ShowlistDC/NSManagedObject+Util.swift"; sourceTree = "<group>"; };
 		87C47DC51D8109B500E88C6D /* SLDC_For_Jon.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = SLDC_For_Jon.xlsx; sourceTree = "<group>"; };
 		87C5FA5A1DEBD50C00E97733 /* Showlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Showlist.swift; path = ShowlistDC/Showlist.swift; sourceTree = "<group>"; };
 		87D6AD7A1D80F463008CE838 /* ShowlistDC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowlistDC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87D6AD7D1D80F463008CE838 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		87D6AD7F1D80F463008CE838 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		87D6AD821D80F463008CE838 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		87D6AD851D80F463008CE838 /* ShowlistDC.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShowlistDC.xcdatamodel; sourceTree = "<group>"; };
 		87D6AD871D80F463008CE838 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87D6AD8A1D80F463008CE838 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87D6AD8C1D80F463008CE838 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -163,6 +167,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8711D34E1EFED0AA00C38DA5 /* Detail Views */ = {
+			isa = PBXGroup;
+			children = (
+				8711D3511EFED0C900C38DA5 /* ShowDetailViewController.swift */,
+			);
+			name = "Detail Views";
+			path = ShowlistDC;
+			sourceTree = "<group>";
+		};
 		8711D99E1D8635B5005E832F /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,9 +186,27 @@
 				8711D9A51D863825005E832F /* SLDCShowlistViewController.swift */,
 				8791E22C1D9219C100EB4BBA /* SLDCDayListingsTableView.swift */,
 				87E5835A1DAC9698005A5D75 /* SLDCCalendarHeader.swift */,
+				877154C51F37DBB300B4119F /* HalfResizingTableViewCell.swift */,
 			);
 			name = Calendar;
 			path = ShowlistDC;
+			sourceTree = "<group>";
+		};
+		8722DF3C1F2EB9F200F45D9E /* Search Tab */ = {
+			isa = PBXGroup;
+			children = (
+				8722DF3F1F2EBA0B00F45D9E /* SLDCSearchViewController.swift */,
+			);
+			name = "Search Tab";
+			sourceTree = "<group>";
+		};
+		8724498B1F2AA3BB00817BE8 /* More Tab */ = {
+			isa = PBXGroup;
+			children = (
+				8724498C1F2AA3E300817BE8 /* SLDCMoreTableViewController.swift */,
+				873F56B21F2C27C300FF7B70 /* SLDCContactUsViewController.swift */,
+			);
+			name = "More Tab";
 			sourceTree = "<group>";
 		};
 		877C22181DEFCC4400F49A10 /* Model */ = {
@@ -191,7 +222,6 @@
 		8796443D1E0F484B00A3A29B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				879644391E0F474E00A3A29B /* NSManagedObject+Util.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -213,9 +243,12 @@
 				87D6ADC81D80FDB1008CE838 /* libz.tbd */,
 				87D6AD7C1D80F463008CE838 /* ShowlistDC */,
 				87C5FA571DEBCE2100E97733 /* Data */,
+				8711D34E1EFED0AA00C38DA5 /* Detail Views */,
 				877C22181DEFCC4400F49A10 /* Model */,
 				8796443D1E0F484B00A3A29B /* Extensions */,
 				8711D99E1D8635B5005E832F /* Calendar */,
+				8724498B1F2AA3BB00817BE8 /* More Tab */,
+				8722DF3C1F2EB9F200F45D9E /* Search Tab */,
 				87D6AD941D80F463008CE838 /* ShowlistDCTests */,
 				87D6AD9F1D80F463008CE838 /* ShowlistDCUITests */,
 				87D6AD7B1D80F463008CE838 /* Products */,
@@ -239,14 +272,12 @@
 			children = (
 				87D6ADCA1D80FDDC008CE838 /* ShowlistDC-Bridging-Header.h */,
 				87D6AD7D1D80F463008CE838 /* AppDelegate.swift */,
-				87D6AD7F1D80F463008CE838 /* ViewController.swift */,
 				87D6ADB01D80F550008CE838 /* StartupViewController.swift */,
 				87D6ADB11D80F550008CE838 /* TabBarController.swift */,
 				87D6AD811D80F463008CE838 /* Main.storyboard */,
 				87D6AD871D80F463008CE838 /* Assets.xcassets */,
 				87D6AD891D80F463008CE838 /* LaunchScreen.storyboard */,
 				87D6AD8C1D80F463008CE838 /* Info.plist */,
-				87D6AD841D80F463008CE838 /* ShowlistDC.xcdatamodeld */,
 			);
 			path = ShowlistDC;
 			sourceTree = "<group>";
@@ -346,18 +377,21 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = n/a;
 				TargetAttributes = {
 					87D6AD791D80F463008CE838 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0820;
 					};
 					87D6AD901D80F463008CE838 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0820;
 						TestTargetID = 87D6AD791D80F463008CE838;
 					};
 					87D6AD9B1D80F463008CE838 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0820;
 						TestTargetID = 87D6AD791D80F463008CE838;
 					};
 				};
@@ -449,9 +483,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ShowlistDC/Pods-ShowlistDC-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FLEX/FLEX.framework",
+				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLEX.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -479,13 +522,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ShowlistDC-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -496,19 +542,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				87E5835B1DAC9698005A5D75 /* SLDCCalendarHeader.swift in Sources */,
-				87D6AD861D80F463008CE838 /* ShowlistDC.xcdatamodeld in Sources */,
+				877154C61F37DBB300B4119F /* HalfResizingTableViewCell.swift in Sources */,
 				8791E22D1D9219C100EB4BBA /* SLDCDayListingsTableView.swift in Sources */,
 				877C221C1DEFDAEC00F49A10 /* Venue.swift in Sources */,
-				8796443A1E0F474E00A3A29B /* NSManagedObject+Util.swift in Sources */,
 				8711D9A01D863752005E832F /* SLDCCalendarView.swift in Sources */,
+				8722DF401F2EBA0B00F45D9E /* SLDCSearchViewController.swift in Sources */,
 				87C5FA5B1DEBD50C00E97733 /* Showlist.swift in Sources */,
 				8711D99D1D863535005E832F /* SLDCCalendarCell.swift in Sources */,
-				87D6AD801D80F463008CE838 /* ViewController.swift in Sources */,
 				87D6ADB21D80F550008CE838 /* Show.swift in Sources */,
 				87D6ADB31D80F550008CE838 /* SpreadsheetReader.swift in Sources */,
 				8711D9A61D863825005E832F /* SLDCShowlistViewController.swift in Sources */,
+				8711D3521EFED0C900C38DA5 /* ShowDetailViewController.swift in Sources */,
 				87D6ADB51D80F550008CE838 /* TabBarController.swift in Sources */,
+				873F56B31F2C27C300FF7B70 /* SLDCContactUsViewController.swift in Sources */,
 				87D6ADB41D80F550008CE838 /* StartupViewController.swift in Sources */,
+				8724498D1F2AA3E300817BE8 /* SLDCMoreTableViewController.swift in Sources */,
 				87D6AD7E1D80F463008CE838 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,8 +631,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -606,7 +656,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
@@ -632,8 +682,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -649,11 +701,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-all_load";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/XlsxReaderWriter/**";
 				VALIDATE_PRODUCT = YES;
@@ -664,12 +717,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5D403994CA669F50F2A39844 /* Pods-ShowlistDC.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ShowlistDC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ChennyChenChen.ShowlistDC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ShowlistDC/ShowlistDC-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -677,12 +732,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AE39523F05D7DAEA3C1E5B7C /* Pods-ShowlistDC.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ShowlistDC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ChennyChenChen.ShowlistDC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ShowlistDC/ShowlistDC-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -694,6 +751,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ChennyChenChen.ShowlistDCTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShowlistDC.app/ShowlistDC";
 			};
 			name = Debug;
@@ -706,6 +764,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ChennyChenChen.ShowlistDCTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShowlistDC.app/ShowlistDC";
 			};
 			name = Release;
@@ -717,6 +776,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ChennyChenChen.ShowlistDCUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = ShowlistDC;
 			};
 			name = Debug;
@@ -728,6 +788,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ChennyChenChen.ShowlistDCUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = ShowlistDC;
 			};
 			name = Release;
@@ -772,19 +833,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		87D6AD841D80F463008CE838 /* ShowlistDC.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				87D6AD851D80F463008CE838 /* ShowlistDC.xcdatamodel */,
-			);
-			currentVersion = 87D6AD851D80F463008CE838 /* ShowlistDC.xcdatamodel */;
-			path = ShowlistDC.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 87D6AD721D80F463008CE838 /* Project object */;
 }

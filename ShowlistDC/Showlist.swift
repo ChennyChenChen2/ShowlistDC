@@ -8,120 +8,76 @@
 
 import Foundation
 import CoreData
+import RealmSwift
 
 class Showlist {
-
-    //   [November 2016 : [5 : [Guy Fawkes Band Show Obj, Natalie Portman Band Show Obj]]]
-    private var shows = [String:[String:Show]]()
-    private let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
-    static let sharedInstance = Showlist()
-    private init() {}
+    static let shared = Showlist()
+    fileprivate init() {}
     
-    func add(show: Show) {
-//        if let date = show.date {
-//            let calendar = NSCalendar.currentCalendar()
-//            let formatter = NSDateFormatter()
-//            let monthVal = calendar.component(.Month, fromDate:date)
-//            let monthName = formatter.monthSymbols[monthVal - 1]
-//            let yearVal = calendar.component(.Year, fromDate:date)
-//            let monthYearString = "\(monthName) \(yearVal)"
-//            let dayVal = calendar.component(.Day, fromDate: date)
-//            if let monthDict = shows[monthYearString] {
-//                if let dayArray = monthDict["\(dayVal)"] {
-//                    
-//                } else {
-//                 
-//                    
-//                }
-//            }
-//        
-//        }
-        do {
-            let _ = getManagedObjectFromShow(show)
-            try managedContext.save()
-        } catch let error as NSError  {
-            print("Could not save \(error), \(error.userInfo)")
-        }        
+    static let kShowAddedNotification = Notification.Name("showAdded")
+    
+    func add(_ show: Show) {
+        let realm = try! Realm()
+        print("\(realm.configuration.fileURL!.absoluteString)")
         
-//        let fetchRequest = NSFetchRequest(entityName: "Show")
-        
-//        //3
-//        do {
-//            let results =
-//                try managedContext.executeFetchRequest(fetchRequest)
-//            let shows = results as! [Show]
-//            print("HERE!!!")
-//        } catch let error as NSError {
-//            print("Could not fetch \(error), \(error.userInfo)")
-//        }
-//        
+        try! realm.write {
+            realm.add(show, update: true)
+        }
     }
     
-    func getShowsForMonth(date: NSDate) -> [Show] {
-        var result = []
+    func getShowsForMonth(_ date: Date) -> [Show] {
+        let result : [Show] = []
         
         
         
-        return result as! [Show]
+        return result
+    }
+    
+    func getShowsWithSearchQuery(_ query: String) -> [Show] {
+        let predicate = NSPredicate(format: "uniqueKey contains[cd] %@", query)
+        
+        let realm = try! Realm()
+        realm.refresh()
+        let result = realm.objects(Show.self).filter(predicate)
+        
+        return Array(result)
     }
 
-    func getShowsForDay(date: NSDate) -> [NSManagedObject] {
-        var result = []
+    func getShowsForDay(_ date: Date) -> [Show] {
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone.current
         
-        let calendar = NSCalendar.currentCalendar()
-        let startDate = calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: date, options: NSCalendarOptions())!
-        let endDate = calendar.dateBySettingHour(23, minute: 59, second: 59, ofDate: date, options: NSCalendarOptions())!
-        
-        let predicate = NSPredicate(format: "(date >= %@) AND (date <= %@)", startDate, endDate)
-        
-        let fetchRequest = NSFetchRequest(entityName: "Show")
-        //fetchRequest.predicate = predicate
-        
-        do {
-            let results =
-                try managedContext.executeFetchRequest(fetchRequest)
-            result = results
-            print("HERE!!!")
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
+        var dateComponents = calendar.dateComponents([.day, .month, .year, .hour, .minute, .second], from: date)
+        guard let monthRange = calendar.range(of: .day, in: .month, for: date) else {
             return []
         }
+
+        dateComponents.month = dateComponents.month
+        dateComponents.day = monthRange.upperBound
+        dateComponents.hour = 23
+        dateComponents.minute = 59
+        dateComponents.second = 59
         
-        return result as! [NSManagedObject]
+        let startDate = (calendar as NSCalendar).date(bySettingHour: 0, minute: 0, second: 0, of: date, options: NSCalendar.Options())!
+        guard let endDate = (calendar as NSCalendar).date(from: dateComponents) else {
+            return []
+        }
+
+        let predicate = NSPredicate(format: "date >= %@ AND date < %@", startDate as CVarArg, endDate as CVarArg)
+        
+        let realm = try! Realm()
+        realm.refresh()
+        let result = realm.objects(Show.self).filter(predicate).sorted(byKeyPath: "date")
+        
+        return Array(result)
     }
     
-    private func getManagedObjectFromShow(show: Show) -> NSManagedObject {
+    func getShowCount() -> Int {
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
+        let realm = try! Realm()
+        realm.refresh()
+        return realm.objects(Show.self).count
         
-        let entity =  NSEntityDescription.entityForName("Show",
-                                                        inManagedObjectContext:managedContext)
-        
-        let managedObject = NSManagedObject(entity:entity!, insertIntoManagedObjectContext:managedContext)
-        
-        managedObject.setValue(show.recommended, forKey: "recommended")
-        managedObject.setValue(show.soldOut, forKey: "sold_out")
-        managedObject.setValue(show.cancelledPostponed, forKey: "cancelled_postponed")
-        managedObject.setValue(show.addedChanged, forKey: "added_changed")
-        managedObject.setValue(show.comment, forKey: "comment")
-        
-        if let val = Int(show.venue!) {
-            managedObject.setValue(NSNumber(integer:val), forKey: "venue_id")
-        }
-        managedObject.setValue(show.artist1, forKey: "artist1")
-        managedObject.setValue(show.artist2, forKey: "artist2")
-        managedObject.setValue(show.artist3, forKey: "artist3")
-        managedObject.setValue(show.artist4, forKey: "artist4")
-        managedObject.setValue(show.date, forKey: "date")
-        managedObject.setValue(show.venuePlus, forKey: "venuePlus")
-        managedObject.setValue(show.start, forKey: "start")
-        managedObject.setValue(show.end, forKey: "end")
-        managedObject.setValue(show.ticketfly, forKey: "ticketfly")
-        managedObject.setValue(show.fb, forKey: "fb")
-        managedObject.setValue(show.twitter, forKey: "twitter")
-        
-        return managedObject
     }
 }

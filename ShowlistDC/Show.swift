@@ -7,99 +7,123 @@
 //
 
 import Foundation
-import CoreData
+import RealmSwift
+import Realm
 
-class Show {
-                                        // COLUMN INDECIES:
-    var recommended : Bool?             // A
-    var soldOut : Bool?                 // B
-    var cancelledPostponed : String?    // C
-    var addedChanged : NSDate?          // D
-    var comment : String?               // E
+class Show: Object {
     
-    var date : NSDate?                  // G
+    dynamic var uniqueKey : String = ""
+    private func compoundKeyValue() -> String {
+        var theKey = ""
+        if let theVenuePlus = venuePlus {
+            theKey = "\(artist1), \(venue) \(theVenuePlus) \(getDateString())"
+        }
+        return theKey
+    }
+                                                  // COLUMN INDECIES:
+    dynamic var recommended : Bool = false              // A
+    dynamic var soldOut : Bool = false                  // B
+    dynamic var cancelledPostponed : String? = nil      // C
+    dynamic var addedChanged : String? = nil            // D
+    dynamic var comment : String? = nil                 // E
     
-    // TODO: MAKE A VENUE POJO
-    var venue : String?                 // J
-    var venuePlus : String?             // K
+    dynamic var date : NSDate = NSDate() {
+        didSet {
+            uniqueKey = compoundKeyValue()
+        }
+    }                                                   // G
     
-    var artist1 : String?               // O
-    var artist2 : String?               // P
-    var artist3 : String?               // Q
-    var artist4 : String?               // R
-    
-    var start : String?                 // Default: 7 PM... see in Venue+ for details
-    var end : String?                   // Should we even have this?
-    var ticketfly : String?             // X
-    var fb : String?                    // Y
-    var twitter : String?               // ???
-    
-//    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
-//        super.init(entity: entity, insertIntoManagedObjectContext: context)
-////        commonInit()
-//    }
-    
-//    init() {
-//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        let managedContext = appDelegate.managedObjectContext
-//
-//        let entity =  NSEntityDescription.entityForName("Show",
-//                                                        inManagedObjectContext:managedContext)
-//
-//        super.init(entity:entity!, insertIntoManagedObjectContext:nil)
-//        commonInit()
-//    }
-    
-    init() {
-//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        let managedContext = appDelegate.managedObjectContext
-//        
-//        let entity =  NSEntityDescription.entityForName("Show",
-//                                                        inManagedObjectContext:managedContext)
-//        
-//        self = NSManagedObject(entity:entity!, insertIntoManagedObjectContext:managedContext)
-        self.recommended = false
-        self.soldOut = false
-        self.cancelledPostponed = ""
-        self.addedChanged = nil
-        self.comment = ""
-        self.venue = ""
-        self.artist1 = ""
-        self.artist2 = ""
-        self.artist3 = ""
-        self.artist4 = ""
-        self.date = nil
-        self.venuePlus = ""
-        self.start = ""
-        self.end = ""
-        self.ticketfly = ""
-        self.fb = ""
-        self.twitter = ""
+    // TODO: MAKE A VENUE POJO?
+    dynamic var venue : String = "" {
+        didSet {
+//            uniqueKey = compoundKey()
+        }
+    }                                                   // J
+    dynamic var venuePlus : String? = nil               // K
+        { didSet {
+               uniqueKey = compoundKeyValue()
+            // TODO: use regex to find h:mm pattern in string and add it to start var, iff start has been set
+        }
     }
     
-    init(recommended: Bool, soldOut: Bool, cancelledPostponed: String?, addedChanged: NSDate?, comment: String?, venue: String, artist1: String, artist2: String?, artist3: String?, artist4: String?, date: NSDate, venuePlus: String?, start: String, end: String, ticketfly: String?, fb: String?, twitter: String?) {
-//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        let managedContext = appDelegate.managedObjectContext
-//        let entity =  NSEntityDescription.entityForName("Show",
-//                                                        inManagedObjectContext:managedContext)
-//        super.init(entity:entity!, insertIntoManagedObjectContext:managedContext)
-        self.recommended = recommended
-        self.soldOut = soldOut
-        self.cancelledPostponed = cancelledPostponed!
-        self.addedChanged = addedChanged!
-        self.comment = comment!
-        self.venue = venue
-        self.artist1 = artist1
-        self.artist2 = artist2!
-        self.artist3 = artist3!
-        self.artist4 = artist4!
-        self.date = date
-        self.venuePlus = venuePlus!
-        self.start = start
-        self.end = end
-        self.ticketfly = ticketfly!
-        self.fb = fb!
-        self.twitter = twitter!
+    dynamic var artist1 : String = ""                   // O
+        { didSet {
+            artist1.sanitizeEncodings()
+            uniqueKey = compoundKeyValue()
+        }
     }
     
+    dynamic var artist2 : String? = nil                 // P
+        { didSet {
+            artist2?.sanitizeEncodings()
+        }
+    }
+    
+    dynamic var artist3 : String? = nil                 // Q
+        { didSet {
+            artist3?.sanitizeEncodings()
+        }
+    }
+    
+    dynamic var artist4 : String? = nil                 // R
+        { didSet {
+            artist4?.sanitizeEncodings()
+        }
+    }
+    
+    dynamic var start : String = "7 PM"                 // Default: 7 PM... see in Venue+ for details
+        { didSet {
+            // TODO: use regex to find h:mm pattern in venuePlus and add it to start var, iff venuePlus has been set
+        }
+    }
+    dynamic var end : String   = ""                     // Should we even have this?
+    dynamic var ticketfly : String? = nil               // X
+    dynamic var fb : String? = nil                      // Y
+    dynamic var twitter : String? = nil                 // ???
+    
+    override static func primaryKey() -> String? {
+        return "uniqueKey"
+    }
+    
+    func getArtistLabelText() -> String {
+        var result = artist1
+        
+        if let theArtist2 = artist2, theArtist2 != "" {
+            result += ", \(theArtist2)"
+        }
+        
+        if let theArtist3 = artist3, theArtist3 != "" {
+            result += ", \(theArtist3)"
+        }
+        
+        if let theArtist4 = artist4, theArtist4 != "" {
+            result += ", \(theArtist4)"
+        }
+        
+        return result
+    }
+
+    func getDateString() -> String {
+        return (date as Date).getStringFromSLDCFormat()
+    }
+    
+    func getWhenText() -> String {
+        return "\(self.getDateString()) at \(self.start)"
+    }
+}
+
+extension String {
+    mutating func sanitizeEncodings() {
+        if self.contains("&amp;") {
+            self = self.replacingOccurrences(of: "&amp;", with: "&")
+        }
+    }
+}
+
+extension Date {
+    func getStringFromSLDCFormat() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yy"
+        return formatter.string(from: self)
+    }
 }

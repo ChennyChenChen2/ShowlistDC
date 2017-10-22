@@ -7,28 +7,31 @@
 //
 
 import Foundation
+import CoreData
 //import XlsxReaderWriter
 
 class SpreadsheetReader {
     
     var spreadsheet: BRAWorksheet?
-    var shows : Showlist
+    var showlist : Showlist
+    
+    let concurrentQueue = DispatchQueue(label: "concurrentShowQueue", attributes: .concurrent)
     
     init() {
-        let documentPath = NSBundle.mainBundle().pathForResource("SLDC_For_Jon", ofType: "xlsx")!
+        let documentPath = Bundle.main.path(forResource: "SLDC_For_Jon", ofType: "xlsx")!
         
         let package = BRAOfficeDocumentPackage.open(documentPath)
         
         //First worksheet in the workbook
         self.spreadsheet = package!.workbook.worksheets[0] as? BRAWorksheet
-        self.shows = Showlist.sharedInstance
+        self.showlist = Showlist.shared
         generateShows()
         print("HERE!");
     }
     
     func generateShows() {
         let rows = self.spreadsheet!.rows;
-        rowLoop: for r in rows {
+        rowLoop: for r in rows! {
             let row = r as! BRARow
             if (row.rowIndex == 1) {
                 continue
@@ -36,27 +39,38 @@ class SpreadsheetReader {
 
             let checkCellID : String = "G\(row.rowIndex)"
             
-            if let checkCell = self.spreadsheet?.cellForCellReference(checkCellID) {
+            if let checkCell = self.spreadsheet?.cell(forCellReference: checkCellID) {
                 if !checkCell.stringValue().isEmpty {
-                    generateShow(with: row);
+                    //let concurrentQueue = DispatchQueue(label: "com.sldc.concurrentQueue", qos: .utility, attributes: .concurrent)
+                    //concurrentQueue.async {
+                        generateShow(with: row);
+                    //}
                 }
             }
         }
     }
     
     func generateShow(with row: BRARow) {
-        let show = Show.init()
-        let cells = NSArray.init(array: row.cells)
-        for c in cells {
-            let cell = c as! BRACell
-            self.populate(show:show, with:cell);
-        }
-        self.shows.add(show)
+//        concurrentQueue.async {
+//            let managedObjectContext = (UIApplication.shared.delegate
+//                as! AppDelegate).managedObjectContext
+//            
+//            let entityDescription = NSEntityDescription.entity(forEntityName: "Show",
+//                                                               in: managedObjectContext)
+//            
+//            let show = Show(entity: entityDescription!,
+//                            insertInto: managedObjectContext)
+            let show = Show()
+            let cells = NSArray.init(array: row.cells)
+            for c in cells {
+                let cell = c as! BRACell
+                self.populate(show:show, with:cell);
+            }
+            self.showlist.add(show)
+//        }
     }
     
-    func populate(show show: Show, with cell: BRACell) {
-        let formatter = NSDateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: "US_en")
+    func populate(show: Show, with cell: BRACell) {
         switch cell.columnIndex() {
         case 1:
             show.recommended = cell.boolValue()
@@ -65,18 +79,27 @@ class SpreadsheetReader {
         case 3:
             show.cancelledPostponed = cell.stringValue()
         case 4:
-            if let dateString = cell.stringValue() {
-                show.addedChanged = formatter.dateFromString(dateString)
-            }
+            show.addedChanged = cell.stringValue()
         case 5:
             show.comment = cell.stringValue()
         case 7:
-//            if let dateString = cell.stringValue() {
-//                show.date = formatter.dateFromString(dateString)
-//            }
-            
+            if let dateString = cell.stringValue() {
+                let formatter = DateFormatter()
+                formatter.dateFormat = formatter.defaultDateFormat()
+                
+                // TESTING!!!!! Make dates this year for testing
+                var testDateString = dateString
+                testDateString.replaceSubrange(dateString.index(dateString.endIndex, offsetBy: -2)..<dateString.endIndex, with: "17")
+
+                //                show.date = formatter.date(from: dateString)
+                
+                if let theDate = formatter.date(from: testDateString) {
+                    let castedDate = theDate as NSDate
+                    show.date = castedDate
+                }
+            }
             // Make today for testing
-            show.date = NSDate.init()
+//            show.date = cell.stringValue
         case 10:
             show.venue = cell.stringValue()
         case 11:
@@ -99,4 +122,10 @@ class SpreadsheetReader {
         }
     }
     
+}
+
+extension DateFormatter {
+    func defaultDateFormat() -> String {
+        return "M/dd/yy"
+    }
 }

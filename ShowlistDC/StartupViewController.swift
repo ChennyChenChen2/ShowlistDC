@@ -16,14 +16,14 @@ class StartupViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.activityIndicator.startAnimating()
         let _ = SpreadsheetReader.init()
         self.activityIndicator.stopAnimating()
         
-        let newVC = self.storyboard?.instantiateViewControllerWithIdentifier("MainTabBarController");
-        self.presentViewController(newVC!, animated: true, completion: nil)
+        let newVC = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController");
+        self.present(newVC!, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
