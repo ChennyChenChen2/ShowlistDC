@@ -117,6 +117,12 @@ extension String {
         if self.contains("&amp;") {
             self = self.replacingOccurrences(of: "&amp;", with: "&")
         }
+        if self.contains("<em>") {
+            self = self.replacingOccurrences(of: "<em>", with: "")
+        }
+        if self.contains("</em>") {
+            self = self.replacingOccurrences(of: "</em>", with: "")
+        }
     }
 }
 

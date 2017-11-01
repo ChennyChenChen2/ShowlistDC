@@ -91,7 +91,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9eZ-bB-x9p" id="Xib-xH-h4k">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -165,7 +165,7 @@
                                         <rect key="frame" x="0.0" y="1" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bjp-jK-FC5" id="ePg-Rh-3bE">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NpT-Z2-1mz">
@@ -222,66 +222,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUU-uZ-rS8">
-                                <rect key="frame" x="16" y="71" width="343" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Venue Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YK2-lb-oWd">
-                                <rect key="frame" x="16" y="196" width="343" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXr-V9-j0r">
-                                <rect key="frame" x="16" y="341" width="343" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nD8-8U-qC8">
-                                <rect key="frame" x="16" y="447" width="102" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Pae-us-fhF">
+                                <rect key="frame" x="57" y="72" width="260" height="276.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUU-uZ-rS8">
+                                        <rect key="frame" x="0.0" y="0.0" width="87.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Venue Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YK2-lb-oWd">
+                                        <rect key="frame" x="0.0" y="45.5" width="94" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXr-V9-j0r">
+                                        <rect key="frame" x="0.0" y="91" width="82" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nD8-8U-qC8">
+                                        <rect key="frame" x="0.0" y="136.5" width="102" height="30"/>
+                                        <state key="normal" title="Save this show"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zye-Re-5Kt">
+                                        <rect key="frame" x="0.0" y="191.5" width="75" height="30"/>
+                                        <state key="normal" title="Add to iCal"/>
+                                        <connections>
+                                            <action selector="addToCalButtonPressed:" destination="aHp-g8-GwD" eventType="touchUpInside" id="EPl-uG-70j"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Is7-xZ-MEb">
+                                        <rect key="frame" x="0.0" y="246.5" width="260" height="30"/>
+                                        <state key="normal" title="Go to Venue Website (opens in Safari)"/>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="102" id="5Hc-C9-Yba"/>
+                                    <constraint firstAttribute="width" constant="260" id="Tla-Ck-3u8"/>
                                 </constraints>
-                                <state key="normal" title="Save this show"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zye-Re-5Kt">
-                                <rect key="frame" x="16" y="485" width="75" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="75" id="sAl-37-mAk"/>
-                                </constraints>
-                                <state key="normal" title="Add to iCal"/>
-                                <connections>
-                                    <action selector="addToCalButtonPressed:" destination="aHp-g8-GwD" eventType="touchUpInside" id="EPl-uG-70j"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Is7-xZ-MEb">
-                                <rect key="frame" x="16" y="523" width="260" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="260" id="7gt-zS-Tbh"/>
-                                </constraints>
-                                <state key="normal" title="Go to Venue Website (opens in Safari)"/>
-                            </button>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Zye-Re-5Kt" firstAttribute="leading" secondItem="FI6-i7-3hj" secondAttribute="leadingMargin" id="0p1-09-Vor"/>
-                            <constraint firstItem="Zye-Re-5Kt" firstAttribute="top" secondItem="zkk-Ea-afY" secondAttribute="bottom" constant="465" id="55p-t7-OtU"/>
-                            <constraint firstItem="NUU-uZ-rS8" firstAttribute="leading" secondItem="FI6-i7-3hj" secondAttribute="leadingMargin" id="5LM-VV-0xs"/>
-                            <constraint firstItem="sXr-V9-j0r" firstAttribute="leading" secondItem="FI6-i7-3hj" secondAttribute="leadingMargin" id="5yN-nh-Df3"/>
-                            <constraint firstItem="YK2-lb-oWd" firstAttribute="leading" secondItem="FI6-i7-3hj" secondAttribute="leadingMargin" id="7Ea-0E-Sir"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="NUU-uZ-rS8" secondAttribute="trailing" id="7he-Nm-WEa"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="YK2-lb-oWd" secondAttribute="trailing" id="HSJ-Bc-iF6"/>
-                            <constraint firstItem="nD8-8U-qC8" firstAttribute="top" secondItem="zkk-Ea-afY" secondAttribute="bottom" constant="427" id="OAH-kN-XTy"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="sXr-V9-j0r" secondAttribute="trailing" id="XnV-U3-S7U"/>
-                            <constraint firstItem="YK2-lb-oWd" firstAttribute="top" secondItem="zkk-Ea-afY" secondAttribute="bottom" constant="176" id="c0D-0k-G5Z"/>
-                            <constraint firstItem="Is7-xZ-MEb" firstAttribute="top" secondItem="zkk-Ea-afY" secondAttribute="bottom" constant="503" id="cFQ-FU-b3o"/>
-                            <constraint firstItem="NUU-uZ-rS8" firstAttribute="top" secondItem="zkk-Ea-afY" secondAttribute="bottom" constant="51" id="foi-Kn-gqG"/>
-                            <constraint firstItem="Is7-xZ-MEb" firstAttribute="leading" secondItem="FI6-i7-3hj" secondAttribute="leadingMargin" id="fur-vc-vlg"/>
-                            <constraint firstItem="nD8-8U-qC8" firstAttribute="leading" secondItem="FI6-i7-3hj" secondAttribute="leadingMargin" id="kST-b7-dAN"/>
-                            <constraint firstItem="sXr-V9-j0r" firstAttribute="top" secondItem="zkk-Ea-afY" secondAttribute="bottom" constant="321" id="maV-1s-1kv"/>
+                            <constraint firstItem="Pae-us-fhF" firstAttribute="centerX" secondItem="FI6-i7-3hj" secondAttribute="centerX" id="fmM-9p-CbP"/>
+                            <constraint firstItem="Pae-us-fhF" firstAttribute="top" secondItem="zkk-Ea-afY" secondAttribute="bottom" constant="52" id="yqo-hy-Xqw"/>
                         </constraints>
                     </view>
                     <connections>
@@ -551,20 +537,20 @@
         <!--About-->
         <scene sceneID="2Rc-AV-Mid">
             <objects>
-                <viewController title="About" id="riy-IE-SGR" sceneMemberID="viewController">
+                <viewController title="About" automaticallyAdjustsScrollViewInsets="NO" id="riy-IE-SGR" customClass="SLDCAboutViewController" customModule="ShowlistDC" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="krL-E0-4kt"/>
                         <viewControllerLayoutGuide type="bottom" id="wNS-cy-U12"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ozv-SB-Tbv">
+                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="Ozv-SB-Tbv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Adh-TS-49b">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="662"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">This app is in collaboration with http://www.showlistdc.com. It was created as a way to keep track of shows in the greater DC area and Baltimore. It is intended for informational purposes, not as an endorsement. If you'd like suggestions of shows to attend, check out the recommended page at showlistdc.com.  If a show you're involved with (as a band, booker, or venue) isn't on this list and you'd like it to be, send an email to showlistdc [at] gmail.com. Feel free to add that email address to your amailing lists as well.  House shows will be listed here if we hear directly from someone in an official capacity (i.e., someone who lives at the house) that he/she wants the show information on the internet or if we see it publicized elsewhere (other sites on the web or flyers passed out at clubs). If you'd like an address for a house show removed, just send an email to: showlistdc [at] gmail.com</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
@@ -572,11 +558,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Adh-TS-49b" firstAttribute="width" secondItem="Ozv-SB-Tbv" secondAttribute="width" id="9Tq-dy-gGD"/>
-                            <constraint firstItem="Adh-TS-49b" firstAttribute="leading" secondItem="Ozv-SB-Tbv" secondAttribute="leadingMargin" constant="-16" id="bT5-7o-3YJ"/>
-                            <constraint firstItem="Adh-TS-49b" firstAttribute="top" secondItem="krL-E0-4kt" secondAttribute="bottom" constant="-64" id="deg-dV-N5M"/>
-                            <constraint firstItem="wNS-cy-U12" firstAttribute="top" secondItem="Adh-TS-49b" secondAttribute="bottom" constant="-44" id="zXG-r1-Cii"/>
+                            <constraint firstItem="Adh-TS-49b" firstAttribute="leading" secondItem="Ozv-SB-Tbv" secondAttribute="leading" id="WbF-Z0-h5N"/>
+                            <constraint firstItem="wNS-cy-U12" firstAttribute="top" secondItem="Adh-TS-49b" secondAttribute="bottom" id="aXA-Gf-Xkv"/>
+                            <constraint firstItem="Adh-TS-49b" firstAttribute="top" secondItem="krL-E0-4kt" secondAttribute="bottom" id="dME-q4-4fA"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textView" destination="Adh-TS-49b" id="JYj-2a-OgQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mCs-nO-e8U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

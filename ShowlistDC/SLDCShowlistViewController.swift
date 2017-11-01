@@ -172,6 +172,13 @@ import QuartzCore
         theCell.dayLabel.text = cellState.text
         theCell.dayHasEventsView.isHidden = !dateIsShowDate(date)
         
+        // Make round dayHasEventsView
+        theCell.dayHasEventsView.layer.cornerRadius = theCell.dayHasEventsView.frame.size.width/2
+        theCell.dayHasEventsView.clipsToBounds = true
+        
+        theCell.dayHasEventsView.layer.borderColor = UIColor.white.cgColor
+        theCell.dayHasEventsView.layer.borderWidth = 1.0
+        
         // Setup text color
         if cellState.dateBelongsTo == .thisMonth {
             theCell.dayLabel.textColor = UIColor.black
@@ -198,6 +205,12 @@ import QuartzCore
         let headerCell = header as! SLDCCalendarHeader
         headerCell.delegate = self
         headerCell.monthLabel.text = getMonthNameFromDate(range.start)
+        
+    }
+    
+    func makeRefreshButtonImage() -> UIView {
+        
+        return UIView()
     }
     
     func getMonthNameFromDate(_ startDate: Date) -> String {
