@@ -1,2 +1,5 @@
 ShowlistDC.xcworkspace/*
 ShowlistDC.xcworkspace
+.DS_Store
+Pods/
+Podfile.lock
