@@ -19,19 +19,11 @@ class Showlist {
     
     func add(_ show: Show) {
         let realm = try! Realm()
-        print("\(realm.configuration.fileURL!.absoluteString)")
+//        print("\(realm.configuration.fileURL!.absoluteString)")
         
         try! realm.write {
             realm.add(show, update: true)
         }
-    }
-    
-    func getShowsForMonth(_ date: Date) -> [Show] {
-        let result : [Show] = []
-        
-        
-        
-        return result
     }
     
     func getShowsWithSearchQuery(_ query: String) -> [Show] {
@@ -44,7 +36,7 @@ class Showlist {
         return Array(result)
     }
 
-    func getShowsForDay(_ date: Date) -> [Show] {
+    func getShowsForMonth(_ date: Date) -> [Show] {
         var calendar = Calendar.current
         calendar.timeZone = TimeZone.current
         
@@ -64,6 +56,21 @@ class Showlist {
             return []
         }
 
+        let predicate = NSPredicate(format: "date >= %@ AND date < %@", startDate as CVarArg, endDate as CVarArg)
+        
+        let realm = try! Realm()
+        realm.refresh()
+        let result = realm.objects(Show.self).filter(predicate).sorted(byKeyPath: "date")
+        
+        return Array(result)
+    }
+    
+    func getShowsForDate(_ date: Date) -> [Show] {
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone.current
+        let startDate = (calendar as NSCalendar).date(bySettingHour: 0, minute: 0, second: 0, of: date, options: NSCalendar.Options())!
+        let endDate = (calendar as NSCalendar).date(bySettingHour: 23, minute: 59, second: 59, of: date, options: NSCalendar.Options())!
+        
         let predicate = NSPredicate(format: "date >= %@ AND date < %@", startDate as CVarArg, endDate as CVarArg)
         
         let realm = try! Realm()

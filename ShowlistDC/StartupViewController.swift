@@ -19,7 +19,8 @@ class StartupViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.activityIndicator.startAnimating()
-        let _ = SpreadsheetReader.init()
+        let reader = SpreadsheetReader.shared
+        reader.generateShows()
         self.activityIndicator.stopAnimating()
         
         let newVC = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController");

@@ -8,6 +8,7 @@
 
 import UIKit
 import JTAppleCalendar
+import QuartzCore
 
 class SLDCCalendarHeader : JTAppleHeaderView {
     
@@ -16,38 +17,63 @@ class SLDCCalendarHeader : JTAppleHeaderView {
     @IBOutlet weak var rightArrow: UIButton!
     @IBOutlet weak var refreshButton: UIButton!
     weak var delegate: SLDCCalendarHeaderDelegate?
+    var refreshButtonShouldRotate: Bool {
+        get {
+            return SpreadsheetReader.shared.isLoadingData
+        }
+    }
+    
+    override func awakeFromNib() {
+        NotificationCenter.default.addObserver(self, selector:#selector(refreshButtonStateChanged(_:)), name:ReloadConstants.kReloadDidBeginNoteName, object: NSNumber(booleanLiteral: true))
+
+        rotateRefreshButton()
+    }
     
     @IBAction func rightArrowPressed(_ sender: Any) {
-        if let theDelegate = self.delegate {
-            theDelegate.didPressRightArrow()
-        }
+        self.delegate?.didPressRightArrow()
     }
     
     @IBAction func leftArrowPressed(_ sender: Any) {
-        if let theDelegate = self.delegate {
-            theDelegate.didPressLeftArrow()
+        self.delegate?.didPressLeftArrow()
+    }
+    
+    @IBAction func todayButtonPressed(_ sender: Any) {
+        self.delegate?.didPressTodayButton()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        for touch in touches {
+            let touchLocation = touch.location(in: self)
+            if ((self.refreshButton.layer.presentation()?.hitTest(touchLocation)) != nil) {
+                self.delegate?.didPressRefreshButton(self.refreshButton)
+                break
+            }
         }
     }
     
-    @IBAction func refreshButtonPresed(_ sender: Any) {
-        
-        /*
-         var popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("NewCategory") as UIViewController
-         var nav = UINavigationController(rootViewController: popoverContent)
-         nav.modalPresentationStyle = UIModalPresentationStyle.Popover
-         var popover = nav.popoverPresentationController
-         popoverContent.preferredContentSize = CGSizeMake(50,50)
-         popover.delegate = self
-         popover.sourceView = sender
-         popover.sourceRect = sender.bounds
-         
-         self.presentViewController(nav, animated: true, completion: nil)
- */
+    @objc func refreshButtonStateChanged(_ note: Notification) {
+        self.rotateRefreshButton()
     }
     
+    private func rotateRefreshButton() {
+        if self.refreshButtonShouldRotate {
+            let duration: TimeInterval = 5.0
+            UIView.animate(withDuration: duration, delay: 0.0, options: .curveLinear, animations: {
+                self.refreshButton.transform = self.refreshButton.transform.rotated(by: CGFloat(Float.pi))
+            }) { finished in
+                self.rotateRefreshButton()
+            }
+        } else {
+            self.refreshButton.layer.removeAllAnimations()
+        }
+    }
 }
 
 protocol SLDCCalendarHeaderDelegate: class {
     func didPressRightArrow()
     func didPressLeftArrow()
+    func didPressRefreshButton(_ button: UIButton)
+    func didPressTodayButton()
 }

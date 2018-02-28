@@ -9,56 +9,93 @@
 import Foundation
 import CoreData
 
-class SpreadsheetReader {
+
+struct ReloadConstants {
+    static let kReloadDidBeginNoteName: NSNotification.Name = NSNotification.Name(rawValue: "refreshDidBegin")
+    static let kReloadCompleteNoteName: NSNotification.Name = NSNotification.Name(rawValue: "refreshDidFinish")
+    static let kUpdatedRowsNoteName   : NSNotification.Name = NSNotification.Name(rawValue: "didUpdateRows")
+}
+
+@objc class SpreadsheetReader: NSObject {
     
     var spreadsheet: BRAWorksheet?
     var showlist : Showlist
     
-    let concurrentQueue = DispatchQueue(label: "concurrentShowQueue", attributes: .concurrent)
+    fileprivate var _totalRows = 0
+    var totalRows : Int {
+        return _totalRows
+    }
     
-    init() {
+    fileprivate var _processedRows = 0 {
+        didSet {
+            NotificationCenter.default.post(name: ReloadConstants.kUpdatedRowsNoteName, object:nil)
+        }
+    }
+    
+    var processedRows : Int {
+        return _processedRows
+    }
+    
+    
+    var downloadStatusString : String {
+        return "\(processedRows) of \(totalRows) updated"
+    }
+    
+    var isLoadingData = false
+    
+    static let shared = SpreadsheetReader()
+    fileprivate override init() {
         let documentPath = Bundle.main.path(forResource: "SLDC_For_Jon", ofType: "xlsx")!
         
         let package = BRAOfficeDocumentPackage.open(documentPath)
         
         //First worksheet in the workbook
         self.spreadsheet = package!.workbook.worksheets[0] as? BRAWorksheet
+        
+        // TODO: Use second worksheet in workbook for venues list
+        
         self.showlist = Showlist.shared
-        generateShows()
-        print("HERE!");
     }
     
     func generateShows() {
-        let rows = self.spreadsheet!.rows;
-        rowLoop: for r in rows! {
-            let row = r as! BRARow
-            if (row.rowIndex == 1) {
-                continue
-            }
+        // TODO: Request spreadsheet from server via downloadManager class of some kind
+        
+        let rows = self.spreadsheet!.rows!
+        
+        print("Start of download. Spreadsheet has \(rows.count) rows.")
+        _totalRows = rows.count
+        _processedRows = 0
+        self.isLoadingData = true
 
-            let checkCellID : String = "G\(row.rowIndex)"
-            
-            if let checkCell = self.spreadsheet?.cell(forCellReference: checkCellID) {
-                if !checkCell.stringValue().isEmpty {
-                    //let concurrentQueue = DispatchQueue(label: "com.sldc.concurrentQueue", qos: .utility, attributes: .concurrent)
-                    //concurrentQueue.async {
-                        generateShow(with: row);
-                    //}
+        DispatchQueue(label: "show-queue").async {
+            autoreleasepool {
+
+            rowLoop: for r in rows {
+                    let row = r as! BRARow
+                    if (row.rowIndex == 1) {
+                        continue
+                    }
+
+                    let checkCellID : String = "G\(row.rowIndex)"
+                    
+                    if let checkCell = self.spreadsheet?.cell(forCellReference: checkCellID) {
+                        if !checkCell.stringValue().isEmpty {
+                            self.generateShow(with: row)
+                            print("Processed show \(row.rowIndex)")
+                        }
+                    }
+                    self._processedRows = self._processedRows + 1
+                }
+                print("DONE LOADING SHOWS!!!!!!")
+                DispatchQueue.main.async {
+                    self.isLoadingData = false
+                    NotificationCenter.default.post(name: ReloadConstants.kReloadCompleteNoteName, object: NSNumber(booleanLiteral: true))
                 }
             }
         }
     }
     
     func generateShow(with row: BRARow) {
-//        concurrentQueue.async {
-//            let managedObjectContext = (UIApplication.shared.delegate
-//                as! AppDelegate).managedObjectContext
-//            
-//            let entityDescription = NSEntityDescription.entity(forEntityName: "Show",
-//                                                               in: managedObjectContext)
-//            
-//            let show = Show(entity: entityDescription!,
-//                            insertInto: managedObjectContext)
             let show = Show()
             let cells = NSArray.init(array: row.cells)
             for c in cells {
@@ -66,7 +103,9 @@ class SpreadsheetReader {
                 self.populate(show:show, with:cell);
             }
             self.showlist.add(show)
-//        }
+//            DispatchQueue.main.async {
+            print(self.downloadStatusString)
+//            }
     }
     
     func populate(show: Show, with cell: BRACell) {
@@ -88,7 +127,7 @@ class SpreadsheetReader {
                 
                 // TESTING!!!!! Make dates this year for testing
                 var testDateString = dateString
-                testDateString.replaceSubrange(dateString.index(dateString.endIndex, offsetBy: -2)..<dateString.endIndex, with: "17")
+                testDateString.replaceSubrange(dateString.index(dateString.endIndex, offsetBy: -2)..<dateString.endIndex, with: "18")
 
                 //                show.date = formatter.date(from: dateString)
                 

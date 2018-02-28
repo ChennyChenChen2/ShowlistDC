@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1114" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -119,11 +119,18 @@
                     </subviews>
                     <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                 </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ikk-kR-d5I">
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ikk-kR-d5I">
                     <rect key="frame" x="385" y="3" width="25" height="25"/>
                     <state key="normal" image="RefreshButton"/>
                     <connections>
-                        <action selector="refreshButtonPresed:" destination="VML-WP-APR" eventType="touchUpInside" id="6CB-LV-b1h"/>
+                        <action selector="refreshButtonPresed:" destination="VML-WP-APR" eventType="touchUpInside" id="Jbd-hs-17V"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gn1-t9-0wn">
+                    <rect key="frame" x="212" y="-1" width="42" height="30"/>
+                    <state key="normal" title="Today"/>
+                    <connections>
+                        <action selector="todayButtonPressed:" destination="VML-WP-APR" eventType="touchUpInside" id="Yh2-qq-CVM"/>
                     </connections>
                 </button>
             </subviews>
@@ -133,9 +140,11 @@
                 <constraint firstItem="839-4l-Zfu" firstAttribute="top" secondItem="VML-WP-APR" secondAttribute="top" constant="5" id="6sG-kR-gS2"/>
                 <constraint firstAttribute="trailing" secondItem="TAa-yK-Apn" secondAttribute="trailing" id="8iB-VC-J0h"/>
                 <constraint firstItem="0IS-JI-edB" firstAttribute="centerX" secondItem="VML-WP-APR" secondAttribute="centerX" id="DnI-Sb-3B8"/>
+                <constraint firstAttribute="top" secondItem="gn1-t9-0wn" secondAttribute="top" constant="1" id="Eue-Pm-G2i"/>
                 <constraint firstItem="0IS-JI-edB" firstAttribute="top" secondItem="VML-WP-APR" secondAttribute="top" constant="5" id="U1X-S4-7mS"/>
                 <constraint firstItem="Ikk-kR-d5I" firstAttribute="top" secondItem="VML-WP-APR" secondAttribute="top" constant="3" id="Zf5-2B-vem"/>
                 <constraint firstItem="T5g-Zm-T1p" firstAttribute="top" secondItem="VML-WP-APR" secondAttribute="top" constant="29" id="ceX-U2-2pf"/>
+                <constraint firstItem="0IS-JI-edB" firstAttribute="leading" secondItem="gn1-t9-0wn" secondAttribute="trailing" constant="20" id="eod-xB-N3Y"/>
                 <constraint firstItem="Ikk-kR-d5I" firstAttribute="leading" secondItem="0IS-JI-edB" secondAttribute="trailing" constant="20" id="o5u-lB-eMj"/>
                 <constraint firstItem="839-4l-Zfu" firstAttribute="leading" secondItem="VML-WP-APR" secondAttribute="leading" id="sVg-tU-YQ2"/>
                 <constraint firstItem="TAa-yK-Apn" firstAttribute="top" secondItem="VML-WP-APR" secondAttribute="top" constant="5" id="xab-hR-C76"/>

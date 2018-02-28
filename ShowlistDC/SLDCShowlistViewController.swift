@@ -11,7 +11,7 @@ import Foundation
 import JTAppleCalendar
 import QuartzCore
 
- class SLDCShowlistViewController: UIViewController, JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate, UITableViewDelegate, UITableViewDataSource, SLDCCalendarHeaderDelegate {
+ class SLDCShowlistViewController: UIViewController, JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate, UITableViewDelegate, UITableViewDataSource, SLDCCalendarHeaderDelegate, UIPopoverPresentationControllerDelegate {
     
     /// Asks the data source to return the start and end boundary dates
     /// as well as the calendar to use. You should properly configure
@@ -37,6 +37,7 @@ import QuartzCore
         return parameters
     }
     
+    let kRefreshPopoverId = "refresh-popover"
     let kCalendarHeaderHeight : CGFloat = 60.0
     
     var firstDayOfShownMonth : Date = Date().calculateFirstDayOfMonth()
@@ -97,15 +98,11 @@ import QuartzCore
         self.calendarView.scrollEnabled = true
         self.calendarView.scrollingMode = .stopAtEachSection
         self.calendarView.scrollDirection = .vertical
-//        self.calendarView.alwaysBounceVertical = true
-        
-//        let refresher = UIRefreshControl()
-//        refresher.addTarget(self, action:#selector(reloadShows), for: .valueChanged)
-        
-//        self.calendarView.addSubview(refresher)
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        NotificationCenter.default.addObserver(self, selector:#selector(reloadShows), name:ReloadConstants.kReloadCompleteNoteName, object:nil)
         
         // Add border between table and calendar
         let border = CALayer()
@@ -117,7 +114,7 @@ import QuartzCore
         self.tableView.layer.addSublayer(border)
         self.tableView.layer.masksToBounds = true
         
-        self.tableShows = Showlist.shared.getShowsForDay(firstDayOfShownMonth)
+        self.tableShows = Showlist.shared.getShowsForMonth(firstDayOfShownMonth)
         self.tableView.reloadData()
     }
     
@@ -137,12 +134,13 @@ import QuartzCore
     }
     
     @objc fileprivate func reloadShows() {
-        
+        self.tableView.reloadData()
+        self.calendarView.reloadData()
     }
     
     func dateIsShowDate(_ date: Date) -> Bool {
         for showDate in datesWithShows {
-            if date.isOnSameDayAsDate(showDate) {
+            if showDate.isOnSameDayAsDate(date) {
                 return true
             }
         }
@@ -193,8 +191,9 @@ import QuartzCore
         UIView.animate(withDuration: 0.1, animations: {
             self.view.layoutIfNeeded()
         })
-        self.tableShows = Showlist.shared.getShowsForDay(firstDayOfShownMonth)
+        self.tableShows = Showlist.shared.getShowsForMonth(firstDayOfShownMonth)
         self.tableView.reloadData()
+        self.calendarView.reloadData()
     }
 
     func calendar(_ calendar: JTAppleCalendarView, sectionHeaderSizeFor range: (start: Date, end: Date), belongingTo month: Int) -> CGSize {
@@ -206,11 +205,6 @@ import QuartzCore
         headerCell.delegate = self
         headerCell.monthLabel.text = getMonthNameFromDate(range.start)
         
-    }
-    
-    func makeRefreshButtonImage() -> UIView {
-        
-        return UIView()
     }
     
     func getMonthNameFromDate(_ startDate: Date) -> String {
@@ -251,6 +245,22 @@ import QuartzCore
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func scrollToDate(_ date: Date) {
+        let showsOnDate = Showlist.shared.getShowsForDate(date)
+        if showsOnDate.count > 0 {
+            let showToScrollTo = showsOnDate[0]
+            self.calendarView.scrollToDate(date)
+            self.tableShows = Showlist.shared.getShowsForMonth(firstDayOfShownMonth)
+            if let index = self.tableShows.index(of: showToScrollTo) {
+                self.tableView.selectRow(at: IndexPath(row:index, section: 0), animated: true, scrollPosition: .top)
+            }
+        }
+    }
+    
     // MARK -- SLDCCalendarHeaderDelegate
     func didPressRightArrow() {
         let date = getConsecutiveMonthDate(backwards: false)
@@ -260,6 +270,28 @@ import QuartzCore
     func didPressLeftArrow() {
         let date = getConsecutiveMonthDate(backwards: true)
         self.calendarView.scrollToDate(date, triggerScrollToDateDelegate: true, animateScroll: true, preferredScrollPosition: UICollectionViewScrollPosition.centeredVertically, completionHandler: nil)
+    }
+    
+    func didPressRefreshButton(_ button: UIButton) {
+        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: kRefreshPopoverId) as! RefreshPopoverViewController
+        popController.modalPresentationStyle = UIModalPresentationStyle.popover
+        
+        // set up the popover presentation controller
+        popController.popoverPresentationController?.permittedArrowDirections = .any
+        popController.popoverPresentationController?.delegate = self
+        popController.popoverPresentationController?.sourceView = button
+        popController.popoverPresentationController?.sourceRect = button.bounds
+        
+        // present the popover
+        self.present(popController, animated: true, completion: nil)
+    }
+    
+    func didPressTodayButton() {
+        self.scrollToDate(Date())
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
     }
     
     fileprivate func getConsecutiveMonthDate(backwards:Bool) -> Date {

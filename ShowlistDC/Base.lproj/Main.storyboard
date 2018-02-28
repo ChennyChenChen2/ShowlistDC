@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Npj-An-KmH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1114" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Npj-An-KmH">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -136,6 +136,63 @@
             </objects>
             <point key="canvasLocation" x="-172" y="2544"/>
         </scene>
+        <!--Refresh Popover View Controller-->
+        <scene sceneID="Vw9-UD-TDh">
+            <objects>
+                <viewController storyboardIdentifier="refresh-popover" id="o7D-7G-q2S" customClass="RefreshPopoverViewController" customModule="ShowlistDC" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DOL-HC-AAa"/>
+                        <viewControllerLayoutGuide type="bottom" id="65i-Gi-ljt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cka-pM-qVs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ready to reload shows" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLT-Md-bF2">
+                                <rect key="frame" x="20" y="303" width="173" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VRy-4d-vTf">
+                                <rect key="frame" x="20" y="332" width="328" height="2"/>
+                            </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0c-ck-WlC">
+                                <rect key="frame" x="20" y="342" width="47" height="30"/>
+                                <state key="normal" title="Reload"/>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="reloadButtonPressed:" destination="o7D-7G-q2S" eventType="touchUpInside" id="mtX-Ww-Akl"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VRy-4d-vTf" firstAttribute="centerY" secondItem="cka-pM-qVs" secondAttribute="centerY" id="17s-pw-nlx"/>
+                            <constraint firstItem="eLT-Md-bF2" firstAttribute="leading" secondItem="cka-pM-qVs" secondAttribute="leadingMargin" constant="4" id="DSG-K2-uVy"/>
+                            <constraint firstItem="g0c-ck-WlC" firstAttribute="leading" secondItem="cka-pM-qVs" secondAttribute="leadingMargin" constant="4" id="Tz2-cP-Zsi"/>
+                            <constraint firstItem="VRy-4d-vTf" firstAttribute="leading" secondItem="cka-pM-qVs" secondAttribute="leadingMargin" constant="4" id="kY7-Yy-dch"/>
+                            <constraint firstItem="VRy-4d-vTf" firstAttribute="top" secondItem="eLT-Md-bF2" secondAttribute="bottom" constant="8" id="lN0-he-omr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VRy-4d-vTf" secondAttribute="trailing" constant="11" id="pzT-1q-Jpk"/>
+                            <constraint firstItem="g0c-ck-WlC" firstAttribute="top" secondItem="VRy-4d-vTf" secondAttribute="bottom" constant="8" id="uxU-Ic-rYq"/>
+                        </constraints>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="50" height="50"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="loadingLabel" destination="eLT-Md-bF2" id="DCe-ib-EMw"/>
+                        <outlet property="progressView" destination="VRy-4d-vTf" id="CwW-sa-87s"/>
+                        <outlet property="reloadButton" destination="g0c-ck-WlC" id="5Q3-Sd-oop"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Jd-zN-ftX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1682.4000000000001" y="2547.9760119940033"/>
+        </scene>
         <!--Show List-->
         <scene sceneID="QBv-Ki-20m">
             <objects>
@@ -208,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fQR-c2-ut0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-895.20000000000005" y="2544.3778110944531"/>
+            <point key="canvasLocation" x="-895" y="2548"/>
         </scene>
         <!--Show Detail View Controller-->
         <scene sceneID="ieu-5W-s8U">
@@ -429,8 +486,8 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Catherine Lewis (Webmistress):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yA-3B-zEN">
-                                        <rect key="frame" x="0.0" y="229" width="242" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Catherine Lewis (Webmaster):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yA-3B-zEN">
+                                        <rect key="frame" x="0.0" y="229" width="230" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
