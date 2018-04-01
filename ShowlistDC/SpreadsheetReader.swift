@@ -18,8 +18,8 @@ struct ReloadConstants {
 
 @objc class SpreadsheetReader: NSObject {
     
-    var spreadsheet: BRAWorksheet?
-    var showlist : Showlist
+    var showSpreadsheet: BRAWorksheet?
+    var venueSpreadsheet: BRAWorksheet?
     
     fileprivate var _totalRows = 0
     var totalRows : Int {
@@ -38,7 +38,8 @@ struct ReloadConstants {
     
     
     var downloadStatusString : String {
-        return "\(processedRows) of \(totalRows) updated"
+        let downloadPercent = Int((Float(processedRows) / Float(totalRows)) * 100.0)
+        return "\(downloadPercent)% updated"
     }
     
     var isLoadingData = false
@@ -50,48 +51,135 @@ struct ReloadConstants {
         let package = BRAOfficeDocumentPackage.open(documentPath)
         
         //First worksheet in the workbook
-        self.spreadsheet = package!.workbook.worksheets[0] as? BRAWorksheet
+        guard let theShowSpreadsheet = package?.workbook.worksheets[0] as? BRAWorksheet
+        else {
+            return
+        }
+        self.showSpreadsheet = theShowSpreadsheet
         
         // TODO: Use second worksheet in workbook for venues list
-        
-        self.showlist = Showlist.shared
+        guard let theVenueSpreadsheet = package?.workbook.worksheets[1] as? BRAWorksheet
+        else {
+            return
+        }
+        self.venueSpreadsheet = theVenueSpreadsheet
     }
     
-    func generateShows() {
+    func generateData() {
         // TODO: Request spreadsheet from server via downloadManager class of some kind
         
-        let rows = self.spreadsheet!.rows!
-        
-        print("Start of download. Spreadsheet has \(rows.count) rows.")
-        _totalRows = rows.count
-        _processedRows = 0
-        self.isLoadingData = true
+        if let showRows = self.showSpreadsheet?.rows, let venueRows = self.venueSpreadsheet?.rows {
+            _totalRows = showRows.count + venueRows.count
+            print("Start of download. Shows spreadsheet has \(_totalRows) rows.")
+            _processedRows = 0
+            self.isLoadingData = true
 
-        DispatchQueue(label: "show-queue").async {
-            autoreleasepool {
+            DispatchQueue(label: "show-queue").async {
+                autoreleasepool {
+                    for r in showRows {
+                        guard let row = r as? BRARow else { return }
+                        if (row.rowIndex == 1) {
+                            continue
+                        }
 
-            rowLoop: for r in rows {
-                    let row = r as! BRARow
-                    if (row.rowIndex == 1) {
-                        continue
+                        let checkCellID : String = "G\(row.rowIndex)"
+
+                        if let checkCell = self.showSpreadsheet?.cell(forCellReference: checkCellID) {
+                            if !checkCell.stringValue().isEmpty {
+                                self.generateShow(with: row)
+                                print("Processed show \(row.rowIndex)")
+                            }
+                        }
+                        self._processedRows = self._processedRows + 1
                     }
-
-                    let checkCellID : String = "G\(row.rowIndex)"
-                    
-                    if let checkCell = self.spreadsheet?.cell(forCellReference: checkCellID) {
-                        if !checkCell.stringValue().isEmpty {
-                            self.generateShow(with: row)
-                            print("Processed show \(row.rowIndex)")
+                    venueLoop: for v in venueRows {
+                        guard let row = v as? BRARow else { return }
+                        if (row.rowIndex == 1) {
+                            continue
+                        }
+                        guard let cell = row.cells[0] as? BRACell else { return }
+                        if cell.stringValue() == "Other Listing Sites" ||
+                            cell.stringValue() == "DEFUNCT VENUES" ||
+                            cell.stringValue() == "" {
+                            break venueLoop
+                        } else {
+                            self.generateVenue(with: row)
                         }
                     }
-                    self._processedRows = self._processedRows + 1
-                }
-                print("DONE LOADING SHOWS!!!!!!")
-                DispatchQueue.main.async {
-                    self.isLoadingData = false
-                    NotificationCenter.default.post(name: ReloadConstants.kReloadCompleteNoteName, object: NSNumber(booleanLiteral: true))
+                    
+                    print("DONE LOADING SHOWS!!!!!!")
+                    DispatchQueue.main.async {
+                        self.isLoadingData = false
+                        NotificationCenter.default.post(name: ReloadConstants.kReloadCompleteNoteName, object: NSNumber(booleanLiteral: true))
+                    }
                 }
             }
+        } else {
+            // TODO: show alert saying there are no shows/temporary outage/something like that
+        }
+    }
+    
+    
+    
+    func generateVenue(with row: BRARow) {
+        let venue = Venue()
+        let cells = NSArray.init(array: row.cells)
+        for c in cells {
+            guard let cell = c as? BRACell else { return }
+            self.populate(venue: venue, with: cell)
+            print("HERE!")
+        }
+        Showlist.add(venue)
+        print(self.downloadStatusString)
+    }
+    
+    /*
+    Column labels:
+     1. Venue
+     2. More
+     3. Address
+     4. Phone
+     5. Map
+     6. FB
+     7. Twitter
+     8. Instagram
+     9. Last Updated
+     10. Web Site
+     11. More link
+     12. Venues page
+     13. Individual page
+     14. TODAY
+     15. 3/2/16
+     16. 24
+     17. 0
+     18. For \"Venue Info\" page
+     19. 1
+     20. January
+     */
+    func populate(venue: Venue, with cell: BRACell) {
+        switch cell.columnIndex() {
+        case 1:
+            venue.name = cell.stringValue()
+        case 3:
+            venue.address = cell.stringValue()
+        case 4:
+            venue.phone = cell.stringValue()
+        case 5:
+            venue.mapLink = cell.stringValue()
+        case 6:
+            if cell.stringValue() != "" && cell.stringValue() != "NONE" {
+                venue.fb = cell.stringValue()
+            }
+        case 7:
+            if cell.stringValue() != "" && cell.stringValue() != "NONE" {
+                venue.twitter = cell.stringValue()
+            }
+        case 8:
+            if cell.stringValue() != "" && cell.stringValue() != "NONE" {
+                venue.instagram = cell.stringValue()
+            }
+        default:
+            break
         }
     }
     
@@ -100,12 +188,10 @@ struct ReloadConstants {
             let cells = NSArray.init(array: row.cells)
             for c in cells {
                 let cell = c as! BRACell
-                self.populate(show:show, with:cell);
+                self.populate(show:show, with:cell)
             }
-            self.showlist.add(show)
-//            DispatchQueue.main.async {
+            Showlist.add(show)
             print(self.downloadStatusString)
-//            }
     }
     
     func populate(show: Show, with cell: BRACell) {

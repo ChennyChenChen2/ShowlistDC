@@ -12,6 +12,8 @@ class SLDCSearchViewController: UIViewController, UISearchBarDelegate, UITableVi
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet var gestureRecognizer: UITapGestureRecognizer!
+    
     let kSearchCellID = "searchCell"
     var results: [Show] = []
     
@@ -23,14 +25,34 @@ class SLDCSearchViewController: UIViewController, UISearchBarDelegate, UITableVi
         self.navigationItem.title = "Search"
     }
     
+    // MARK - UISearchBarDelegate
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
             self.results = []
         } else {
-            let showlist = Showlist.shared
-            results = showlist.getShowsWithSearchQuery(searchText)
+            results = Showlist.getShowsWithSearchQuery(searchText)
         }
         self.tableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.view.addGestureRecognizer(self.gestureRecognizer)
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        self.view.removeGestureRecognizer(self.gestureRecognizer)
+    }
+    
+    @IBAction func gestureRecognizerTriggered(_ sender: Any) {
+        self.tappedToDismissKeyboard()
+    }
+    
+    func tappedToDismissKeyboard() {
+        self.searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.tappedToDismissKeyboard()
     }
     
     // pragma mark - UITableViewDataSource

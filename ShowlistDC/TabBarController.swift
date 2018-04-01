@@ -8,6 +8,4 @@
 
 import UIKit
 
-class TabBarController: UITabBarController {
-
-}
+class TabBarController: UITabBarController {}

@@ -62,7 +62,7 @@ class RefreshPopoverViewController: UIViewController {
     @IBAction func reloadButtonPressed(_ sender: Any) {
         if !self.reader.isLoadingData {
             updateRefreshButtonToBeEnabled(false)
-            self.reader.generateShows()
+            self.reader.generateData()
             NotificationCenter.default.post(name: ReloadConstants.kReloadDidBeginNoteName, object:NSNumber(booleanLiteral: false))
             
             if !rotate {

@@ -10,7 +10,13 @@ import Foundation
 import RealmSwift
 import Realm
 
-class Show: Object {
+protocol SavableItem {
+    func savedItemType() -> AnyClass
+    func savedItemDisplay() -> String
+    func detailVCClass() -> AnyClass
+}
+
+class Show: Object, SavableItem {
     
     dynamic var uniqueKey : String = ""
     private func compoundKeyValue() -> String {
@@ -110,7 +116,57 @@ class Show: Object {
     func getWhenText() -> String {
         return "\(self.getDateString()) at \(self.start)"
     }
+    
+    func savedItemType() -> AnyClass {
+        return SavedShow.self
+    }
+    
+    func savedItemDisplay() -> String {
+        return self.uniqueKey
+    }
+    
+    func detailVCClass() -> AnyClass {
+        return ShowDetailViewController.self
+    }
+    
+    func getSavedShow() -> SavedShow {
+        let savedShow = SavedShow()
+        savedShow.artist1 = self.artist1
+        savedShow.artist2 = self.artist2
+        savedShow.artist3 = self.artist3
+        savedShow.artist4 = self.artist4
+        savedShow.start = self.start
+        savedShow.end = self.end
+        savedShow.recommended = self.recommended
+        savedShow.soldOut = self.soldOut
+        savedShow.cancelledPostponed = self.cancelledPostponed
+        savedShow.addedChanged = self.addedChanged
+        savedShow.comment = self.comment
+        savedShow.date = self.date
+        savedShow.venue = self.venue
+        savedShow.venuePlus = self.venuePlus
+        savedShow.ticketfly = self.ticketfly
+        savedShow.fb = self.fb
+        savedShow.twitter = self.twitter
+        return savedShow
+    }
+    
+    /*
+     func getSavedVenue() -> SavedVenue {
+     let savedVenue = SavedVenue()
+     savedVenue.name = self.name
+     savedVenue.address = self.address
+     savedVenue.phone = self.phone
+     savedVenue.mapLink = self.mapLink
+     savedVenue.fb = self.fb
+     savedVenue.twitter = self.twitter
+     savedVenue.instagram = self.instagram
+     return savedVenue
+     }
+ */
 }
+
+class SavedShow: Show {}
 
 extension String {
     mutating func sanitizeEncodings() {
@@ -122,6 +178,12 @@ extension String {
         }
         if self.contains("</em>") {
             self = self.replacingOccurrences(of: "</em>", with: "")
+        }
+        if self.contains("<b>") {
+            self = self.replacingOccurrences(of: "<b>", with: "")
+        }
+        if self.contains("</b>") {
+            self = self.replacingOccurrences(of: "</b>", with: "")
         }
     }
 }

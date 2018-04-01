@@ -12,10 +12,8 @@ import JTAppleCalendar
 class SLDCCalendarCell: JTAppleDayCellView {
 
     @IBOutlet weak var dayLabel: UILabel!
-    
-//    @IBOutlet weak var dayHighlightView: UIView?
-    
     @IBOutlet weak var dayHasEventsView: UIView!
+    @IBOutlet weak var selectionView: UIView!
     
 }
 

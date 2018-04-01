@@ -61,6 +61,10 @@ class SLDCMoreTableViewController: UITableViewController {
                 self.performSegue(withIdentifier: "AboutSegue", sender: nil)
             } else if title == kContactUsKey {
                 self.performSegue(withIdentifier: "ContactSegue", sender: nil)
+            } else if title ==  kSavedVenuesKey {
+                self.performSegue(withIdentifier: "SavedVenueSegue", sender: nil)
+            } else if title == kSavedShowsKey {
+                self.performSegue(withIdentifier: "SavedShowSegue", sender: nil)
             }
         }
     }

@@ -16,8 +16,13 @@ class ShowDetailViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var saveShowButton: UIButton!
     @IBOutlet weak var addToCalendarButton: UIButton!
-    @IBOutlet weak var openVenueWebsiteButton: UIButton!
+    
+    static let storyboardId = "show-detail"
     var show: Show!
+    var shouldShowSaveButton = true
+    var showIsSaved: Bool {
+        return Showlist.getSavedShowWithUniqueKey(show.uniqueKey).count > 0
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +32,29 @@ class ShowDetailViewController: UIViewController {
         self.artistLabel.text = "WHO: \(show.getArtistLabelText())"
         self.venueLabel.text = "WHERE: \(show.venue)"
         self.dateLabel.text = "WHEN: \(formatter.string(from:show.date as Date))"
+        
+        if shouldShowSaveButton {
+            customizeSaveButton()
+        } else {
+            self.saveShowButton.removeFromSuperview()
+        }
+    }
+    
+    private func customizeSaveButton() {
+        if showIsSaved {
+            self.saveShowButton.setTitle("Unsave this show", for: .normal)
+        } else {
+            self.saveShowButton.setTitle("Save this show", for: .normal)
+        }
+    }
+    
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        if showIsSaved {
+            Showlist.unsaveShow(show: self.show)
+        } else {
+            Showlist.save(self.show)
+        }
+        customizeSaveButton()
     }
     
     @IBAction func addToCalButtonPressed(_ sender: Any) {

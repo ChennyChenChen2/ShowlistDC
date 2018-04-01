@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -29,12 +29,22 @@
                         <constraint firstAttribute="width" constant="10" id="fEU-6i-iuS"/>
                     </constraints>
                 </view>
+                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="foC-02-fGx">
+                    <rect key="frame" x="5" y="5" width="40" height="40"/>
+                    <color key="backgroundColor" red="1" green="0.07060657998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="9Gc-Fb-FXW"/>
+                        <constraint firstAttribute="height" constant="40" id="BnJ-KQ-rHU"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="foC-02-fGx" firstAttribute="centerY" secondItem="kEu-TQ-cMU" secondAttribute="centerY" id="T1A-6K-GTS"/>
                 <constraint firstItem="yFn-hT-b7A" firstAttribute="leading" secondItem="kEu-TQ-cMU" secondAttribute="leading" constant="1" id="UoD-Y4-IOG"/>
                 <constraint firstItem="yFn-hT-b7A" firstAttribute="top" secondItem="kEu-TQ-cMU" secondAttribute="top" constant="1" id="lPO-bx-tYY"/>
                 <constraint firstAttribute="bottom" secondItem="gyG-Rk-3tP" secondAttribute="bottom" constant="10" id="vOb-RR-CF2"/>
+                <constraint firstItem="foC-02-fGx" firstAttribute="centerX" secondItem="kEu-TQ-cMU" secondAttribute="centerX" id="zpw-CT-Sf5"/>
                 <constraint firstItem="gyG-Rk-3tP" firstAttribute="centerX" secondItem="kEu-TQ-cMU" secondAttribute="centerX" id="zr8-FZ-GU2"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -44,6 +54,7 @@
             <connections>
                 <outlet property="dayHasEventsView" destination="gyG-Rk-3tP" id="Irb-fr-YQg"/>
                 <outlet property="dayLabel" destination="yFn-hT-b7A" id="NpV-uR-PhY"/>
+                <outlet property="selectionView" destination="foC-02-fGx" id="d0Z-Ia-DII"/>
             </connections>
             <point key="canvasLocation" x="99" y="661"/>
         </view>

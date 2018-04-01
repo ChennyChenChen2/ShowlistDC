@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 import JTAppleCalendar
 import QuartzCore
+import RealmSwift
 
  class SLDCShowlistViewController: UIViewController, JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate, UITableViewDelegate, UITableViewDataSource, SLDCCalendarHeaderDelegate, UIPopoverPresentationControllerDelegate {
     
@@ -39,6 +40,8 @@ import QuartzCore
     
     let kRefreshPopoverId = "refresh-popover"
     let kCalendarHeaderHeight : CGFloat = 60.0
+    
+    var token: NotificationToken?
     
     var firstDayOfShownMonth : Date = Date().calculateFirstDayOfMonth()
     
@@ -82,7 +85,8 @@ import QuartzCore
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     
     @IBOutlet weak var tableView: SLDCDayListingsTableView!
-    
+    var shouldHighlightSelectedRow = false
+    var selectedDate: Date = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,10 +95,9 @@ import QuartzCore
         self.calendarView.delegate = self
         self.calendarView.registerCellViewXib(file: "SLDCCalendarCell")
         self.calendarView.registerHeaderView(xibFileNames: ["SLDCCalendarHeader"])
-        
-        self.calendarView.cellInset = CGPoint(x: 1, y: 1)
-        self.calendarView.itemSize = (self.calendarView.frame.size.height - kCalendarHeaderHeight) / CGFloat(numberOfRows)
+        self.calendarView.itemSize = ((self.view.frame.size.height / 2) - kCalendarHeaderHeight) / CGFloat(numberOfRows)
         self.calendarHeightConstraint.constant = self.calendarView.itemSize! * CGFloat(numberOfRows) + kCalendarHeaderHeight
+        self.calendarView.cellInset = CGPoint(x: 1, y: 1)
         self.calendarView.scrollEnabled = true
         self.calendarView.scrollingMode = .stopAtEachSection
         self.calendarView.scrollDirection = .vertical
@@ -104,17 +107,14 @@ import QuartzCore
         
         NotificationCenter.default.addObserver(self, selector:#selector(reloadShows), name:ReloadConstants.kReloadCompleteNoteName, object:nil)
         
-        // Add border between table and calendar
-        let border = CALayer()
-        let width = CGFloat(2.0)
-        border.borderColor = UIColor.darkGray.cgColor
-        border.frame = CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 2)
+        let realm = try! Realm()
+        self.token = realm.observe { notification, realm in
+            DispatchQueue.main.async {
+                self.reloadShows()
+            }
+        }
         
-        border.borderWidth = width
-        self.tableView.layer.addSublayer(border)
-        self.tableView.layer.masksToBounds = true
-        
-        self.tableShows = Showlist.shared.getShowsForMonth(firstDayOfShownMonth)
+        self.tableShows = Showlist.getShowsForMonth(firstDayOfShownMonth)
         self.tableView.reloadData()
     }
     
@@ -125,7 +125,30 @@ import QuartzCore
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        
+        if let theToken = self.token {
+            theToken.invalidate()
+        }
+        
         super.viewWillDisappear(animated)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        // Add border between table and calendar
+        let border = CALayer()
+        let width = CGFloat(2.0)
+        border.borderColor = UIColor.darkGray.cgColor
+        border.frame = CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 2)
+        
+        border.borderWidth = width
+        self.tableView.layer.addSublayer(border)
+        self.tableView.layer.masksToBounds = true
+    }
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+//        self.calendarView.setNeedsLayout()
+//        self.calendarView.layoutIfNeeded()
+        self.view.layoutSubviews()
     }
     
     override func didReceiveMemoryWarning() {
@@ -134,8 +157,8 @@ import QuartzCore
     }
     
     @objc fileprivate func reloadShows() {
-        self.tableView.reloadData()
         self.calendarView.reloadData()
+        self.tableView.reloadData()
     }
     
     func dateIsShowDate(_ date: Date) -> Bool {
@@ -163,6 +186,13 @@ import QuartzCore
     
     // MARK -- JTAppleCalendarViewDelegate
     
+    func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleDayCellView?, cellState: CellState) {
+        let oldSelectedDate = self.selectedDate
+        self.selectedDate = date
+        self.calendarView.reloadDates([oldSelectedDate, self.selectedDate])
+        self.scrollToDate(date)
+    }
+    
     func calendar(_ calendar: JTAppleCalendarView, willDisplayCell cell: JTAppleDayCellView, date: Date, cellState: CellState) {
         let theCell = cell as! SLDCCalendarCell
         
@@ -176,6 +206,13 @@ import QuartzCore
         
         theCell.dayHasEventsView.layer.borderColor = UIColor.white.cgColor
         theCell.dayHasEventsView.layer.borderWidth = 1.0
+        
+        if date.isOnSameDayAsDate(self.selectedDate) {
+            theCell.selectionView.isHidden = false
+            theCell.selectionView.layer.cornerRadius = theCell.selectionView.frame.size.height / 2
+        } else {
+            theCell.selectionView.isHidden = true
+        }
         
         // Setup text color
         if cellState.dateBelongsTo == .thisMonth {
@@ -191,9 +228,30 @@ import QuartzCore
         UIView.animate(withDuration: 0.1, animations: {
             self.view.layoutIfNeeded()
         })
-        self.tableShows = Showlist.shared.getShowsForMonth(firstDayOfShownMonth)
+        self.tableShows = Showlist.getShowsForMonth(firstDayOfShownMonth)
         self.tableView.reloadData()
         self.calendarView.reloadData()
+    }
+    
+    func scrollToShowInTable(date: Date) {
+        if self.shouldHighlightSelectedRow {
+            let showsOnDate = Showlist.getShowsForDate(date)
+            if showsOnDate.count > 0 {
+                let showToScrollTo = showsOnDate[0]
+                if let index = self.tableShows.index(of: showToScrollTo), self.tableView.numberOfRows(inSection: 1) > index {
+                    UIView.animate(withDuration: 3.0, animations: {
+                        self.tableView.selectRow(at: IndexPath(row:index, section: 0), animated: true, scrollPosition: .top)
+                    }, completion: { (success) in
+                        self.tableView.deselectRow(at: IndexPath(row:index, section: 0), animated: true)
+                    })
+                }
+            }
+            self.shouldHighlightSelectedRow = false
+        } else {
+            if self.tableView.visibleCells.count > 0 {
+                self.tableView.scrollToRow(at: IndexPath(row:0, section:0), at: .top, animated: true)
+            }
+        }
     }
 
     func calendar(_ calendar: JTAppleCalendarView, sectionHeaderSizeFor range: (start: Date, end: Date), belongingTo month: Int) -> CGSize {
@@ -204,7 +262,6 @@ import QuartzCore
         let headerCell = header as! SLDCCalendarHeader
         headerCell.delegate = self
         headerCell.monthLabel.text = getMonthNameFromDate(range.start)
-        
     }
     
     func getMonthNameFromDate(_ startDate: Date) -> String {
@@ -237,7 +294,7 @@ import QuartzCore
     // MARK -- UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let show = self.tableShows[indexPath.row]
-        let showDetailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "show-detail") as! ShowDetailViewController
+        let showDetailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ShowDetailViewController.storyboardId) as! ShowDetailViewController
         showDetailVC.show = show
         if let navController = self.navigationController {
             navController.show(showDetailVC, sender: nil)
@@ -245,20 +302,10 @@ import QuartzCore
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
     func scrollToDate(_ date: Date) {
-        let showsOnDate = Showlist.shared.getShowsForDate(date)
-        if showsOnDate.count > 0 {
-            let showToScrollTo = showsOnDate[0]
-            self.calendarView.scrollToDate(date)
-            self.tableShows = Showlist.shared.getShowsForMonth(firstDayOfShownMonth)
-            if let index = self.tableShows.index(of: showToScrollTo) {
-                self.tableView.selectRow(at: IndexPath(row:index, section: 0), animated: true, scrollPosition: .top)
-            }
-        }
+        self.shouldHighlightSelectedRow = true
+        self.calendarView.scrollToDate(date)
+        self.scrollToShowInTable(date: self.selectedDate)
     }
     
     // MARK -- SLDCCalendarHeaderDelegate
@@ -287,6 +334,7 @@ import QuartzCore
     }
     
     func didPressTodayButton() {
+        self.selectedDate = Date()
         self.scrollToDate(Date())
     }
     

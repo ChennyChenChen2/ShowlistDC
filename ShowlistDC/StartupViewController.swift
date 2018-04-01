@@ -20,7 +20,8 @@ class StartupViewController: UIViewController {
         super.viewDidAppear(animated)
         self.activityIndicator.startAnimating()
         let reader = SpreadsheetReader.shared
-        reader.generateShows()
+        reader.generateData()
+        
         self.activityIndicator.stopAnimating()
         
         let newVC = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController");
