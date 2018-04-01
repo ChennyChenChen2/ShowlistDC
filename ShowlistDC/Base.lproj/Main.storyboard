@@ -702,31 +702,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hym-g4-6YU">
-                                <rect key="frame" x="16" y="72" width="339" height="101.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hym-g4-6YU">
+                                <rect key="frame" x="16" y="30" width="339" height="94"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TK1-X3-g7x">
-                                        <rect key="frame" x="0.0" y="0.0" width="339" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="339" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDR-td-1Dk">
-                                        <rect key="frame" x="0.0" y="40.5" width="339" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="38" width="339" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UMK-Le-330">
-                                        <rect key="frame" x="0.0" y="81" width="339" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="76" width="339" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ji3-nW-c99">
+                                <rect key="frame" x="16" y="134" width="343" height="398"/>
+                            </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRT-sZ-qDV">
-                                <rect key="frame" x="131" y="504" width="113" height="30"/>
+                                <rect key="frame" x="131" y="552" width="113" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="7Hp-jn-6Ic"/>
                                 </constraints>
@@ -736,7 +739,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SOv-bo-9V3">
-                                <rect key="frame" x="30" y="595" width="315" height="30"/>
+                                <rect key="frame" x="30" y="617" width="315" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AaA-Sl-IrW">
                                         <rect key="frame" x="0.0" y="2.5" width="105" height="25"/>
@@ -767,25 +770,20 @@
                                     <constraint firstAttribute="height" constant="30" id="wDn-td-ojo"/>
                                 </constraints>
                             </stackView>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ji3-nW-c99">
-                                <rect key="frame" x="16" y="225" width="343" height="216"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="343" id="E49-VP-uuZ"/>
-                                    <constraint firstAttribute="height" constant="216" id="btX-ai-X9Y"/>
-                                </constraints>
-                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Ji3-nW-c99" firstAttribute="centerY" secondItem="PFn-7q-GJB" secondAttribute="centerY" id="3EF-dU-MMc"/>
                             <constraint firstItem="hym-g4-6YU" firstAttribute="leading" secondItem="PFn-7q-GJB" secondAttribute="leading" constant="16" id="BOm-XF-ykt"/>
-                            <constraint firstItem="TK1-X3-g7x" firstAttribute="top" secondItem="Yfg-iv-kkP" secondAttribute="bottom" constant="52" id="Hjx-AA-UD5"/>
                             <constraint firstItem="LRT-sZ-qDV" firstAttribute="centerX" secondItem="PFn-7q-GJB" secondAttribute="centerX" id="Qyp-lC-78Y"/>
                             <constraint firstAttribute="trailing" secondItem="hym-g4-6YU" secondAttribute="trailing" constant="20" id="RiP-Mf-TRu"/>
-                            <constraint firstItem="Ji3-nW-c99" firstAttribute="centerX" secondItem="PFn-7q-GJB" secondAttribute="centerX" id="c8e-E2-znL"/>
-                            <constraint firstItem="LRT-sZ-qDV" firstAttribute="top" secondItem="Ji3-nW-c99" secondAttribute="bottom" constant="63" id="c9a-9F-ha1"/>
-                            <constraint firstItem="U0J-dG-7ZU" firstAttribute="top" secondItem="SOv-bo-9V3" secondAttribute="bottom" constant="42" id="nig-Sz-uzw"/>
+                            <constraint firstItem="LRT-sZ-qDV" firstAttribute="top" secondItem="Ji3-nW-c99" secondAttribute="bottom" constant="20" id="c9a-9F-ha1"/>
+                            <constraint firstItem="Ji3-nW-c99" firstAttribute="top" secondItem="hym-g4-6YU" secondAttribute="bottom" constant="10" id="iOb-h2-7aS"/>
+                            <constraint firstItem="hym-g4-6YU" firstAttribute="top" secondItem="Yfg-iv-kkP" secondAttribute="bottom" constant="10" id="jgh-Ab-t3O"/>
+                            <constraint firstItem="Ji3-nW-c99" firstAttribute="leading" secondItem="PFn-7q-GJB" secondAttribute="leading" constant="16" id="l14-Sb-IVv"/>
+                            <constraint firstItem="U0J-dG-7ZU" firstAttribute="top" secondItem="SOv-bo-9V3" secondAttribute="bottom" constant="20" id="nig-Sz-uzw"/>
                             <constraint firstItem="SOv-bo-9V3" firstAttribute="leading" secondItem="PFn-7q-GJB" secondAttribute="leading" constant="30" id="rf8-qV-FlZ"/>
+                            <constraint firstAttribute="trailing" secondItem="Ji3-nW-c99" secondAttribute="trailing" constant="16" id="rnS-gM-PWw"/>
                             <constraint firstAttribute="trailing" secondItem="SOv-bo-9V3" secondAttribute="trailing" constant="30" id="yk6-Zm-XAb"/>
                         </constraints>
                     </view>
