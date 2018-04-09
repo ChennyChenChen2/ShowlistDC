@@ -69,7 +69,14 @@ class SLDCSearchViewController: UIViewController, UISearchBarDelegate, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: kSearchCellID)!
         let show = self.results[indexPath.row]
         let title = show.uniqueKey
-        cell.textLabel?.text = title
+        
+        if show.isCancelledShow {
+           let attributedTitle = title.getStrikethrough()
+           cell.textLabel?.attributedText = attributedTitle
+        } else {
+           cell.textLabel?.text = title
+        }
+        
         return cell
     }
     

@@ -21,6 +21,8 @@
 		873F56B31F2C27C300FF7B70 /* SLDCContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F56B21F2C27C300FF7B70 /* SLDCContactUsViewController.swift */; };
 		87628F48206F297F00401732 /* SLDCSavedVenueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87628F47206F297F00401732 /* SLDCSavedVenueViewController.swift */; };
 		87628F4A206F3F5A00401732 /* SLDCSavedShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87628F49206F3F5A00401732 /* SLDCSavedShowViewController.swift */; };
+		8770F00B2075DD49000C01BB /* SLDCFirstTimeBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8770F00A2075DD49000C01BB /* SLDCFirstTimeBlurView.swift */; };
+		8770F00D20771729000C01BB /* ShowsInVenueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8770F00C20771729000C01BB /* ShowsInVenueTableViewController.swift */; };
 		877154C61F37DBB300B4119F /* HalfResizingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877154C51F37DBB300B4119F /* HalfResizingTableViewCell.swift */; };
 		877C221C1DEFDAEC00F49A10 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877C221B1DEFDAEC00F49A10 /* Venue.swift */; };
 		8791E22D1D9219C100EB4BBA /* SLDCDayListingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791E22C1D9219C100EB4BBA /* SLDCDayListingsTableView.swift */; };
@@ -107,6 +109,8 @@
 		873F56B21F2C27C300FF7B70 /* SLDCContactUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SLDCContactUsViewController.swift; path = ShowlistDC/SLDCContactUsViewController.swift; sourceTree = "<group>"; };
 		87628F47206F297F00401732 /* SLDCSavedVenueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SLDCSavedVenueViewController.swift; path = ShowlistDC/SLDCSavedVenueViewController.swift; sourceTree = "<group>"; };
 		87628F49206F3F5A00401732 /* SLDCSavedShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SLDCSavedShowViewController.swift; path = ShowlistDC/SLDCSavedShowViewController.swift; sourceTree = "<group>"; };
+		8770F00A2075DD49000C01BB /* SLDCFirstTimeBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLDCFirstTimeBlurView.swift; sourceTree = "<group>"; };
+		8770F00C20771729000C01BB /* ShowsInVenueTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsInVenueTableViewController.swift; sourceTree = "<group>"; };
 		877154C51F37DBB300B4119F /* HalfResizingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfResizingTableViewCell.swift; sourceTree = "<group>"; };
 		877C221B1DEFDAEC00F49A10 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		8791E22C1D9219C100EB4BBA /* SLDCDayListingsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLDCDayListingsTableView.swift; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				8711D3511EFED0C900C38DA5 /* ShowDetailViewController.swift */,
+				8770F00C20771729000C01BB /* ShowsInVenueTableViewController.swift */,
 			);
 			name = "Detail Views";
 			path = ShowlistDC;
@@ -206,6 +211,7 @@
 				87E5835A1DAC9698005A5D75 /* SLDCCalendarHeader.swift */,
 				877154C51F37DBB300B4119F /* HalfResizingTableViewCell.swift */,
 				872291A31FC25CBA00D3D3EE /* RefreshPopoverViewController.swift */,
+				8770F00A2075DD49000C01BB /* SLDCFirstTimeBlurView.swift */,
 			);
 			name = Calendar;
 			path = ShowlistDC;
@@ -577,6 +583,7 @@
 			files = (
 				87E5835B1DAC9698005A5D75 /* SLDCCalendarHeader.swift in Sources */,
 				877154C61F37DBB300B4119F /* HalfResizingTableViewCell.swift in Sources */,
+				8770F00B2075DD49000C01BB /* SLDCFirstTimeBlurView.swift in Sources */,
 				8791E22D1D9219C100EB4BBA /* SLDCDayListingsTableView.swift in Sources */,
 				877C221C1DEFDAEC00F49A10 /* Venue.swift in Sources */,
 				87338CD3206728A800080874 /* SLDCVenuesViewController.swift in Sources */,
@@ -589,6 +596,7 @@
 				87E07D4D2069DBCF00E34CEB /* VenueDetailViewController.swift in Sources */,
 				87D6ADB31D80F550008CE838 /* SpreadsheetReader.swift in Sources */,
 				8711D9A61D863825005E832F /* SLDCShowlistViewController.swift in Sources */,
+				8770F00D20771729000C01BB /* ShowsInVenueTableViewController.swift in Sources */,
 				8711D3521EFED0C900C38DA5 /* ShowDetailViewController.swift in Sources */,
 				87D6ADB51D80F550008CE838 /* TabBarController.swift in Sources */,
 				873F56B31F2C27C300FF7B70 /* SLDCContactUsViewController.swift in Sources */,

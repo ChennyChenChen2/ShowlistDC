@@ -7,15 +7,28 @@
 //
 
 import Foundation
+import RealmSwift
 
 class SLDCVenuesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var gestureRecognizer: UITapGestureRecognizer!
+    var token: NotificationToken?
     
     private var venues: [Venue] = []
     private let cellId = "venueCell"
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let realm = try! Realm()
+        self.token = realm.observe { notification, realm in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -23,6 +36,14 @@ class SLDCVenuesViewController: UIViewController, UITableViewDataSource, UITable
         self.venues = Showlist.getAllVenues() // TODO: Add notification observer instead of putting in viewWillAppear
         self.tableView.reloadData()
         self.view.removeGestureRecognizer(self.gestureRecognizer)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if let theToken = self.token {
+            theToken.invalidate()
+        }
+        
+        super.viewWillDisappear(animated)
     }
     
     // MARK - UISearchBarDelegate

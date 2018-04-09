@@ -40,6 +40,7 @@ import RealmSwift
     
     let kRefreshPopoverId = "refresh-popover"
     let kCalendarHeaderHeight : CGFloat = 60.0
+    let kIsNotFirstLaunchKey = "kIsNotFirstLaunch"
     
     var token: NotificationToken?
     
@@ -116,6 +117,13 @@ import RealmSwift
         
         self.tableShows = Showlist.getShowsForMonth(firstDayOfShownMonth)
         self.tableView.reloadData()
+        
+        if !UserDefaults.standard.bool(forKey: kIsNotFirstLaunchKey) {
+            let blurVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: SLDCFirstTimeBlurView.kStoryboardId)
+            self.present(blurVC, animated: true, completion: nil)
+            SpreadsheetReader.shared.generateData(shouldRestart: true)
+            UserDefaults.standard.set(true, forKey: kIsNotFirstLaunchKey)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -145,18 +153,8 @@ import RealmSwift
         self.tableView.layer.masksToBounds = true
     }
     
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-//        self.calendarView.setNeedsLayout()
-//        self.calendarView.layoutIfNeeded()
-        self.view.layoutSubviews()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     @objc fileprivate func reloadShows() {
+        self.tableShows = Showlist.getShowsForMonth(firstDayOfShownMonth)
         self.calendarView.reloadData()
         self.tableView.reloadData()
     }
@@ -285,8 +283,14 @@ import RealmSwift
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DayListCell")!
         let show = self.tableShows[indexPath.row]
-        cell.textLabel!.text = show.artist1
-        cell.detailTextLabel!.text = show.venue
+        
+        if show.isCancelledShow {
+            cell.textLabel!.attributedText = show.artist1.getStrikethrough()
+            cell.detailTextLabel!.attributedText = show.venue.getStrikethrough()
+        } else {
+            cell.textLabel!.text = show.artist1
+            cell.detailTextLabel!.text = show.venue
+        }
         
         return cell
     }

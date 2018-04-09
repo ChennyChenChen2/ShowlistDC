@@ -16,15 +16,11 @@ protocol SavableItem {
     func detailVCClass() -> AnyClass
 }
 
-class Show: Object, SavableItem {
+class Show: Object, SavableItem, NSCopying {
     
     dynamic var uniqueKey : String = ""
     private func compoundKeyValue() -> String {
-        var theKey = ""
-        if let theVenuePlus = venuePlus {
-            theKey = "\(artist1), \(venue) \(theVenuePlus) \(getDateString())"
-        }
-        return theKey
+        return "\(artist1), \(venue), \(start), \(venuePlus), \(getDateString())"
     }
                                                   // COLUMN INDECIES:
     dynamic var recommended : Bool = false              // A
@@ -42,13 +38,14 @@ class Show: Object, SavableItem {
     // TODO: MAKE A VENUE POJO?
     dynamic var venue : String = "" {
         didSet {
-//            uniqueKey = compoundKey()
+            venue.sanitizeEncodings()
+            uniqueKey = compoundKeyValue()              // J
         }
-    }                                                   // J
-    dynamic var venuePlus : String? = nil               // K
+    }
+    dynamic var venuePlus : String = ""                 // K
         { didSet {
-               uniqueKey = compoundKeyValue()
-            // TODO: use regex to find h:mm pattern in string and add it to start var, iff start has been set
+            venuePlus.sanitizeEncodings()
+            uniqueKey = compoundKeyValue()
         }
     }
     
@@ -77,13 +74,8 @@ class Show: Object, SavableItem {
         }
     }
     
-    dynamic var start : String = "7 PM"                 // Default: 7 PM... see in Venue+ for details
-        { didSet {
-            // TODO: use regex to find h:mm pattern in venuePlus and add it to start var, iff venuePlus has been set
-        }
-    }
-    dynamic var end : String   = ""                     // Should we even have this?
-    dynamic var ticketfly : String? = nil               // X
+    dynamic var start : String = "9 PM"                // Default: 9 PM... see in Venue+ for details
+    dynamic var ticketfly : String? = nil               // X ... inject into URL with this format: https://www.ticketfly.com/purchase/event/1639796
     dynamic var fb : String? = nil                      // Y
     dynamic var twitter : String? = nil                 // ???
     
@@ -106,7 +98,23 @@ class Show: Object, SavableItem {
             result += ", \(theArtist4)"
         }
         
+        if self.isCancelledShow {
+            result += "-- CANCELLED"
+        } else if self.soldOut {
+            result += "-- SOLD OUT"
+        } else if self.recommended {
+            result += "-- RECOMMENDED!"
+        }
+        
         return result
+    }
+    
+    var isCancelledShow: Bool {
+        if let theCancelledPostponed = self.cancelledPostponed {
+            return theCancelledPostponed.contains("CANCELLED")
+        } else {
+            return false
+        }
     }
 
     func getDateString() -> String {
@@ -136,7 +144,6 @@ class Show: Object, SavableItem {
         savedShow.artist3 = self.artist3
         savedShow.artist4 = self.artist4
         savedShow.start = self.start
-        savedShow.end = self.end
         savedShow.recommended = self.recommended
         savedShow.soldOut = self.soldOut
         savedShow.cancelledPostponed = self.cancelledPostponed
@@ -149,6 +156,27 @@ class Show: Object, SavableItem {
         savedShow.fb = self.fb
         savedShow.twitter = self.twitter
         return savedShow
+    }
+    
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = Show()
+        copy.artist1 = self.artist1
+        copy.artist2 = self.artist2
+        copy.artist3 = self.artist3
+        copy.artist4 = self.artist4
+        copy.start = self.start
+        copy.recommended = self.recommended
+        copy.soldOut = self.soldOut
+        copy.cancelledPostponed = self.cancelledPostponed
+        copy.addedChanged = self.addedChanged
+        copy.comment = self.comment
+        copy.date = self.date
+        copy.venue = self.venue
+        copy.venuePlus = self.venuePlus
+        copy.ticketfly = self.ticketfly
+        copy.fb = self.fb
+        copy.twitter = self.twitter
+        return copy
     }
     
     /*
@@ -184,6 +212,32 @@ extension String {
         }
         if self.contains("</b>") {
             self = self.replacingOccurrences(of: "</b>", with: "")
+        }
+        if self.contains("<s>") {
+            self = self.replacingOccurrences(of: "<s>", with: "")
+        }
+        if self.contains("</s>") {
+            self = self.replacingOccurrences(of: "</s>", with: "")
+        }
+    }
+    
+    func getStrikethrough() -> NSAttributedString {
+        let attributedString: NSMutableAttributedString =  NSMutableAttributedString(string: self)
+        attributedString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributedString.length))
+        return attributedString
+    }
+    
+    func matches(forRegex regex: String) -> [String] {
+        do {
+            let regex = try NSRegularExpression(pattern: regex)
+            let results = regex.matches(in: self,
+                                        range: NSRange(self.startIndex..., in: self))
+            return results.map {
+                String(self[Range($0.range, in: self)!])
+            }
+        } catch let error {
+            print("invalid regex: \(error.localizedDescription)")
+            return []
         }
     }
 }

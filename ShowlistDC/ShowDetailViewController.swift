@@ -14,8 +14,9 @@ class ShowDetailViewController: UIViewController {
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var venueLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var saveShowButton: UIButton!
+    @IBOutlet weak var saveShowButton: UIButton?
     @IBOutlet weak var addToCalendarButton: UIButton!
+    @IBOutlet weak var seeOtherShowsButton: UIButton!
     
     static let storyboardId = "show-detail"
     var show: Show!
@@ -24,27 +25,50 @@ class ShowDetailViewController: UIViewController {
         return Showlist.getSavedShowWithUniqueKey(show.uniqueKey).count > 0
     }
     
+    var venueIsKnown: Bool {
+        return Showlist.getVenuesWithSearchQuery(show.venue).count > 0
+    }
+    
+    var venue: Venue? {
+        var result: Venue? = nil
+        if venueIsKnown {
+            let venues = Showlist.getVenuesWithSearchQuery(show.venue)
+            result = venues[0]
+        }
+        
+        return result
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let formatter = DateFormatter()
         formatter.dateFormat = formatter.defaultDateFormat()
         self.navigationItem.title = "Show Details"
+        
         self.artistLabel.text = "WHO: \(show.getArtistLabelText())"
         self.venueLabel.text = "WHERE: \(show.venue)"
-        self.dateLabel.text = "WHEN: \(formatter.string(from:show.date as Date))"
+        self.dateLabel.text = "WHEN: \(formatter.string(from:show.date as Date)) at \(show.start)"
+        
+        if let navController = self.navigationController, navController.viewControllers.count >= 4 || !venueIsKnown {
+            self.seeOtherShowsButton.removeFromSuperview()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         if shouldShowSaveButton {
             customizeSaveButton()
         } else {
-            self.saveShowButton.removeFromSuperview()
+            self.saveShowButton?.removeFromSuperview()
         }
     }
     
     private func customizeSaveButton() {
         if showIsSaved {
-            self.saveShowButton.setTitle("Unsave this show", for: .normal)
+            self.saveShowButton?.setTitle("Unsave this show", for: .normal)
         } else {
-            self.saveShowButton.setTitle("Save this show", for: .normal)
+            self.saveShowButton?.setTitle("Save this show", for: .normal)
         }
     }
     
@@ -80,5 +104,16 @@ class ShowDetailViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func seeOtherShowsButtonPressed(_ sender: Any) {
+        let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: VenueDetailViewController.storyboardId) as! VenueDetailViewController
+        
+        guard let theVenue = self.venue else { return }
+        nextVC.venue = theVenue
+        if let navController = self.navigationController {
+            navController.show(nextVC, sender: nil)
+        }
+    }
+    
     
 }

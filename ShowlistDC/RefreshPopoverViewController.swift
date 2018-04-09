@@ -14,11 +14,12 @@ class RefreshPopoverViewController: UIViewController {
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var reloadButton: UIButton!
     var rotate: Bool = false
-    let defaultLoadingLabelText = "Ready to reload shows"
     @objc let reader: SpreadsheetReader = SpreadsheetReader.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.loadingLabel.text = SpreadsheetReader.shared.downloadStatusString
         
         updateRefreshButtonToBeEnabled(!reader.isLoadingData)
         
@@ -43,7 +44,7 @@ class RefreshPopoverViewController: UIViewController {
         guard let shouldEnable = note.object as? NSNumber else { return }
         updateRefreshButtonToBeEnabled(shouldEnable.boolValue)
         if shouldEnable.boolValue {
-            self.loadingLabel.text = self.defaultLoadingLabelText
+            self.loadingLabel.text = SpreadsheetReader.shared.downloadStatusString
         }
     }
     
@@ -62,7 +63,7 @@ class RefreshPopoverViewController: UIViewController {
     @IBAction func reloadButtonPressed(_ sender: Any) {
         if !self.reader.isLoadingData {
             updateRefreshButtonToBeEnabled(false)
-            self.reader.generateData()
+            self.reader.generateData(shouldRestart: false)
             NotificationCenter.default.post(name: ReloadConstants.kReloadDidBeginNoteName, object:NSNumber(booleanLiteral: false))
             
             if !rotate {

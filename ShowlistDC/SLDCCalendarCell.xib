@@ -22,7 +22,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyG-Rk-3tP">
-                    <rect key="frame" x="20" y="30" width="10" height="10"/>
+                    <rect key="frame" x="20" y="20" width="10" height="10"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="10" id="byS-ki-R85"/>
@@ -30,21 +30,21 @@
                     </constraints>
                 </view>
                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="foC-02-fGx">
-                    <rect key="frame" x="5" y="5" width="40" height="40"/>
+                    <rect key="frame" x="10" y="10" width="30" height="30"/>
                     <color key="backgroundColor" red="1" green="0.07060657998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="40" id="9Gc-Fb-FXW"/>
-                        <constraint firstAttribute="height" constant="40" id="BnJ-KQ-rHU"/>
+                        <constraint firstAttribute="width" constant="30" id="6ZN-t6-nEX"/>
+                        <constraint firstAttribute="height" constant="30" id="VWb-FX-ydN"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="foC-02-fGx" firstAttribute="centerY" secondItem="kEu-TQ-cMU" secondAttribute="centerY" id="T1A-6K-GTS"/>
+                <constraint firstItem="foC-02-fGx" firstAttribute="centerX" secondItem="kEu-TQ-cMU" secondAttribute="centerX" id="3wY-Ey-a3V"/>
+                <constraint firstItem="gyG-Rk-3tP" firstAttribute="centerY" secondItem="kEu-TQ-cMU" secondAttribute="centerY" id="83l-JH-jes"/>
                 <constraint firstItem="yFn-hT-b7A" firstAttribute="leading" secondItem="kEu-TQ-cMU" secondAttribute="leading" constant="1" id="UoD-Y4-IOG"/>
+                <constraint firstItem="foC-02-fGx" firstAttribute="centerY" secondItem="kEu-TQ-cMU" secondAttribute="centerY" id="WFl-yj-Rq8"/>
                 <constraint firstItem="yFn-hT-b7A" firstAttribute="top" secondItem="kEu-TQ-cMU" secondAttribute="top" constant="1" id="lPO-bx-tYY"/>
-                <constraint firstAttribute="bottom" secondItem="gyG-Rk-3tP" secondAttribute="bottom" constant="10" id="vOb-RR-CF2"/>
-                <constraint firstItem="foC-02-fGx" firstAttribute="centerX" secondItem="kEu-TQ-cMU" secondAttribute="centerX" id="zpw-CT-Sf5"/>
                 <constraint firstItem="gyG-Rk-3tP" firstAttribute="centerX" secondItem="kEu-TQ-cMU" secondAttribute="centerX" id="zr8-FZ-GU2"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

@@ -15,10 +15,11 @@ class VenueDetailViewController: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var saveVenueButton: UIButton!
+    @IBOutlet weak var saveVenueButton: UIButton?
     @IBOutlet weak var fbButton: UIButton!
     @IBOutlet weak var instagramButton: UIButton!
     @IBOutlet weak var twitterButton: UIButton!
+    @IBOutlet weak var showsAtVenueButton: UIButton!
     
     static let storyboardId = "venue-detail"
     
@@ -27,6 +28,11 @@ class VenueDetailViewController: UIViewController {
     
     var venueIsSaved: Bool {
         return Showlist.getSavedVenuesWithName(self.venue.name).count > 0
+    }
+    
+    var venueHasShows: Bool {
+        return Showlist.getShowsWithSearchQuery(self.venue.name).count > 0 ||
+        Showlist.getShowsWithSearchQuery(self.venue.address).count > 0
     }
     
     override func viewDidLoad() {
@@ -60,10 +66,18 @@ class VenueDetailViewController: UIViewController {
             self.instagramButton.removeFromSuperview()
         }
         
+        if !venueHasShows {
+            self.showsAtVenueButton.removeFromSuperview()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         if shouldShowSaveButton {
             self.customizeSaveButton()
         } else {
-            self.saveVenueButton.removeFromSuperview()
+            self.saveVenueButton?.removeFromSuperview()
         }
     }
     
@@ -93,9 +107,9 @@ class VenueDetailViewController: UIViewController {
     
     private func customizeSaveButton() {
         if venueIsSaved {
-            self.saveVenueButton.setTitle("Unsave this venue", for: .normal)
+            self.saveVenueButton?.setTitle("Unsave venue", for: .normal)
         } else {
-            self.saveVenueButton.setTitle("Save this venue", for: .normal)
+            self.saveVenueButton?.setTitle("Save venue", for: .normal)
         }
     }
     
@@ -106,6 +120,16 @@ class VenueDetailViewController: UIViewController {
             Showlist.save(self.venue)
         }
         self.customizeSaveButton()
+    }
+    
+    @IBAction func showsAtVenueButtonPressed(_ sender: Any) {
+        let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ShowsInVenueTableViewController.storyboardId) as! ShowsInVenueTableViewController
+        
+        nextVC.venue = self.venue
+        if let navController = self.navigationController {
+            navController.show(nextVC, sender: nil)
+        }
+        
     }
 }
 

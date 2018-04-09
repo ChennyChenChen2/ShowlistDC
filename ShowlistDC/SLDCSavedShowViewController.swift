@@ -14,12 +14,25 @@ class SLDCSavedShowViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let rightBarButtonItem = UIBarButtonItem(title: "Clear All", style: .plain, target: self, action: #selector(unsaveAllShows))
+        let rightBarButtonItem = UIBarButtonItem(title: "Clear All", style: .plain, target: self, action: #selector(clearAllButtonPressed))
         rightBarButtonItem.title = "Clear All"
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
-    func unsaveAllShows() {
+    func clearAllButtonPressed() {
+        if savedShows.count > 0 {
+            let alertController = UIAlertController(title: "Clear all saved shows?", message: "Are you sure?", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Yes", style: .destructive) { (action) in
+                self.unsaveAllShows()
+            }
+            let noAction = UIAlertAction(title: "No", style: .destructive) { (action) in }
+            alertController.addAction(alertAction)
+            alertController.addAction(noAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    private func unsaveAllShows() {
         self.savedShows = []
         Showlist.unsaveAllShows()
         self.tableView.reloadData()

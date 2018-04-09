@@ -20,7 +20,7 @@ class StartupViewController: UIViewController {
         super.viewDidAppear(animated)
         self.activityIndicator.startAnimating()
         let reader = SpreadsheetReader.shared
-        reader.generateData()
+        reader.generateData(shouldRestart: true)
         
         self.activityIndicator.stopAnimating()
         
