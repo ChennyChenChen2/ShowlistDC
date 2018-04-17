@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Npj-An-KmH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Npj-An-KmH">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -231,21 +230,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="53U-H2-Fsv">
-                                <rect key="frame" x="7" y="53" width="360" height="355"/>
+                                <rect key="frame" x="7" y="53" width="360" height="302.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="biL-nE-WyN">
-                                        <rect key="frame" x="20" y="20" width="320" height="315"/>
+                                        <rect key="frame" x="20" y="20" width="320" height="262.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShowlistDC-logo" translatesAutoresizingMaskIntoConstraints="NO" id="fBv-ua-MjW">
-                                                <rect key="frame" x="74" y="0.0" width="172.5" height="92"/>
+                                                <rect key="frame" x="72.5" y="0.0" width="175" height="92"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="175" id="HHr-9D-rXo"/>
-                                                    <constraint firstAttribute="width" secondItem="fBv-ua-MjW" secondAttribute="height" multiplier="15:8" id="ex4-e6-yeg"/>
+                                                    <constraint firstAttribute="height" constant="92" id="dww-cN-dI6"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZx-cV-xrB">
-                                                <rect key="frame" x="5" y="102" width="310" height="178"/>
+                                                <rect key="frame" x="5" y="102" width="310" height="125.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="178" id="uCm-Pt-OXM"/>
                                                 </constraints>
@@ -259,7 +258,7 @@ Feel free to browse the app in the meantime!</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEF-mp-Lnl">
-                                                <rect key="frame" x="102.5" y="290" width="115" height="25"/>
+                                                <rect key="frame" x="102.5" y="237.5" width="115" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="115" id="Olq-kd-cvI"/>
                                                     <constraint firstAttribute="height" constant="25" id="yJH-aX-GaS"/>
@@ -320,19 +319,19 @@ Feel free to browse the app in the meantime!</string>
                                 <rect key="frame" x="57" y="72" width="260" height="276.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUU-uZ-rS8">
-                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="87.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Venue Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YK2-lb-oWd">
-                                        <rect key="frame" x="0.0" y="45.5" width="0.0" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="45.5" width="94" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXr-V9-j0r">
-                                        <rect key="frame" x="0.0" y="91" width="0.0" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="91" width="82" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -755,30 +754,38 @@ Feel free to browse the app in the meantime!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hym-g4-6YU">
-                                <rect key="frame" x="16" y="30" width="339" height="64"/>
+                                <rect key="frame" x="16" y="30" width="339" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TK1-X3-g7x">
-                                        <rect key="frame" x="0.0" y="0.0" width="339" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDR-td-1Dk">
-                                        <rect key="frame" x="0.0" y="23" width="339" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UMK-Le-330">
-                                        <rect key="frame" x="0.0" y="46" width="339" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Name" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eN1-Oi-U0g">
+                                        <rect key="frame" x="0.0" y="0.0" width="339" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Address" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7Qo-fM-iah">
+                                        <rect key="frame" x="0.0" y="35" width="339" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="eCq-gh-fYR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="address-line1"/>
+                                        <dataDetectorType key="dataDetectorTypes" address="YES"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Phone" translatesAutoresizingMaskIntoConstraints="NO" id="QnH-yX-eXX">
+                                        <rect key="frame" x="0.0" y="70" width="339" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="elF-4B-e1x"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="tel"/>
+                                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES"/>
+                                    </textView>
                                 </subviews>
                             </stackView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ji3-nW-c99">
-                                <rect key="frame" x="16" y="104" width="343" height="428"/>
+                                <rect key="frame" x="16" y="140" width="343" height="392"/>
                             </mapView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SOv-bo-9V3">
                                 <rect key="frame" x="30" y="617" width="315" height="30"/>
@@ -859,12 +866,12 @@ Feel free to browse the app in the meantime!</string>
                         <viewLayoutGuide key="safeArea" id="aj2-4B-g3i"/>
                     </view>
                     <connections>
-                        <outlet property="addressLabel" destination="iDR-td-1Dk" id="LQs-Eq-Ek5"/>
+                        <outlet property="addressLabel" destination="7Qo-fM-iah" id="cGK-q1-hQt"/>
                         <outlet property="fbButton" destination="AaA-Sl-IrW" id="0DG-GR-3P5"/>
                         <outlet property="instagramButton" destination="fTm-3G-4zr" id="thX-oT-s2d"/>
                         <outlet property="mapView" destination="Ji3-nW-c99" id="1jr-vt-HJE"/>
-                        <outlet property="nameLabel" destination="TK1-X3-g7x" id="Dwg-PH-p25"/>
-                        <outlet property="phoneLabel" destination="UMK-Le-330" id="PT1-rA-Kjs"/>
+                        <outlet property="nameLabel" destination="eN1-Oi-U0g" id="DsT-my-8JJ"/>
+                        <outlet property="phoneLabel" destination="QnH-yX-eXX" id="HUu-WU-gjm"/>
                         <outlet property="saveVenueButton" destination="LRT-sZ-qDV" id="ZP9-PD-8at"/>
                         <outlet property="showsAtVenueButton" destination="ktM-i4-K70" id="UTP-xq-TJc"/>
                         <outlet property="twitterButton" destination="jfr-me-BIp" id="oCq-jU-1Ty"/>
@@ -882,12 +889,19 @@ Feel free to browse the app in the meantime!</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Adh-TS-49b">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Adh-TS-49b">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">This app is in collaboration with http://www.showlistdc.com. It was created as a way to keep track of shows in the greater DC area and Baltimore. It is intended for informational purposes, not as an endorsement. If you'd like suggestions of shows to attend, check out the recommended page at showlistdc.com.  If a show you're involved with (as a band, booker, or venue) isn't on this list and you'd like it to be, send an email to showlistdc [at] gmail.com. Feel free to add that email address to your amailing lists as well.  House shows will be listed here if we hear directly from someone in an official capacity (i.e., someone who lives at the house) that he/she wants the show information on the internet or if we see it publicized elsewhere (other sites on the web or flyers passed out at clubs). If you'd like an address for a house show removed, just send an email to: showlistdc [at] gmail.com</string>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">This app is in collaboration with http://www.showlistdc.com. It was created as a way to keep track of shows in the greater DC area and Baltimore. It is intended for informational purposes, not as an endorsement. If you'd like suggestions of shows to attend, check out the recommended page at www.showlistdc.com.  If a show you're involved with (as a band, booker, or venue) isn't on this list and you'd like it to be, send an email to showlistdc@gmail.com. Feel free to add that email address to your amailing lists as well.  House shows will be listed here if we hear directly from someone in an official capacity (i.e., someone who lives at the house) that he/she wants the show information on the internet or if we see it publicized elsewhere (other sites on the web or flyers passed out at clubs). If you'd like an address for a house show removed, just send an email to: showlistdc@gmail.com</string>
+                                        <attributes>
+                                            <font key="NSFont" size="17" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="url"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
                         </subviews>

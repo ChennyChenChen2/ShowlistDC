@@ -11,9 +11,9 @@ import MapKit
 
 class VenueDetailViewController: UIViewController {
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var nameLabel: UITextView!
+    @IBOutlet weak var addressLabel: UITextView!
+    @IBOutlet weak var phoneLabel: UITextView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var saveVenueButton: UIButton?
     @IBOutlet weak var fbButton: UIButton!
