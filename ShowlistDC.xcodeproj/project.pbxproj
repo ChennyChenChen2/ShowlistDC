@@ -39,7 +39,6 @@
 		87D6ADB41D80F550008CE838 /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6ADB01D80F550008CE838 /* StartupViewController.swift */; };
 		87D6ADB51D80F550008CE838 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6ADB11D80F550008CE838 /* TabBarController.swift */; };
 		87D6ADC91D80FDB1008CE838 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 87D6ADC81D80FDB1008CE838 /* libz.tbd */; };
-		87D6ADDA1D8102E1008CE838 /* libXlsxReaderWriter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87D6ADD31D81027D008CE838 /* libXlsxReaderWriter.a */; };
 		87E07D4D2069DBCF00E34CEB /* VenueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E07D4C2069DBCF00E34CEB /* VenueDetailViewController.swift */; };
 		87E46D0E1F9CDD1700126374 /* SLDCAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E46D0D1F9CDD1700126374 /* SLDCAboutViewController.swift */; };
 		87E583571DAC9346005A5D75 /* SLDCCalendarHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E583561DAC9346005A5D75 /* SLDCCalendarHeader.xib */; };
@@ -61,34 +60,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 87D6AD791D80F463008CE838;
 			remoteInfo = ShowlistDC;
-		};
-		87D6ADD21D81027D008CE838 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 87D6ADCB1D81027D008CE838 /* XlsxReaderWriter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 45B6E23A1A148F7500288A78;
-			remoteInfo = XlsxReaderWriter;
-		};
-		87D6ADD41D81027D008CE838 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 87D6ADCB1D81027D008CE838 /* XlsxReaderWriter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 45B6E2451A148F7500288A78;
-			remoteInfo = XlsxReaderWriterTests;
-		};
-		87D6ADD61D81027D008CE838 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 87D6ADCB1D81027D008CE838 /* XlsxReaderWriter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 22156D581C46B42500BB5779;
-			remoteInfo = "XlsxReaderWriter Mac";
-		};
-		87D6ADD81D8102D4008CE838 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 87D6ADCB1D81027D008CE838 /* XlsxReaderWriter.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 45B6E2391A148F7500288A78;
-			remoteInfo = XlsxReaderWriter;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -134,7 +105,6 @@
 		87D6ADB11D80F550008CE838 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		87D6ADC81D80FDB1008CE838 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		87D6ADCA1D80FDDC008CE838 /* ShowlistDC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShowlistDC-Bridging-Header.h"; sourceTree = "<group>"; };
-		87D6ADCB1D81027D008CE838 /* XlsxReaderWriter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = XlsxReaderWriter.xcodeproj; path = XlsxReaderWriter/XlsxReaderWriter.xcodeproj; sourceTree = "<group>"; };
 		87E07D4C2069DBCF00E34CEB /* VenueDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VenueDetailViewController.swift; path = ShowlistDC/VenueDetailViewController.swift; sourceTree = "<group>"; };
 		87E46D0D1F9CDD1700126374 /* SLDCAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLDCAboutViewController.swift; sourceTree = "<group>"; };
 		87E583561DAC9346005A5D75 /* SLDCCalendarHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SLDCCalendarHeader.xib; sourceTree = "<group>"; };
@@ -148,7 +118,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				870AAB6B1FC9C6D6005C6037 /* QuartzCore.framework in Frameworks */,
-				87D6ADDA1D8102E1008CE838 /* libXlsxReaderWriter.a in Frameworks */,
 				87D6ADC91D80FDB1008CE838 /* libz.tbd in Frameworks */,
 				C99A4B736E3FB77500AEC59F /* Pods_ShowlistDC.framework in Frameworks */,
 			);
@@ -277,7 +246,6 @@
 			isa = PBXGroup;
 			children = (
 				87C47DC51D8109B500E88C6D /* SLDC_For_Jon.xlsx */,
-				87D6ADCB1D81027D008CE838 /* XlsxReaderWriter.xcodeproj */,
 				87D6ADC81D80FDB1008CE838 /* libz.tbd */,
 				87D6AD7C1D80F463008CE838 /* ShowlistDC */,
 				87C5FA571DEBCE2100E97733 /* Data */,
@@ -339,16 +307,6 @@
 			path = ShowlistDCUITests;
 			sourceTree = "<group>";
 		};
-		87D6ADCC1D81027D008CE838 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				87D6ADD31D81027D008CE838 /* libXlsxReaderWriter.a */,
-				87D6ADD51D81027D008CE838 /* XlsxReaderWriterTests.xctest */,
-				87D6ADD71D81027D008CE838 /* XlsxReaderWriter.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -366,7 +324,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				87D6ADD91D8102D4008CE838 /* PBXTargetDependency */,
 			);
 			name = ShowlistDC;
 			productName = ShowlistDC;
@@ -447,12 +404,6 @@
 			mainGroup = 87D6AD711D80F463008CE838;
 			productRefGroup = 87D6AD7B1D80F463008CE838 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 87D6ADCC1D81027D008CE838 /* Products */;
-					ProjectRef = 87D6ADCB1D81027D008CE838 /* XlsxReaderWriter.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				87D6AD791D80F463008CE838 /* ShowlistDC */,
@@ -461,30 +412,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		87D6ADD31D81027D008CE838 /* libXlsxReaderWriter.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libXlsxReaderWriter.a;
-			remoteRef = 87D6ADD21D81027D008CE838 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		87D6ADD51D81027D008CE838 /* XlsxReaderWriterTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = XlsxReaderWriterTests.xctest;
-			remoteRef = 87D6ADD41D81027D008CE838 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		87D6ADD71D81027D008CE838 /* XlsxReaderWriter.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = XlsxReaderWriter.framework;
-			remoteRef = 87D6ADD61D81027D008CE838 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		87D6AD781D80F463008CE838 /* Resources */ = {
@@ -528,6 +455,9 @@
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SSZipArchive/SSZipArchive.framework",
+				"${BUILT_PRODUCTS_DIR}/XMLDictionary/XMLDictionary.framework",
+				"${BUILT_PRODUCTS_DIR}/XlsxReaderWriter/XlsxReaderWriter.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -535,6 +465,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSZipArchive.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XMLDictionary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XlsxReaderWriter.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -638,11 +571,6 @@
 			isa = PBXTargetDependency;
 			target = 87D6AD791D80F463008CE838 /* ShowlistDC */;
 			targetProxy = 87D6AD9D1D80F463008CE838 /* PBXContainerItemProxy */;
-		};
-		87D6ADD91D8102D4008CE838 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = XlsxReaderWriter;
-			targetProxy = 87D6ADD81D8102D4008CE838 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

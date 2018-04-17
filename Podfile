@@ -5,6 +5,7 @@ use_frameworks!
 	pod 'JTAppleCalendar', '~> 6.1.6'
 	pod 'RealmSwift'
 	pod 'FLEX', :configurations => ['Debug']
+	pod 'XlsxReaderWriter'
 	post_install do |installer|
   		installer.pods_project.targets.each do |target|
     		target.build_configurations.each do |config|
