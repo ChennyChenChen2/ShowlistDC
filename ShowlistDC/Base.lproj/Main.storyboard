@@ -316,7 +316,7 @@ Feel free to browse the app in the meantime!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Pae-us-fhF">
-                                <rect key="frame" x="57" y="72" width="260" height="276.5"/>
+                                <rect key="frame" x="57" y="72" width="260" height="331.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUU-uZ-rS8">
                                         <rect key="frame" x="0.0" y="0.0" width="87.5" height="20.5"/>
@@ -357,6 +357,13 @@ Feel free to browse the app in the meantime!</string>
                                             <action selector="seeOtherShowsButtonPressed:" destination="aHp-g8-GwD" eventType="touchUpInside" id="UfN-49-2l8"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXI-0u-aNr">
+                                        <rect key="frame" x="0.0" y="301.5" width="117" height="30"/>
+                                        <state key="normal" title="View on Ticketfly"/>
+                                        <connections>
+                                            <action selector="ticketflyButtonPressed:" destination="aHp-g8-GwD" eventType="touchUpInside" id="ECS-88-B0A"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="Tla-Ck-3u8"/>
@@ -377,6 +384,7 @@ Feel free to browse the app in the meantime!</string>
                         <outlet property="saveShowButton" destination="nD8-8U-qC8" id="aSx-0d-qaA"/>
                         <outlet property="seeOtherShowsButton" destination="RM3-cX-o7g" id="sf1-tB-xMO"/>
                         <outlet property="venueLabel" destination="YK2-lb-oWd" id="h6V-VV-Rgg"/>
+                        <outlet property="viewOnTicketflyButton" destination="dXI-0u-aNr" id="kQg-9t-6Nt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HeL-oT-RTt" userLabel="First Responder" sceneMemberID="firstResponder"/>

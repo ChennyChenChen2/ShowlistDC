@@ -17,6 +17,7 @@ class ShowDetailViewController: UIViewController {
     @IBOutlet weak var saveShowButton: UIButton?
     @IBOutlet weak var addToCalendarButton: UIButton!
     @IBOutlet weak var seeOtherShowsButton: UIButton!
+    @IBOutlet weak var viewOnTicketflyButton: UIButton!
     
     static let storyboardId = "show-detail"
     var show: Show!
@@ -49,6 +50,10 @@ class ShowDetailViewController: UIViewController {
         self.venueLabel.text = "WHERE: \(show.venue)"
         self.dateLabel.text = "WHEN: \(formatter.string(from:show.date as Date)) at \(show.start)"
         
+        if self.show.ticketfly == nil {
+            self.viewOnTicketflyButton.removeFromSuperview()
+        }
+        
         if let navController = self.navigationController, navController.viewControllers.count >= 4 || !venueIsKnown {
             self.seeOtherShowsButton.removeFromSuperview()
         }
@@ -69,6 +74,13 @@ class ShowDetailViewController: UIViewController {
             self.saveShowButton?.setTitle("Unsave this show", for: .normal)
         } else {
             self.saveShowButton?.setTitle("Save this show", for: .normal)
+        }
+    }
+    
+    @IBAction func ticketflyButtonPressed(_ sender: Any) {
+        
+        if let ticketflyId : String = self.show.ticketfly, let url = URL(string: "https://www.ticketfly.com/event/\(ticketflyId)") {
+            UIApplication.shared.openURL(url)
         }
     }
     
