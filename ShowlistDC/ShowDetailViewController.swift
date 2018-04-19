@@ -93,16 +93,29 @@ class ShowDetailViewController: UIViewController {
         customizeSaveButton()
     }
     
+    private func getStartDate() -> Date {
+        let showDate = self.show.date as Date
+        let showStart = self.show.start
+        let calendar = Calendar.current
+        let dateComponents = calendar.dateComponents([.hour, .minute, .day, .month, .year], from: showDate)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
+        
+        
+        return showDate
+    }
+    
     @IBAction func addToCalButtonPressed(_ sender: Any) {
         let store = EKEventStore()
-        let showDate = self.show.date as Date
+        let startDate = getStartDate()
+        
         store.requestAccess(to: .event) {(granted, error) in
             if !granted { return }
             let event = EKEvent(eventStore: store)
             event.title = self.artistLabel.text!
-            event.startDate = showDate
+            event.startDate = startDate
             let calendar = Calendar.current
-            let endDate = calendar.date(byAdding: .minute, value: 3*60, to: showDate)
+            let endDate = calendar.date(byAdding: .minute, value: 3*60, to: startDate)
             event.endDate = endDate!
             event.calendar = store.defaultCalendarForNewEvents
             do {

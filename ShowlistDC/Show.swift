@@ -75,6 +75,11 @@ class Show: Object, SavableItem, NSCopying {
     }
     
     dynamic var start : String = "9 PM"                // Default: 9 PM... see in Venue+ for details
+        { didSet {
+            start = start.trimmingCharacters(in: .whitespaces)
+        }
+        
+    }
     dynamic var ticketfly : String? = nil               // X ... inject into URL with this format: https://www.ticketfly.com/purchase/event/1639796
     dynamic var fb : String? = nil                      // Y
     dynamic var twitter : String? = nil                 // ???
