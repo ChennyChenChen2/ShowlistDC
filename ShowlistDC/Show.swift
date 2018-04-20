@@ -20,7 +20,7 @@ class Show: Object, SavableItem, NSCopying {
     
     dynamic var uniqueKey : String = ""
     private func compoundKeyValue() -> String {
-        return "\(artist1), \(venue), \(start), \(venuePlus), \(getDateString())"
+        return "\(artist1), \(venue), \(start), \(getDateString())"
     }
                                                   // COLUMN INDECIES:
     dynamic var recommended : Bool = false              // A

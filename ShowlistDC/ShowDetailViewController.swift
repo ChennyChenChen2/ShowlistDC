@@ -93,30 +93,55 @@ class ShowDetailViewController: UIViewController {
         customizeSaveButton()
     }
     
-    private func getStartDate() -> Date {
+    private func getStartDate() -> Date? {
         let showDate = self.show.date as Date
         let showStart = self.show.start
+        
         let calendar = Calendar.current
-        let dateComponents = calendar.dateComponents([.hour, .minute, .day, .month, .year], from: showDate)
+        var dateComponents = calendar.dateComponents([.hour, .minute, .day, .month, .year], from: showDate)
+        
         let formatter = DateFormatter()
-        formatter.dateFormat = "h:mm a"
+        if showStart.contains(":") {
+            formatter.dateFormat = "h:mm a"
+        } else {
+            formatter.dateFormat = "h a"
+        }
         
+        formatter.locale = Locale.current
+        guard let showStartDate = formatter.date(from: showStart) else {
+            print("HERE!")
+            return nil
+        }
+        let showStartComponents = calendar.dateComponents([.hour, .minute], from: showStartDate)
+        dateComponents.setValue(showStartComponents.value(for: .hour), for: .hour)
+        dateComponents.setValue(showStartComponents.value(for: .minute), for: .minute)
+        let resultDate = calendar.date(from: dateComponents)
         
-        return showDate
+        return resultDate
     }
     
     @IBAction func addToCalButtonPressed(_ sender: Any) {
         let store = EKEventStore()
-        let startDate = getStartDate()
+        guard let startDate = getStartDate() else {
+            let alertController = UIAlertController(title: "Error getting show time", message: "Something went wrong", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
+        
+        let title = self.show.getArtistLabelText()
+        let location = self.show.venue
         
         store.requestAccess(to: .event) {(granted, error) in
             if !granted { return }
             let event = EKEvent(eventStore: store)
-            event.title = self.artistLabel.text!
+            event.title = title
             event.startDate = startDate
             let calendar = Calendar.current
-            let endDate = calendar.date(byAdding: .minute, value: 3*60, to: startDate)
+            let endDate = calendar.date(byAdding: .minute, value: 2*60, to: startDate)
             event.endDate = endDate!
+            event.location = location
             event.calendar = store.defaultCalendarForNewEvents
             do {
                 try store.save(event, span: .thisEvent, commit: true)
@@ -126,6 +151,10 @@ class ShowDetailViewController: UIViewController {
                 self.present(alertController, animated: true, completion: nil)
             } catch {
                 // Display error to user
+                let alertController = UIAlertController(title: "Error saving show", message: "Something went wrong", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
             }
         }
     }
