@@ -267,10 +267,10 @@ struct ReloadConstants {
             guard let cellValue = cell.stringValue() else { return }
             
             // Case 1)
-            if cellValue.contains("Late show") || cellValue.contains("Late Show") || cellValue.contains("Early show") || cellValue.contains("Early Show") {
+            if cellValue.lowercased().contains("late show") || cellValue.lowercased().contains("early show") {
                 show.venuePlus = cellValue
                 show.start = getLateEarlyTimeFromVenuePlus(show: show)
-            } else if cellValue.contains("Two shows") { // Case 2)
+            } else if cellValue.lowercased().contains("two shows") { // Case 2)
                 show.venuePlus = cellValue
                 let timeMatches = getTwoShowTimesFromVenuePlus(show: show)
                 if timeMatches.count > 0 {

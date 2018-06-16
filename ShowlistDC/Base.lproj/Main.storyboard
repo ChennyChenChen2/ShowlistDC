@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Npj-An-KmH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Npj-An-KmH">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -316,22 +316,22 @@ Feel free to browse the app in the meantime!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Pae-us-fhF">
-                                <rect key="frame" x="57" y="72" width="260" height="331.5"/>
+                                <rect key="frame" x="57" y="72" width="260" height="417.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUU-uZ-rS8">
-                                        <rect key="frame" x="0.0" y="0.0" width="87.5" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Venue Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YK2-lb-oWd">
-                                        <rect key="frame" x="0.0" y="45.5" width="94" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="45.5" width="0.0" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXr-V9-j0r">
-                                        <rect key="frame" x="0.0" y="91" width="82" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="91" width="0.0" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -364,6 +364,12 @@ Feel free to browse the app in the meantime!</string>
                                             <action selector="ticketflyButtonPressed:" destination="aHp-g8-GwD" eventType="touchUpInside" id="ECS-88-B0A"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*Show times may vary. Please consult with venue for official start times." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWH-Sl-PDX">
+                                        <rect key="frame" x="0.0" y="356.5" width="0.0" height="61"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="Tla-Ck-3u8"/>
@@ -577,16 +583,16 @@ Feel free to browse the app in the meantime!</string>
                                 <rect key="frame" x="16" y="94" width="354" height="391.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Showlist DC:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FWd-1n-ABa">
-                                        <rect key="frame" x="0.0" y="0.0" width="97" height="25.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="97" height="43"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ok5-cw-nhx">
-                                        <rect key="frame" x="0.0" y="40.5" width="213" height="26"/>
+                                        <rect key="frame" x="0.0" y="58" width="213" height="43"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wk7-5i-Tnr">
-                                                <rect key="frame" x="0.0" y="0.0" width="56" height="26"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="56" height="43"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="- Email: ">
                                                         <attributes>
@@ -597,7 +603,7 @@ Feel free to browse the app in the meantime!</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q2L-tz-2SS">
-                                                <rect key="frame" x="56" y="0.0" width="157" height="26"/>
+                                                <rect key="frame" x="56" y="0.0" width="157" height="43"/>
                                                 <state key="normal" title="showlistdc@gmail.com"/>
                                                 <connections>
                                                     <action selector="emailPressed:" destination="vsy-nE-moX" eventType="touchUpInside" id="i22-UG-6AI"/>
@@ -606,10 +612,10 @@ Feel free to browse the app in the meantime!</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="ozp-6w-EKo">
-                                        <rect key="frame" x="0.0" y="81.5" width="354" height="25.5"/>
+                                        <rect key="frame" x="0.0" y="116" width="354" height="43"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lTY-Ja-qU4">
-                                                <rect key="frame" x="0.0" y="0.0" width="153" height="25.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="153" height="43"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="- Twitter: @showlistdc">
                                                         <attributes>
@@ -620,7 +626,7 @@ Feel free to browse the app in the meantime!</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oqg-DJ-bVL">
-                                                <rect key="frame" x="156" y="0.0" width="198" height="25.5"/>
+                                                <rect key="frame" x="156" y="0.0" width="198" height="43"/>
                                                 <state key="normal" title="https://twitter.com/showlistdc" image="Twitter"/>
                                                 <connections>
                                                     <action selector="socialMediaButtonPressed:" destination="vsy-nE-moX" eventType="touchUpInside" id="oah-fq-eT9"/>
@@ -629,16 +635,16 @@ Feel free to browse the app in the meantime!</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="kok-Mk-Pdc">
-                                        <rect key="frame" x="0.0" y="122" width="354" height="25.5"/>
+                                        <rect key="frame" x="0.0" y="174" width="354" height="43.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- &quot;like&quot; us on Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJ2-TJ-mVQ">
-                                                <rect key="frame" x="0.0" y="0.0" width="158.5" height="25.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="158.5" height="43.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iaN-7r-1hs">
-                                                <rect key="frame" x="161.5" y="0.0" width="192.5" height="25.5"/>
+                                                <rect key="frame" x="161.5" y="0.0" width="192.5" height="43.5"/>
                                                 <state key="normal" title="https://www.facebook.com/showlistdc/" image="Facebook"/>
                                                 <connections>
                                                     <action selector="socialMediaButtonPressed:" destination="vsy-nE-moX" eventType="touchUpInside" id="rQC-ZD-bUl"/>
@@ -646,66 +652,23 @@ Feel free to browse the app in the meantime!</string>
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Catherine Lewis (Webmaster):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yA-3B-zEN">
-                                        <rect key="frame" x="0.0" y="162.5" width="231" height="26"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="G21-Bm-mG8">
-                                        <rect key="frame" x="0.0" y="203.5" width="354" height="25.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Twitter: @autumnshades" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKF-jb-DqD">
-                                                <rect key="frame" x="0.0" y="0.0" width="181" height="25.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pew-6c-ELY">
-                                                <rect key="frame" x="184" y="0.0" width="170" height="25.5"/>
-                                                <state key="normal" title="https://twitter.com/autumnshades" image="Twitter"/>
-                                                <connections>
-                                                    <action selector="socialMediaButtonPressed:" destination="vsy-nE-moX" eventType="touchUpInside" id="fYi-yX-kNt"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dla-VL-r4x">
-                                        <rect key="frame" x="0.0" y="244" width="313.5" height="25.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Freelance writing: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CyJ-0f-kQT">
-                                                <rect key="frame" x="0.0" y="0.0" width="136.5" height="25.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afp-5E-bBX">
-                                                <rect key="frame" x="136.5" y="0.0" width="177" height="25.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <state key="normal" title="http://autumnshades.com"/>
-                                                <connections>
-                                                    <action selector="socialMediaButtonPressed:" destination="vsy-nE-moX" eventType="touchUpInside" id="a33-r9-bcq"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jonathan Chen (Developer):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLa-i1-ls4">
-                                        <rect key="frame" x="0.0" y="284.5" width="215" height="25.5"/>
+                                        <rect key="frame" x="0.0" y="232.5" width="215" height="43"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="jiR-5S-pO1">
-                                        <rect key="frame" x="0.0" y="325" width="216" height="26"/>
+                                        <rect key="frame" x="0.0" y="290.5" width="216" height="43"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Email: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scH-HV-ZNZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="56" height="26"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="56" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B45-RE-clq">
-                                                <rect key="frame" x="59" y="0.0" width="157" height="26"/>
+                                                <rect key="frame" x="59" y="0.0" width="157" height="43"/>
                                                 <state key="normal" title="jonchen42@gmail.com"/>
                                                 <connections>
                                                     <action selector="emailPressed:" destination="vsy-nE-moX" eventType="touchUpInside" id="kVN-sZ-JU9"/>
@@ -714,10 +677,10 @@ Feel free to browse the app in the meantime!</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="dib-wY-pSB">
-                                        <rect key="frame" x="0.0" y="366" width="210.5" height="25.5"/>
+                                        <rect key="frame" x="0.0" y="348.5" width="210.5" height="43"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzM-2z-d6J">
-                                                <rect key="frame" x="0.0" y="0.0" width="70.5" height="25.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="70.5" height="43"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="- Website:">
                                                         <attributes>
@@ -728,7 +691,7 @@ Feel free to browse the app in the meantime!</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZS-98-2P8">
-                                                <rect key="frame" x="73.5" y="0.0" width="137" height="25.5"/>
+                                                <rect key="frame" x="73.5" y="0.0" width="137" height="43"/>
                                                 <state key="normal" title="https://jon-chen.net"/>
                                                 <connections>
                                                     <action selector="socialMediaButtonPressed:" destination="vsy-nE-moX" eventType="touchUpInside" id="QUK-A5-tEr"/>

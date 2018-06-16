@@ -74,7 +74,7 @@ class Show: Object, SavableItem, NSCopying {
         }
     }
     
-    dynamic var start : String = "9 PM"                // Default: 9 PM... see in Venue+ for details
+    dynamic var start : String = "8 PM"                // Default: 8 PM... see in Venue+ for details
         { didSet {
             start = start.trimmingCharacters(in: .whitespaces)
         }
