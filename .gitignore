@@ -1,5 +1,7 @@
 ShowlistDC.xcworkspace/*
 ShowlistDC.xcworkspace
+*.xcworkspace*
+ShowlistDC.xcworkspace/xcuserdata
 .DS_Store
 Pods/
 Podfile.lock

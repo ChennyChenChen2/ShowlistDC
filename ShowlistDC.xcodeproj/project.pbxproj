@@ -26,7 +26,6 @@
 		877154C61F37DBB300B4119F /* HalfResizingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877154C51F37DBB300B4119F /* HalfResizingTableViewCell.swift */; };
 		877C221C1DEFDAEC00F49A10 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877C221B1DEFDAEC00F49A10 /* Venue.swift */; };
 		8791E22D1D9219C100EB4BBA /* SLDCDayListingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791E22C1D9219C100EB4BBA /* SLDCDayListingsTableView.swift */; };
-		87C47DC61D8109B500E88C6D /* SLDC_For_Jon.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = 87C47DC51D8109B500E88C6D /* SLDC_For_Jon.xlsx */; };
 		87C5FA5B1DEBD50C00E97733 /* Showlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FA5A1DEBD50C00E97733 /* Showlist.swift */; };
 		87D6AD7E1D80F463008CE838 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6AD7D1D80F463008CE838 /* AppDelegate.swift */; };
 		87D6AD831D80F463008CE838 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87D6AD811D80F463008CE838 /* Main.storyboard */; };
@@ -43,6 +42,7 @@
 		87E46D0E1F9CDD1700126374 /* SLDCAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E46D0D1F9CDD1700126374 /* SLDCAboutViewController.swift */; };
 		87E583571DAC9346005A5D75 /* SLDCCalendarHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E583561DAC9346005A5D75 /* SLDCCalendarHeader.xib */; };
 		87E5835B1DAC9698005A5D75 /* SLDCCalendarHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E5835A1DAC9698005A5D75 /* SLDCCalendarHeader.swift */; };
+		87EDB3E8210D1BEB00A5CCD9 /* ShowlistDC_k_2018-07-08.xls in Resources */ = {isa = PBXBuildFile; fileRef = 87EDB3E7210D1BEA00A5CCD9 /* ShowlistDC_k_2018-07-08.xls */; };
 		C99A4B736E3FB77500AEC59F /* Pods_ShowlistDC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7429D3D40265BA53E97DDA0F /* Pods_ShowlistDC.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,7 +85,6 @@
 		877154C51F37DBB300B4119F /* HalfResizingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfResizingTableViewCell.swift; sourceTree = "<group>"; };
 		877C221B1DEFDAEC00F49A10 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		8791E22C1D9219C100EB4BBA /* SLDCDayListingsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLDCDayListingsTableView.swift; sourceTree = "<group>"; };
-		87C47DC51D8109B500E88C6D /* SLDC_For_Jon.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = SLDC_For_Jon.xlsx; sourceTree = "<group>"; };
 		87C5FA5A1DEBD50C00E97733 /* Showlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Showlist.swift; path = ShowlistDC/Showlist.swift; sourceTree = "<group>"; };
 		87D6AD7A1D80F463008CE838 /* ShowlistDC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowlistDC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87D6AD7D1D80F463008CE838 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +108,7 @@
 		87E46D0D1F9CDD1700126374 /* SLDCAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLDCAboutViewController.swift; sourceTree = "<group>"; };
 		87E583561DAC9346005A5D75 /* SLDCCalendarHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SLDCCalendarHeader.xib; sourceTree = "<group>"; };
 		87E5835A1DAC9698005A5D75 /* SLDCCalendarHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLDCCalendarHeader.swift; sourceTree = "<group>"; };
+		87EDB3E7210D1BEA00A5CCD9 /* ShowlistDC_k_2018-07-08.xls */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ShowlistDC_k_2018-07-08.xls"; path = "../../../../Downloads/ShowlistDC_k_2018-07-08.xls"; sourceTree = "<group>"; };
 		AE39523F05D7DAEA3C1E5B7C /* Pods-ShowlistDC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShowlistDC.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShowlistDC/Pods-ShowlistDC.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -245,7 +245,7 @@
 		87D6AD711D80F463008CE838 = {
 			isa = PBXGroup;
 			children = (
-				87C47DC51D8109B500E88C6D /* SLDC_For_Jon.xlsx */,
+				87EDB3E7210D1BEA00A5CCD9 /* ShowlistDC_k_2018-07-08.xls */,
 				87D6ADC81D80FDB1008CE838 /* libz.tbd */,
 				87D6AD7C1D80F463008CE838 /* ShowlistDC */,
 				87C5FA571DEBCE2100E97733 /* Data */,
@@ -419,7 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87E583571DAC9346005A5D75 /* SLDCCalendarHeader.xib in Resources */,
-				87C47DC61D8109B500E88C6D /* SLDC_For_Jon.xlsx in Resources */,
+				87EDB3E8210D1BEB00A5CCD9 /* ShowlistDC_k_2018-07-08.xls in Resources */,
 				87D6AD8B1D80F463008CE838 /* LaunchScreen.storyboard in Resources */,
 				8711D99B1D862E1D005E832F /* SLDCCalendarCell.xib in Resources */,
 				87D6AD881D80F463008CE838 /* Assets.xcassets in Resources */,
