@@ -50,12 +50,13 @@ struct ReloadConstants {
     fileprivate override init() {}
     
     func loadSpreadsheet() {
-        let documentPath = Bundle.main.path(forResource: "SLDC_For_Jon", ofType: "xlsx")!
+        let documentPath = Bundle.main.path(forResource: "ShowlistDC", ofType: "xlsx")!
 
         let package = BRAOfficeDocumentPackage.open(documentPath)
         
         if self.showSpreadsheet == nil {
-            //First worksheet in the workbook
+            
+            //First worksheet in the workbook has shows, second has venues
             guard let theShowSpreadsheet = package?.workbook.worksheets[0] as? BRAWorksheet
                 else {
                     return
@@ -81,9 +82,58 @@ struct ReloadConstants {
         _processedRows = 0
     }
     
-    func generateData(shouldRestart: Bool) {
+    func loadData(startDate: Date, endDate: Date, shouldRestart: Bool) {
+        self.loadSpreadsheet()
+        guard let showRows = self.showSpreadsheet?.rows as? [BRARow] else { return }
+        
+//        let testResult = !spreadsheetIsConsistent(rowArray: showRows)
+//        if !testResult {
+//            return
+//        }
+//        determineValidRowStart(from: showRows)
+        let startDateCell = binarySearchDate(startDate, rowArray: showRows, pivot: showRows.count / 2)
+        let endDateCell = binarySearchDate(endDate, rowArray: showRows, pivot: showRows.count / 2)
+        generateData(shouldRestart: shouldRestart, showRowStart: startDateCell, showRowEnd: endDateCell)
+    }
+    
+    private func spreadsheetIsConsistent(rowArray: [BRARow]) -> Bool {
+        let formatter = DateFormatter()
+        formatter.dateFormat = formatter.defaultDateFormat()
+        
+        for i in 0..<rowArray.count {
+            if i == 0 { continue }
+            
+            let row = rowArray[i]
+            if let dateCell = row.cells[3] as? BRACell, let dateString = dateCell.stringValue() {
+                if formatter.date(from: dateString) == nil {
+                    return false
+                }
+            }
+        }
+        
+        return true
+    }
+    
+    private func determineValidRowStart(from rowArray: [BRARow]) -> Int {
+        var returnValue = 0
+        let formatter = DateFormatter()
+        formatter.dateFormat = formatter.defaultDateFormat()
+        
+        let testCell = rowArray[965]
+        
+        for row in rowArray {
+            
+        }
+        
+        
+        return returnValue
+    }
+    
+    func generateData(shouldRestart: Bool, showRowStart: Int = 0, showRowEnd: Int = -1) {
         self.isLoadingData = true
         self.isLoadingSpreadsheet = true
+        var showRowEnd = showRowEnd
+        
         if shouldRestart {
             self._processedRows = -1
         }
@@ -91,9 +141,16 @@ struct ReloadConstants {
         DispatchQueue(label: "show-queue").async {
             NotificationCenter.default.post(name: ReloadConstants.kUpdatedRowsNoteName, object:nil)
             self.loadSpreadsheet()
+            
+            if showRowEnd - showRowStart > 0 {
+                self._totalRows = showRowEnd - showRowStart
+            }
+            
             // TODO: Request spreadsheet from server via downloadManager class of some kind
             
             if let showRows = self.showSpreadsheet?.rows, let venueRows = self.venueSpreadsheet?.rows {
+                
+                // Load venues first, very quick
                 venueLoop: for v in venueRows {
                     guard let row = v as? BRARow else { return }
                     if (row.rowIndex == 1) {
@@ -109,12 +166,18 @@ struct ReloadConstants {
                     }
                 }
                 
+                // Load shows, starting from where download left off if app was suspended
                 var startIndex = 0
                 if self.processedRows > -1 {
                     startIndex = self.processedRows
                 }
                 
-                for r in startIndex..<showRows.count {
+                if showRowEnd == -1 {
+                    showRowEnd = showRows.count
+                }
+                
+                for r in startIndex..<showRowEnd {
+                    
                     guard let row = showRows[r] as? BRARow else { return }
                     if (row.rowIndex == 1) {
                         continue
@@ -142,7 +205,39 @@ struct ReloadConstants {
         }
     }
     
-    
+    // Binary search for start index for given date
+    fileprivate func binarySearchDate(_ date: Date, rowArray: [BRARow], pivot: Int) -> Int {
+        if let pivotRowCells = rowArray[pivot].cells, let dateCell = pivotRowCells[3] as? BRACell {
+            
+            let dateString = dateCell.stringValue() ?? ""
+            let formatter = DateFormatter()
+            formatter.dateFormat = formatter.defaultDateFormat()
+            
+            // TESTING!!!!! Make dates this year for testing
+//            var testDateString = dateString
+//            testDateString.replaceSubrange(testDateString.index(testDateString.endIndex, offsetBy: -2)..<testDateString.endIndex, with: "18")
+            
+//            if let theDate = formatter.date(from: testDateString) {
+            if let theDate = formatter.date(from: dateString) {
+                if theDate.isOnSameDayAsDate(date) {
+                    return pivot
+                } else {
+                    var theArray: [BRARow]
+                    if theDate.compare(date) == .orderedDescending {
+                        theArray = Array(rowArray.prefix(upTo: pivot))
+                        return binarySearchDate(date, rowArray: theArray, pivot: theArray.count / 2)
+                    } else {
+                        theArray = Array(rowArray.suffix(from: pivot))
+                        return binarySearchDate(date, rowArray: theArray, pivot: theArray.count / 2)
+                    }
+                }
+            } else {
+                return binarySearchDate(date, rowArray: rowArray, pivot: pivot + 1)
+            }
+        }
+
+        return 0
+    }
     
     fileprivate func generateVenue(with row: BRARow) {
         let venue = Venue()
@@ -250,7 +345,7 @@ struct ReloadConstants {
                 var testDateString = dateString
                 testDateString.replaceSubrange(dateString.index(dateString.endIndex, offsetBy: -2)..<dateString.endIndex, with: "18")
 
-                //                show.date = formatter.date(from: dateString)
+//                show.date = formatter.date(from: dateString)
                 
                 if let theDate = formatter.date(from: testDateString) {
                     let castedDate = theDate as NSDate
