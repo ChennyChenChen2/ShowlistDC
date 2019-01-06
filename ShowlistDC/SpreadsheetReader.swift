@@ -21,37 +21,55 @@ struct ReloadConstants {
     var showSpreadsheet: BRAWorksheet?
     var venueSpreadsheet: BRAWorksheet?
     
-    fileprivate var _totalRows = -1
+    fileprivate dynamic var _totalRows = -1
     var totalRows : Int {
-        return _totalRows
+        return max(_totalRows, 1)
     }
     
-    fileprivate var _processedRows = -1 {
-        didSet {
-            NotificationCenter.default.post(name: ReloadConstants.kUpdatedRowsNoteName, object:nil)
-        }
-    }
+    fileprivate dynamic var _processedRows = -1
     
-    var processedRows : Int {
+    dynamic var processedRows : Int {
         return _processedRows
     }
     
     var downloadStatusString : String {
-        let downloadPercent = Int((Float(processedRows) / Float(totalRows)) * 100.0)
-        if isLoadingSpreadsheet { return "Extracting data from spreadsheet..." }
-        else if isLoadingData { return "\(downloadPercent)% updated" }
+        if isLoadingSpreadsheet { return "Extracting data..." }
+        else if isLoadingData { return "\(processedRows) shows updated" }
         else { return "Ready to reload shows" }
     }
     
+    class func keyPathsForValuesAffectingProcessedRows() -> Set<String> {
+        return [ "_processedRows" ]
+    }
+    
+    class func keyPathsForValuesAffectingProgress() -> Set<String> {
+        return [ "_processedRows", "_totalRows" ]
+    }
+    
+    dynamic var progress : Float {
+        return (Float(processedRows) / Float(totalRows))
+    }
+    
     var isLoadingSpreadsheet = false
-    var isLoadingData = false
+    dynamic var isLoadingData = false
+    
+    let kLastShowCellIndex = "lastShowCellIndexKey"
+    var lastShowCellIndex: Int {
+        get {
+            let index = UserDefaults.standard.integer(forKey: kLastShowCellIndex)
+            return index > 0 ? index : Int.max
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: kLastShowCellIndex)
+        }
+    }
     
     static let shared = SpreadsheetReader()
     fileprivate override init() {}
     
     func loadSpreadsheet() {
+        self.isLoadingSpreadsheet = true
         let documentPath = Bundle.main.path(forResource: "ShowlistDC", ofType: "xlsx")!
-
         let package = BRAOfficeDocumentPackage.open(documentPath)
         
         if self.showSpreadsheet == nil {
@@ -83,19 +101,40 @@ struct ReloadConstants {
     }
     
     func loadData(startDate: Date, endDate: Date, shouldRestart: Bool) {
-        self.loadSpreadsheet()
-        guard let showRows = self.showSpreadsheet?.rows as? [BRARow] else { return }
         
-//        let testResult = !spreadsheetIsConsistent(rowArray: showRows)
-//        if !testResult {
-//            return
-//        }
-//        determineValidRowStart(from: showRows)
-        let startDateCell = binarySearchDate(startDate, rowArray: showRows, pivot: showRows.count / 2)
-        let endDateCell = binarySearchDate(endDate, rowArray: showRows, pivot: showRows.count / 2)
-        generateData(shouldRestart: shouldRestart, showRowStart: startDateCell, showRowEnd: endDateCell)
+        let showQueue = DispatchQueue(label: "show-queue")
+        self.isLoadingData = true
+        
+        let group = DispatchGroup()
+        group.enter()
+        
+        DispatchQueue(label: "spreadsheet-queue").async { [weak self] in
+            if let weakSelf = self {
+                if weakSelf.showSpreadsheet == nil || weakSelf.venueSpreadsheet == nil {
+                    weakSelf.loadSpreadsheet()
+                }
+            }
+        }
+        
+        group.leave()
+        group.notify(qos: .background, queue: showQueue) { [weak self] in
+            if let weakSelf = self {
+                weakSelf.loadSpreadsheet()
+                guard let showRows = weakSelf.showSpreadsheet?.rows as? [BRARow] else { return }
+                
+                let sampleSize = min(weakSelf.lastShowCellIndex, showRows.count)
+                let startDateCellIndex = weakSelf.binarySearchDate(startDate, pivot: sampleSize / 2, sampleSize: sampleSize / 2)
+                let endDateCellIndex = weakSelf.binarySearchDate(endDate, pivot: sampleSize / 2, sampleSize: sampleSize / 2)
+                
+                weakSelf._processedRows = 0
+                weakSelf._totalRows = endDateCellIndex - startDateCellIndex
+                weakSelf.generateData(shouldRestart: shouldRestart, showRowStart: startDateCellIndex, showRowEnd: endDateCellIndex)
+            }
+        }
     }
     
+    
+    // TODO: What does this do???
     private func spreadsheetIsConsistent(rowArray: [BRARow]) -> Bool {
         let formatter = DateFormatter()
         formatter.dateFormat = formatter.defaultDateFormat()
@@ -114,39 +153,37 @@ struct ReloadConstants {
         return true
     }
     
-    private func determineValidRowStart(from rowArray: [BRARow]) -> Int {
-        var returnValue = 0
-        let formatter = DateFormatter()
-        formatter.dateFormat = formatter.defaultDateFormat()
-        
-        let testCell = rowArray[965]
-        
-        for row in rowArray {
-            
-        }
-        
-        
-        return returnValue
-    }
-    
     func generateData(shouldRestart: Bool, showRowStart: Int = 0, showRowEnd: Int = -1) {
         self.isLoadingData = true
-        self.isLoadingSpreadsheet = true
         var showRowEnd = showRowEnd
         
+        // TODO: do we need the shouldRestart variable?
         if shouldRestart {
             self._processedRows = -1
         }
         
-        DispatchQueue(label: "show-queue").async {
-            NotificationCenter.default.post(name: ReloadConstants.kUpdatedRowsNoteName, object:nil)
-            self.loadSpreadsheet()
-            
-            if showRowEnd - showRowStart > 0 {
+        let showQueue = DispatchQueue(label: "show-queue")
+
+        let group = DispatchGroup()
+        group.enter()
+        
+        DispatchQueue(label: "spreadsheet-queue").async { [weak self] in
+            if let weakSelf = self {
+                if weakSelf.showSpreadsheet == nil || weakSelf.venueSpreadsheet == nil {
+                    weakSelf.loadSpreadsheet()
+                }
+            }
+        }
+        
+        group.leave()
+        group.notify(qos: .background, queue: showQueue) {
+//        showQueue.async {
+            if showRowEnd - showRowStart >= 0 {
                 self._totalRows = showRowEnd - showRowStart
             }
-            
+        
             // TODO: Request spreadsheet from server via downloadManager class of some kind
+            // When we do, reset the "lastRowInSpreadsheet" variable
             
             if let showRows = self.showSpreadsheet?.rows, let venueRows = self.venueSpreadsheet?.rows {
                 
@@ -189,14 +226,19 @@ struct ReloadConstants {
                         if !checkCell.stringValue().isEmpty {
                             self.generateShow(with: row)
                             print("Processed show \(row.rowIndex)")
+                        } else {
+                            self.lastShowCellIndex = row.rowIndex - 1
+                            break
                         }
                     }
                     self._processedRows = self._processedRows + 1
                 }
                 
                 print("DONE LOADING SHOWS!!!!!!")
+                
+                self.isLoadingData = false
+                self._processedRows = 0
                 DispatchQueue.main.async {
-                    self.isLoadingData = false
                     NotificationCenter.default.post(name: ReloadConstants.kReloadCompleteNoteName, object: NSNumber(booleanLiteral: true))
                 }
             } else {
@@ -206,36 +248,82 @@ struct ReloadConstants {
     }
     
     // Binary search for start index for given date
-    fileprivate func binarySearchDate(_ date: Date, rowArray: [BRARow], pivot: Int) -> Int {
-        if let pivotRowCells = rowArray[pivot].cells, let dateCell = pivotRowCells[3] as? BRACell {
+    // THIS METHOD RELIES ON "COMPLETE" CELLS AT THE BEGINNING OF THE SPREADSHEET
+    fileprivate func binarySearchDate(_ date: Date, pivot: Int, sampleSize: Int) -> Int {
+        let checkCellID : String = "G\(pivot)"
+        
+        if let showSpreadsheet = self.showSpreadsheet, let dateCell = showSpreadsheet.cell(forCellReference: checkCellID), let theValue = dateCell.stringValue(), theValue.isDate() {
+
+            if pivot == 2 || pivot == self.lastShowCellIndex {
+                return pivot
+            }
             
-            let dateString = dateCell.stringValue() ?? ""
+            let dateString = dateCell.stringValue()!
             let formatter = DateFormatter()
             formatter.dateFormat = formatter.defaultDateFormat()
             
             // TESTING!!!!! Make dates this year for testing
-//            var testDateString = dateString
-//            testDateString.replaceSubrange(testDateString.index(testDateString.endIndex, offsetBy: -2)..<testDateString.endIndex, with: "18")
+            var testDateString = dateString
+            testDateString.replaceSubrange(testDateString.index(testDateString.endIndex, offsetBy: -2)..<testDateString.endIndex, with: "19")
             
-//            if let theDate = formatter.date(from: testDateString) {
-            if let theDate = formatter.date(from: dateString) {
-                if theDate.isOnSameDayAsDate(date) {
-                    return pivot
+            if let theDate = formatter.date(from: testDateString) {
+//            if let theDate = formatter.date(from: dateString) {
+                
+                if theDate.compare(date) == .orderedDescending {
+                    if sampleSize == 0 {
+                        return fineTuneSearch(date, pivot: pivot, previousResult: .orderedDescending)
+                    }
+                    else {
+                        return binarySearchDate(date, pivot: pivot - (sampleSize / 2), sampleSize: sampleSize / 2)
+                    }
                 } else {
-                    var theArray: [BRARow]
-                    if theDate.compare(date) == .orderedDescending {
-                        theArray = Array(rowArray.prefix(upTo: pivot))
-                        return binarySearchDate(date, rowArray: theArray, pivot: theArray.count / 2)
+                    if sampleSize == 0 {
+                        return fineTuneSearch(date, pivot: pivot, previousResult: .orderedAscending)
                     } else {
-                        theArray = Array(rowArray.suffix(from: pivot))
-                        return binarySearchDate(date, rowArray: theArray, pivot: theArray.count / 2)
+                        return binarySearchDate(date, pivot: pivot + (sampleSize / 2), sampleSize: sampleSize / 2)
                     }
                 }
             } else {
-                return binarySearchDate(date, rowArray: rowArray, pivot: pivot + 1)
+                return binarySearchDate(date, pivot: pivot - 1, sampleSize: sampleSize - 1)
             }
         }
 
+        return 0
+    }
+    
+    fileprivate func fineTuneSearch(_ date: Date, pivot: Int, previousResult: ComparisonResult) -> Int {
+        let checkCellID : String = "G\(pivot)"
+        
+        if let showSpreadsheet = self.showSpreadsheet, let dateCell = showSpreadsheet.cell(forCellReference: checkCellID), let theValue = dateCell.stringValue(), theValue.isDate() {
+            
+            let dateString = dateCell.stringValue()!
+            let formatter = DateFormatter()
+            formatter.dateFormat = formatter.defaultDateFormat()
+            
+            // TESTING!!!!! Make dates this year for testing
+            var testDateString = dateString
+            testDateString.replaceSubrange(testDateString.index(testDateString.endIndex, offsetBy: -2)..<testDateString.endIndex, with: "19")
+            
+            if let theDate = formatter.date(from: testDateString) {
+                if pivot == 2 || pivot == self.lastShowCellIndex {
+                    return pivot
+                }
+                
+                let currentResult = theDate.compare(date)
+                
+                if previousResult != currentResult {
+                    return pivot
+                } else {
+                    if currentResult == .orderedDescending {
+                        return fineTuneSearch(date, pivot: pivot - 1, previousResult: currentResult)
+                    } else {
+                        return fineTuneSearch(date, pivot: pivot + 1, previousResult: currentResult)
+                    }
+                }
+            }
+        } else {
+            return fineTuneSearch(date, pivot: pivot - 1, previousResult: previousResult)
+        }
         return 0
     }
     
@@ -245,7 +333,6 @@ struct ReloadConstants {
         for c in cells {
             guard let cell = c as? BRACell else { return }
             self.populate(venue: venue, with: cell)
-            print("HERE!")
         }
         Showlist.add(venue)
         print(self.downloadStatusString)
@@ -343,7 +430,7 @@ struct ReloadConstants {
                 
                 // TESTING!!!!! Make dates this year for testing
                 var testDateString = dateString
-                testDateString.replaceSubrange(dateString.index(dateString.endIndex, offsetBy: -2)..<dateString.endIndex, with: "18")
+                testDateString.replaceSubrange(dateString.index(dateString.endIndex, offsetBy: -2)..<dateString.endIndex, with: "19")
 
 //                show.date = formatter.date(from: dateString)
                 
@@ -425,5 +512,13 @@ struct ReloadConstants {
 extension DateFormatter {
     func defaultDateFormat() -> String {
         return "M/dd/yy"
+    }
+}
+
+extension String {
+    func isDate() -> Bool {
+        let formatter = DateFormatter()
+        formatter.dateFormat = formatter.defaultDateFormat()
+        return formatter.date(from: self) != nil
     }
 }

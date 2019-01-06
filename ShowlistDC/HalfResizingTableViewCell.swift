@@ -24,5 +24,14 @@ class HalfResizingTableViewCell: UITableViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        if let theTextLabel = self.textLabel {
+            theTextLabel.text = nil
+        }
+        
+        if let theDetailLabel = self.detailTextLabel {
+            theDetailLabel.text = nil
+        }
+    }
     
 }

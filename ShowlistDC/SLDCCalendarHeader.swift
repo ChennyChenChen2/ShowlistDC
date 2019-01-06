@@ -54,7 +54,10 @@ class SLDCCalendarHeader : JTAppleHeaderView {
     }
     
     @objc func refreshButtonStateChanged(_ note: Notification) {
-        self.rotateRefreshButton()
+        guard let shouldEnable = note.object as? NSNumber else { return }
+        if shouldEnable.boolValue {
+            self.rotateRefreshButton()
+        }
     }
     
     private func rotateRefreshButton() {

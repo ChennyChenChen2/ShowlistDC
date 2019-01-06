@@ -8,12 +8,4 @@
 
 import Foundation
 
-class SLDCDayListingsTableView : UITableView {
-    
-    
-    
-    
-    
-    
-    
-}
+class SLDCDayListingsTableView : UITableView {}
