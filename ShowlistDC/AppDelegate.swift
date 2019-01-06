@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            self.window?.makeKeyAndVisible()
 //        }
         
+        let GADAppID = "ca-app-pub-2106401489471689~6456742739"
+        let GADBannerAdID = "ca-app-pub-2106401489471689/9278169589"
+        
         return true
     }
 
