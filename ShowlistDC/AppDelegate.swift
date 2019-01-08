@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,6 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let GADAppID = "ca-app-pub-2106401489471689~6456742739"
         let GADBannerAdID = "ca-app-pub-2106401489471689/9278169589"
+        let testAdID = "ca-app-pub-3940256099942544/2934735716"
+        
+        GADMobileAds.configure(withApplicationID: GADAppID)
         
         return true
     }

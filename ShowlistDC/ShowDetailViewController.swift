@@ -8,8 +8,9 @@
 
 import Foundation
 import EventKit
+import GoogleMobileAds
 
-class ShowDetailViewController: UIViewController {
+class ShowDetailViewController: UIViewController, GADBannerViewDelegate {
     
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var venueLabel: UILabel!
@@ -18,8 +19,10 @@ class ShowDetailViewController: UIViewController {
     @IBOutlet weak var addToCalendarButton: UIButton!
     @IBOutlet weak var seeOtherShowsButton: UIButton!
     @IBOutlet weak var viewOnTicketflyButton: UIButton!
+    @IBOutlet weak var bannerView: GADBannerView!
     
     static let storyboardId = "show-detail"
+    let bannerAdId = "ca-app-pub-3940256099942544/2934735716"
     var show: Show!
     var shouldShowSaveButton = true
     var showIsSaved: Bool {
@@ -57,6 +60,11 @@ class ShowDetailViewController: UIViewController {
         if let navController = self.navigationController, navController.viewControllers.count >= 4 || !venueIsKnown {
             self.seeOtherShowsButton.removeFromSuperview()
         }
+        
+        self.bannerView.rootViewController = self
+        self.bannerView.adUnitID = self.bannerAdId
+        self.bannerView.load(GADRequest())
+        self.bannerView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {

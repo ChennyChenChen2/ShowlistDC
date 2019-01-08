@@ -436,9 +436,19 @@ Feel free to browse the app in the meantime!</string>
                                     <constraint firstAttribute="width" constant="260" id="Tla-Ck-3u8"/>
                                 </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hXo-Oi-GCX" customClass="GADBannerView">
+                                <rect key="frame" x="27.5" y="597" width="320" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ckv-zH-c0D"/>
+                                    <constraint firstAttribute="width" constant="320" id="oFW-2D-uEo"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="hXo-Oi-GCX" firstAttribute="centerX" secondItem="ap3-4t-wLc" secondAttribute="centerX" id="Q7j-Ac-Zi6"/>
+                            <constraint firstItem="ap3-4t-wLc" firstAttribute="bottom" secondItem="hXo-Oi-GCX" secondAttribute="bottom" constant="20" id="di4-2A-fXu"/>
                             <constraint firstItem="Pae-us-fhF" firstAttribute="leading" secondItem="ap3-4t-wLc" secondAttribute="leading" constant="57" id="ruS-6M-g8T"/>
                             <constraint firstItem="Pae-us-fhF" firstAttribute="top" secondItem="ap3-4t-wLc" secondAttribute="top" constant="52" id="yqo-hy-Xqw"/>
                         </constraints>
@@ -447,6 +457,7 @@ Feel free to browse the app in the meantime!</string>
                     <connections>
                         <outlet property="addToCalendarButton" destination="Zye-Re-5Kt" id="o8l-EG-bhc"/>
                         <outlet property="artistLabel" destination="NUU-uZ-rS8" id="bH6-Nf-Ev8"/>
+                        <outlet property="bannerView" destination="hXo-Oi-GCX" id="Trq-I1-zik"/>
                         <outlet property="dateLabel" destination="sXr-V9-j0r" id="9jG-O5-slM"/>
                         <outlet property="saveShowButton" destination="nD8-8U-qC8" id="aSx-0d-qaA"/>
                         <outlet property="seeOtherShowsButton" destination="RM3-cX-o7g" id="sf1-tB-xMO"/>
