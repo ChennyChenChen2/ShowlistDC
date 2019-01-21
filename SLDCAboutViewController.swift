@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SLDCAboutViewController : UIViewController {
+class SLDCAboutViewController : AdViewController {
     
     @IBOutlet weak var textView: UITextView!
     

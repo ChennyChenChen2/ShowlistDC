@@ -28,6 +28,7 @@
 		878015702183F59F00308FE2 /* ShowlistDC.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = 8780156F2183F59F00308FE2 /* ShowlistDC.xlsx */; };
 		8791E22D1D9219C100EB4BBA /* SLDCDayListingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791E22C1D9219C100EB4BBA /* SLDCDayListingsTableView.swift */; };
 		87C5FA5B1DEBD50C00E97733 /* Showlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FA5A1DEBD50C00E97733 /* Showlist.swift */; };
+		87CB08B621E6F65900571DF1 /* AdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CB08B521E6F65900571DF1 /* AdViewController.swift */; };
 		87D6AD7E1D80F463008CE838 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6AD7D1D80F463008CE838 /* AppDelegate.swift */; };
 		87D6AD831D80F463008CE838 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87D6AD811D80F463008CE838 /* Main.storyboard */; };
 		87D6AD881D80F463008CE838 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87D6AD871D80F463008CE838 /* Assets.xcassets */; };
@@ -36,7 +37,6 @@
 		87D6ADA11D80F463008CE838 /* ShowlistDCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6ADA01D80F463008CE838 /* ShowlistDCUITests.swift */; };
 		87D6ADB21D80F550008CE838 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6ADAE1D80F550008CE838 /* Show.swift */; };
 		87D6ADB31D80F550008CE838 /* SpreadsheetReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6ADAF1D80F550008CE838 /* SpreadsheetReader.swift */; };
-		87D6ADB41D80F550008CE838 /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6ADB01D80F550008CE838 /* StartupViewController.swift */; };
 		87D6ADB51D80F550008CE838 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6ADB11D80F550008CE838 /* TabBarController.swift */; };
 		87D6ADC91D80FDB1008CE838 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 87D6ADC81D80FDB1008CE838 /* libz.tbd */; };
 		87E07D4D2069DBCF00E34CEB /* VenueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E07D4C2069DBCF00E34CEB /* VenueDetailViewController.swift */; };
@@ -87,6 +87,7 @@
 		8780156F2183F59F00308FE2 /* ShowlistDC.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = ShowlistDC.xlsx; sourceTree = "<group>"; };
 		8791E22C1D9219C100EB4BBA /* SLDCDayListingsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLDCDayListingsTableView.swift; sourceTree = "<group>"; };
 		87C5FA5A1DEBD50C00E97733 /* Showlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Showlist.swift; path = ShowlistDC/Showlist.swift; sourceTree = "<group>"; };
+		87CB08B521E6F65900571DF1 /* AdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdViewController.swift; sourceTree = "<group>"; };
 		87D6AD7A1D80F463008CE838 /* ShowlistDC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowlistDC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87D6AD7D1D80F463008CE838 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87D6AD821D80F463008CE838 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -101,7 +102,6 @@
 		87D6ADA21D80F463008CE838 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87D6ADAE1D80F550008CE838 /* Show.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		87D6ADAF1D80F550008CE838 /* SpreadsheetReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpreadsheetReader.swift; path = ShowlistDC/SpreadsheetReader.swift; sourceTree = "<group>"; };
-		87D6ADB01D80F550008CE838 /* StartupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartupViewController.swift; sourceTree = "<group>"; };
 		87D6ADB11D80F550008CE838 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		87D6ADC81D80FDB1008CE838 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		87D6ADCA1D80FDDC008CE838 /* ShowlistDC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShowlistDC-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -242,6 +242,14 @@
 			name = Data;
 			sourceTree = "<group>";
 		};
+		87CB08B321E6F64200571DF1 /* Ads */ = {
+			isa = PBXGroup;
+			children = (
+				87CB08B521E6F65900571DF1 /* AdViewController.swift */,
+			);
+			path = Ads;
+			sourceTree = "<group>";
+		};
 		87D6AD711D80F463008CE838 = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +257,7 @@
 				87D6ADC81D80FDB1008CE838 /* libz.tbd */,
 				87D6AD7C1D80F463008CE838 /* ShowlistDC */,
 				87C5FA571DEBCE2100E97733 /* Data */,
+				87CB08B321E6F64200571DF1 /* Ads */,
 				8711D34E1EFED0AA00C38DA5 /* Detail Views */,
 				877C22181DEFCC4400F49A10 /* Model */,
 				8796443D1E0F484B00A3A29B /* Extensions */,
@@ -279,7 +288,6 @@
 			children = (
 				87D6ADCA1D80FDDC008CE838 /* ShowlistDC-Bridging-Header.h */,
 				87D6AD7D1D80F463008CE838 /* AppDelegate.swift */,
-				87D6ADB01D80F550008CE838 /* StartupViewController.swift */,
 				87D6ADB11D80F550008CE838 /* TabBarController.swift */,
 				87D6AD811D80F463008CE838 /* Main.storyboard */,
 				87D6AD871D80F463008CE838 /* Assets.xcassets */,
@@ -529,12 +537,12 @@
 				87E07D4D2069DBCF00E34CEB /* VenueDetailViewController.swift in Sources */,
 				87D6ADB31D80F550008CE838 /* SpreadsheetReader.swift in Sources */,
 				8711D9A61D863825005E832F /* SLDCShowlistViewController.swift in Sources */,
+				87CB08B621E6F65900571DF1 /* AdViewController.swift in Sources */,
 				8770F00D20771729000C01BB /* ShowsInVenueTableViewController.swift in Sources */,
 				8711D3521EFED0C900C38DA5 /* ShowDetailViewController.swift in Sources */,
 				87D6ADB51D80F550008CE838 /* TabBarController.swift in Sources */,
 				873F56B31F2C27C300FF7B70 /* SLDCContactUsViewController.swift in Sources */,
 				87E46D0E1F9CDD1700126374 /* SLDCAboutViewController.swift in Sources */,
-				87D6ADB41D80F550008CE838 /* StartupViewController.swift in Sources */,
 				87338CD12067288B00080874 /* VenuesTableViewCell.swift in Sources */,
 				8724498D1F2AA3E300817BE8 /* SLDCMoreTableViewController.swift in Sources */,
 				87D6AD7E1D80F463008CE838 /* AppDelegate.swift in Sources */,

@@ -9,7 +9,7 @@
 import Foundation
 import MessageUI
 
-class SLDCContactUsViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class SLDCContactUsViewController: AdViewController, MFMailComposeViewControllerDelegate {
     
     @IBAction func socialMediaButtonPressed(_ sender: Any) {
         let button = sender as! UIButton

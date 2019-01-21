@@ -457,7 +457,7 @@ Feel free to browse the app in the meantime!</string>
                     <connections>
                         <outlet property="addToCalendarButton" destination="Zye-Re-5Kt" id="o8l-EG-bhc"/>
                         <outlet property="artistLabel" destination="NUU-uZ-rS8" id="bH6-Nf-Ev8"/>
-                        <outlet property="bannerView" destination="hXo-Oi-GCX" id="Trq-I1-zik"/>
+                        <outlet property="bannerAdView" destination="hXo-Oi-GCX" id="Nad-16-z75"/>
                         <outlet property="dateLabel" destination="sXr-V9-j0r" id="9jG-O5-slM"/>
                         <outlet property="saveShowButton" destination="nD8-8U-qC8" id="aSx-0d-qaA"/>
                         <outlet property="seeOtherShowsButton" destination="RM3-cX-o7g" id="sf1-tB-xMO"/>
@@ -773,16 +773,29 @@ Feel free to browse the app in the meantime!</string>
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZQZ-1o-p6I" customClass="GADBannerView">
+                                <rect key="frame" x="27.5" y="530" width="320" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="11h-Sq-YPs"/>
+                                    <constraint firstAttribute="height" constant="50" id="HHS-UN-jKn"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cTm-Ym-FO8" firstAttribute="top" secondItem="42N-Yo-6T5" secondAttribute="top" constant="30" id="3Q7-Kb-uMs"/>
+                            <constraint firstItem="42N-Yo-6T5" firstAttribute="bottom" secondItem="ZQZ-1o-p6I" secondAttribute="bottom" constant="38" id="Bba-UV-Y4o"/>
                             <constraint firstItem="42N-Yo-6T5" firstAttribute="trailing" secondItem="cTm-Ym-FO8" secondAttribute="trailing" constant="5" id="KbW-3d-LOv"/>
                             <constraint firstItem="42N-Yo-6T5" firstAttribute="bottom" secondItem="cTm-Ym-FO8" secondAttribute="bottom" priority="750" constant="132.5" id="Xic-lF-fTE"/>
                             <constraint firstItem="cTm-Ym-FO8" firstAttribute="leading" secondItem="egm-tB-gMd" secondAttribute="leadingMargin" id="aCI-ZD-yl5"/>
+                            <constraint firstItem="ZQZ-1o-p6I" firstAttribute="centerX" secondItem="42N-Yo-6T5" secondAttribute="centerX" id="r8s-wu-BDI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="42N-Yo-6T5"/>
                     </view>
+                    <connections>
+                        <outlet property="bannerAdView" destination="ZQZ-1o-p6I" id="NKX-so-IvO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="itO-dp-wmD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -947,17 +960,28 @@ Feel free to browse the app in the meantime!</string>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="url"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cad-5G-q8L" customClass="GADBannerView">
+                                <rect key="frame" x="27.5" y="555" width="320" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="NXs-r0-0l0"/>
+                                    <constraint firstAttribute="width" constant="320" id="f8c-sN-WI0"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Adh-TS-49b" firstAttribute="width" secondItem="Ozv-SB-Tbv" secondAttribute="width" id="9Tq-dy-gGD"/>
+                            <constraint firstItem="cad-5G-q8L" firstAttribute="top" secondItem="Adh-TS-49b" secondAttribute="bottom" constant="-63" id="Mnf-sO-ARl"/>
                             <constraint firstItem="Adh-TS-49b" firstAttribute="leading" secondItem="wK7-RV-Ykp" secondAttribute="leading" id="WbF-Z0-h5N"/>
                             <constraint firstItem="wK7-RV-Ykp" firstAttribute="bottom" secondItem="Adh-TS-49b" secondAttribute="bottom" id="aXA-Gf-Xkv"/>
                             <constraint firstItem="Adh-TS-49b" firstAttribute="top" secondItem="wK7-RV-Ykp" secondAttribute="top" id="dME-q4-4fA"/>
+                            <constraint firstItem="cad-5G-q8L" firstAttribute="centerX" secondItem="wK7-RV-Ykp" secondAttribute="centerX" id="dso-2r-Rzj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wK7-RV-Ykp"/>
                     </view>
                     <connections>
+                        <outlet property="bannerAdView" destination="cad-5G-q8L" id="EFc-wp-O3u"/>
                         <outlet property="textView" destination="Adh-TS-49b" id="JYj-2a-OgQ"/>
                     </connections>
                 </viewController>
